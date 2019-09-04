@@ -73,7 +73,7 @@ class sigh:
         if message.channel.id in self.settings['ignore_channels']:
             return
 
-        pattern = re.compile(r'w+h*[aou]+t+[?!]*', re.IGNORECASE)
+        pattern = re.compile(r's+i+g+h', re.IGNORECASE)
         if pattern.fullmatch(content[0]):
             async for before in self.bot.logs_from(message.channel, limit=5,
                                                    before=message):
