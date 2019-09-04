@@ -1,5 +1,7 @@
 import os
 import re
+import io
+import aiohttp
 
 from discord.ext import commands
 
@@ -75,20 +77,8 @@ class sigh:
 
         pattern = re.compile(r's+i+g+h', re.IGNORECASE)
         if pattern.fullmatch(content[0]):
-            async for before in self.bot.logs_from(message.channel, limit=5,
-                                                   before=message):
-                author = before.author
-                name = author.display_name
-                content = before.clean_content
-                if not author.bot\
-                        and not self.is_command(before)\
-                        and not author == message.author\
-                        and not pattern.fullmatch(content):
-                    emoji = "\N{CHEERING MEGAPHONE}"
-                    msg = "{0} said, **{1}   {2}**".format(name, emoji,
-                                                                 content)
-                    await self.bot.send_message(message.channel, msg)
-                    break
+            msg = "https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif \n\nsigh...\nsai...\nSAIDO CHESTO!!"
+            await self.bot.send_message(message.channel, msg)
 
     # Credit to Twentysix26's trigger cog
     def is_command(self, msg):
