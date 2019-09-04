@@ -20,7 +20,7 @@ class sigh:
 
     @commands.group(name="sighignore", pass_context=True, no_pm=True)
     @checks.admin_or_permissions(manage_server=True)
-    async def sigh ignore(self, ctx):
+    async def sighignore(self, ctx):
         """Change sigh cog ignore settings."""
 
         if ctx.invoked_subcommand is None:
