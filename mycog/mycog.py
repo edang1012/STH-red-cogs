@@ -9,26 +9,26 @@ from .utils import checks
 from .utils.dataIO import dataIO
 
 
-class Wat:
+class sigh:
 
     """Repeat messages when other users are having trouble hearing"""
 
     def __init__(self, bot):
         self.bot = bot
-        self.settings_path = "data/wat/settings.json"
+        self.settings_path = "data/sigh/settings.json"
         self.settings = dataIO.load_json(self.settings_path)
 
-    @commands.group(name="watignore", pass_context=True, no_pm=True)
+    @commands.group(name="sighignore", pass_context=True, no_pm=True)
     @checks.admin_or_permissions(manage_server=True)
-    async def watignore(self, ctx):
-        """Change Wat cog ignore settings."""
+    async def sigh ignore(self, ctx):
+        """Change sigh cog ignore settings."""
 
         if ctx.invoked_subcommand is None:
             await send_cmd_help(ctx)
 
-    @watignore.command(name="server", pass_context=True, no_pm=True)
+    @sighignore.command(name="server", pass_context=True, no_pm=True)
     @checks.admin_or_permissions(manage_server=True)
-    async def _watignore_server(self, ctx):
+    async def _sighignore_server(self, ctx):
         """Ignore/Unignore the current server"""
 
         server = ctx.message.server
@@ -42,9 +42,9 @@ class Wat:
                                "this server.")
         dataIO.save_json(self.settings_path, self.settings)
 
-    @watignore.command(name="channel", pass_context=True, no_pm=True)
+    @sighignore.command(name="channel", pass_context=True, no_pm=True)
     @checks.admin_or_permissions(manage_server=True)
-    async def _watignore_channel(self, ctx):
+    async def _sighignore_channel(self, ctx):
         """Ignore/Unignore the current channel"""
 
         channel = ctx.message.channel
@@ -103,7 +103,7 @@ class Wat:
 
 
 def check_folders():
-    folder = "data/wat"
+    folder = "data/sigh"
     if not os.path.exists(folder):
         print("Creating {} folder...".format(folder))
         os.makedirs(folder)
@@ -111,12 +111,12 @@ def check_folders():
 
 def check_files():
     default = {'ignore_channels': [], 'ignore_servers': []}
-    if not dataIO.is_valid_json("data/wat/settings.json"):
-        print("Creating default wat settings.json...")
-        dataIO.save_json("data/wat/settings.json", default)
+    if not dataIO.is_valid_json("data/sigh/settings.json"):
+        print("Creating default sigh settings.json...")
+        dataIO.save_json("data/sigh/settings.json", default)
 
 
 def setup(bot):
     check_folders()
     check_files()
-    bot.add_cog(Wat(bot))
+    bot.add_cog(sigh(bot))
