@@ -1,0 +1,3 @@
+# STH-cogs
+Branch for making V3 compatible cogs. 
+Work in progress...
