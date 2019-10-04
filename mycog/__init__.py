@@ -1,7 +1,7 @@
 """Package for mycog cog."""
-from .mycog import mycog
-
+from .mycog import sigh
 
 def setup(bot):
-    """Load RemindMe cog."""
-    bot.add_cog(mycog(bot))
+    check_folders()
+    check_files()
+    bot.add_cog(sigh(bot))
