@@ -1,7 +1,4 @@
-"""Package for mycog cog."""
-from .mycog import sigh
+from .mycog import Mycog
 
 def setup(bot):
-    check_folders()
-    check_files()
-    bot.add_cog(sigh(bot))
+    bot.add_cog(Mycog())
