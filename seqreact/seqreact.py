@@ -21,8 +21,8 @@ class seqreact(commands.Cog):
         try:
             emotes = emoji.split(" ")
             
-            for i = 0 to len(emotes)
-                await message.channel.send(i)
+            for x in emotes
+                await message.channel.send(x)
 
             #await message.channel.send('Word is {}, num is {}'.format(word, emoji))
 
