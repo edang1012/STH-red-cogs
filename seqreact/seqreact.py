@@ -43,7 +43,7 @@ class seqreact(commands.Cog):
             # Use the reaction to see if it's valid
             #await message.add_reaction(emoji)
             test = emoji.split(" ")
-            for x in emotes:
+            for x in test:
                 await message.channel.send(x)
                             
             emoji = str(emoji)
