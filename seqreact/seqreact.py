@@ -22,11 +22,11 @@ class seqreact(commands.Cog):
         emotes = emoji.split(" ")
 
         #check to see if 
+        sequence = []
         for x in emotes:
             if ':' in x:
                 sequence.append(x)
                 #await message.channel.send(x)
 
-        sequence = []
         for i in sequence:
             await message.channel.send(i)
