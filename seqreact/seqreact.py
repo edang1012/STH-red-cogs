@@ -111,11 +111,11 @@ class seqreact(commands.Cog):
                     for x in emotes:
                         if ':' in x:
                             sequence.append(x)
-                            await message.channel.send(x)
+                            #await message.channel.send(x)
 
-                    #for i in sequence:
-                    #    await message.channel.send(i)
-                    #await message.add_reaction(emoji)
+                    for i in sequence:
+                        await message.add_reaction(i)
+                        
                 except discord.errors.Forbidden:
                     pass
                 except discord.errors.InvalidArgument:
