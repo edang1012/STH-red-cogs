@@ -22,9 +22,7 @@ class seqreact(commands.Cog):
     async def test(self, ctx, word, emoji):
         """Create a sequence of reactions to a keyword/phrase'
         Usage:  pass a keyword or keyphrase(in quotations) to <word>
-                pass an emoji or emojis (in quotations) to <emoji>
-                
-                the order of emojis sent will be the sequence"""
+                pass an emoji or emojis (in quotations) to <emoji>"""
         
         guild = ctx.message.guild
         message = ctx.message
@@ -91,3 +89,34 @@ class seqreact(commands.Cog):
 
         except (discord.errors.HTTPException, discord.errors.InvalidArgument):
             await message.channel.send("Uh oh, something bad happened...")
+            
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        if not message.guild:
+            return
+        if message.author == self.bot.user:
+            return
+        guild = message.guild
+        reacts = copy.deepcopy(await self.conf.guild(guild).reactions())
+        if reacts is None:
+            return
+        words = message.content.lower().split()
+        for emoji in reacts:
+            if set(w.lower() for w in reacts[emoji]).intersection(words):
+                try:
+                    emotes = emoji.split(" ")
+                    #check to see if emotes in list and place into sequence
+                    #kinda a crappy workaround to remove the leading/trailing spaces in the list
+                    sequence = []
+                    for x in emotes:
+                        if ':' in x:
+                            sequence.append(x)
+                            await message.channel.send(x)
+
+                    #for i in sequence:
+                    #    await message.channel.send(i)
+                    #await message.add_reaction(emoji)
+                except discord.errors.Forbidden:
+                    pass
+                except discord.errors.InvalidArgument:
+                    pass
