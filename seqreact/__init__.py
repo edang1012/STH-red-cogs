@@ -1,4 +1,4 @@
-from .mycog import Mycog
+from .seqreact import seqreact
 
 def setup(bot):
-    bot.add_cog(Mycog())
+    bot.add_cog(seqreact())
