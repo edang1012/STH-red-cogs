@@ -44,8 +44,7 @@ class seqreact(commands.Cog):
             #await message.add_reaction(emoji)
             test = emoji.split()
             for x in test:
-                if ':' in x:
-                    await message.channel.send(x)
+                await message.channel.send(x)
                             
             #emoji = str(emoji)
             reactions = await self.conf.guild(guild).reactions()
