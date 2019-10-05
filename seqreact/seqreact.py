@@ -39,23 +39,9 @@ class seqreact(commands.Cog):
       
         
     async def create_reaction_sequence(self, guild, message, word, emoji):
-        #split emoji list into string array 
-        #emotes = emoji.split(" ")
-
-        #check to see if emotes in list and place into sequence
-        #kinda a crappy workaround to remove the leading/trailing spaces in the list
-        #sequence = []
-        #for x in emotes:
-        #    if ':' in x:
-        #        sequence.append(x)
-                #await message.channel.send(x)
-
-        #for i in sequence:
-        #    await message.channel.send(i)
-            
         try:
             # Use the reaction to see if it's valid
-            #await message.add_reaction(emoji)
+            await message.add_reaction(emoji)
             emoji = str(emoji)
             reactions = await self.conf.guild(guild).reactions()
             
