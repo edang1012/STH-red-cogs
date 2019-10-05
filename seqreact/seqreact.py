@@ -1,7 +1,18 @@
 from redbot.core import commands
 
 class seqreact(commands.Cog):
-    """My custom cog"""
+
+    default_guild_settings = {
+        "reactions": {}
+    }
+
+    def __init__(self, bot):
+        self.bot = bot
+        self.conf = Config.get_conf(self, identifier=964952632)
+        self.conf.register_guild(
+            **self.default_guild_settings
+        )
+
 
     @commands.command()
     async def test(self, ctx, word, emoji):
@@ -21,7 +32,8 @@ class seqreact(commands.Cog):
         #split emoji list into string array 
         emotes = emoji.split(" ")
 
-        #check to see if 
+        #check to see if emotes in list and place into sequence
+        #kinda a crappy workaround to remove the leading/trailing spaces in the list
         sequence = []
         for x in emotes:
             if ':' in x:
