@@ -9,6 +9,7 @@ Working Cogs:
   - todo: 
     - add listseq command
     - add support for phrases
+    - make it react to emotes
 - saido (V2 only): works just like mycog, just made into a standalone cog
 
 Wishlist: 
