@@ -11,26 +11,26 @@ from .utils import checks
 from .utils.dataIO import dataIO
 
 
-class sigh:
+class saido:
 
     """Repeat messages when other users are having trouble hearing"""
 
     def __init__(self, bot):
         self.bot = bot
-        self.settings_path = "data/sigh/settings.json"
+        self.settings_path = "data/saido/settings.json"
         self.settings = dataIO.load_json(self.settings_path)
 
-    @commands.group(name="sighignore", pass_context=True, no_pm=True)
+    @commands.group(name="saidoignore", pass_context=True, no_pm=True)
     @checks.admin_or_permissions(manage_server=True)
-    async def sighignore(self, ctx):
-        """Change sigh cog ignore settings."""
+    async def saidoignore(self, ctx):
+        """Change saido cog ignore settings."""
 
         if ctx.invoked_subcommand is None:
             await send_cmd_help(ctx)
 
-    @sighignore.command(name="server", pass_context=True, no_pm=True)
+    @saidoignore.command(name="server", pass_context=True, no_pm=True)
     @checks.admin_or_permissions(manage_server=True)
-    async def _sighignore_server(self, ctx):
+    async def _saidoignore_server(self, ctx):
         """Ignore/Unignore the current server"""
 
         server = ctx.message.server
@@ -44,9 +44,9 @@ class sigh:
                                "this server.")
         dataIO.save_json(self.settings_path, self.settings)
 
-    @sighignore.command(name="channel", pass_context=True, no_pm=True)
+    @saidoignore.command(name="channel", pass_context=True, no_pm=True)
     @checks.admin_or_permissions(manage_server=True)
-    async def _sighignore_channel(self, ctx):
+    async def _saidoignore_channel(self, ctx):
         """Ignore/Unignore the current channel"""
 
         channel = ctx.message.channel
@@ -93,7 +93,7 @@ class sigh:
 
 
 def check_folders():
-    folder = "data/sigh"
+    folder = "data/saido"
     if not os.path.exists(folder):
         print("Creating {} folder...".format(folder))
         os.makedirs(folder)
@@ -101,12 +101,12 @@ def check_folders():
 
 def check_files():
     default = {'ignore_channels': [], 'ignore_servers': []}
-    if not dataIO.is_valid_json("data/sigh/settings.json"):
-        print("Creating default sigh settings.json...")
-        dataIO.save_json("data/sigh/settings.json", default)
+    if not dataIO.is_valid_json("data/saido/settings.json"):
+        print("Creating default saido settings.json...")
+        dataIO.save_json("data/saido/settings.json", default)
 
 
 def setup(bot):
     check_folders()
     check_files()
-    bot.add_cog(sigh(bot))
+    bot.add_cog(saido(bot))
