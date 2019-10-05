@@ -29,7 +29,7 @@ class seqreact(commands.Cog):
         message = ctx.message
         await self.create_reaction_sequence(guild, message, word, emoji)
         
-    @commands.command(name="delreact")
+    @commands.command()
     async def test1(self, ctx, word, emoji):
         """Delete an auto reaction to a word"""
         guild = ctx.message.guild
