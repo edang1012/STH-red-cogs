@@ -16,6 +16,7 @@ class seqreact(commands.Cog):
             **self.default_guild_settings
         )
 
+        
     @checks.mod_or_permissions(administrator=True)
     @commands.guild_only()
     @commands.command()
@@ -27,6 +28,7 @@ class seqreact(commands.Cog):
         guild = ctx.message.guild
         message = ctx.message
         await self.create_reaction_sequence(guild, message, word, emoji)
+        
         
     @checks.mod_or_permissions(administrator=True)
     @commands.guild_only()
@@ -43,13 +45,6 @@ class seqreact(commands.Cog):
         
     async def create_reaction_sequence(self, guild, message, word, emoji):
         try:
-            # Use the reaction to see if it's valid
-            #await message.add_reaction(emoji)
-            test = emoji.split()
-            for x in test:
-                await message.channel.send(x)
-                            
-            #emoji = str(emoji)
             reactions = await self.conf.guild(guild).reactions()
             
             if emoji in reactions:
@@ -68,7 +63,6 @@ class seqreact(commands.Cog):
             
     async def remove_reaction_sequence(self, guild, word, emoji, message):
         try:
-            #emoji = str(emoji)
             reactions = await self.conf.guild(guild).reactions()
             if emoji in reactions:
                 if word.lower() in reactions[emoji]:
@@ -82,6 +76,7 @@ class seqreact(commands.Cog):
 
         except (discord.errors.HTTPException, discord.errors.InvalidArgument):
             await message.channel.send("Uh oh, something bad happened...")
+            
             
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -97,17 +92,15 @@ class seqreact(commands.Cog):
         for emoji in reacts:
             if set(w.lower() for w in reacts[emoji]).intersection(words):
                 try:
-                    #emoji.replace('_', '>')
+                    #split emoji list into a list
                     emotes = emoji.split()
-                    #check to see if emotes in list and place into sequence
-                    #kinda a crappy workaround to remove the leading/trailing spaces in the list
                     sequence = []
+                    
+                    
                     for x in emotes:
-                        #x.replace('>', '_')
                         sequence.append(x)
-                        await message.channel.send(x)
 
-                    for i in sequence:
+                    for i in emotes:
                         await message.add_reaction(i)
                         
                 except discord.errors.Forbidden:
