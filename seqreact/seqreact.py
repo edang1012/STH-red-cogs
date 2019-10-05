@@ -60,17 +60,16 @@ class seqreact(commands.Cog):
             
             if emoji in reactions:
                 if word.lower() in reactions[emoji]:
-                    await message.channel.send("This smart reaction already exists.")
+                    await message.channel.send("This reaction sequence already exists.")
                     return
                 reactions[emoji].append(word.lower())
             else:
                 reactions[emoji] = [word.lower()]
             await self.conf.guild(guild).reactions.set(reactions)
-            await message.channel.send("Successfully added this reaction.")
+            await message.channel.send("Successfully added this reaction sequence.")
 
         except (discord.errors.HTTPException, discord.errors.InvalidArgument):
-            await message.channel.send("That's not an emoji I recognize. "
-                                       "(might be custom!)")
+            await message.channel.send("Uh oh, something bad happened...")
             
             
     async def remove_reaction_sequence(self, guild, word, emoji, message):
@@ -81,14 +80,11 @@ class seqreact(commands.Cog):
                 if word.lower() in reactions[emoji]:
                     reactions[emoji].remove(word.lower())
                     await self.conf.guild(guild).reactions.set(reactions)
-                    await message.channel.send("Removed this smart reaction.")
+                    await message.channel.send("Removed this reaction sequence.")
                 else:
-                    await message.channel.send("That emoji is not used as a reaction "
-                                               "for that word.")
+                    await message.channel.send("That sequence is not for that word/phrase")
             else:
-                await message.channel.send("There are no smart reactions which use "
-                                           "this emoji.")
+                await message.channel.send("There is no sequence to delete.")
 
         except (discord.errors.HTTPException, discord.errors.InvalidArgument):
-            await message.channel.send("That's not an emoji I recognize. "
-                               "(might be custom!)")
+            await message.channel.send("Uh oh, something bad happened...")
