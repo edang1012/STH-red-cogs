@@ -19,14 +19,14 @@ class seqreact:
 
     #test command to understand dataflow
     @commands.command()
-    async def addseq(ctx, word, num):
+    async def addseq(ctx, arg):
         """1Add an auto sequenced reaction to a word.
         Use the actual emoji and not the emoji name.
         Syntax: [p]addseq word num
         """
         
-        await ctx.send('the trigger is {}'.format(word))
-        await ctx.send('the num is {}'.format(num))
+        await ctx.send(arg)
+
 
     def load_settings(self, server_id):
         self.settings = dataIO.load_json(self.settings_path)
