@@ -19,7 +19,6 @@ class seqreact(commands.Cog):
 
     @commands.command()
     async def test(self, ctx, word, emoji):
-        
         """Create a sequence of reactions to a keyword/phrase'
         Usage:  pass a keyword or keyphrase(in quotations) to <word>
                 pass an emoji or emojis (in quotations) to <emoji>
@@ -29,6 +28,14 @@ class seqreact(commands.Cog):
         guild = ctx.message.guild
         message = ctx.message
         await self.create_reaction_sequence(guild, message, word, emoji)
+        
+    @commands.command(name="delreact")
+    async def delreact(self, ctx, word, emoji):
+        """Delete an auto reaction to a word"""
+        guild = ctx.message.guild
+        message = ctx.message
+        emoji = self.fix_custom_emoji(emoji)
+        await self.remove_reaction_sequence(guild, word, emoji, message)
       
         
     async def create_reaction_sequence(self, guild, message, word, emoji):
@@ -65,3 +72,24 @@ class seqreact(commands.Cog):
         except (discord.errors.HTTPException, discord.errors.InvalidArgument):
             await message.channel.send("That's not an emoji I recognize. "
                                        "(might be custom!)")
+            
+            
+    async def remove_reaction_sequence(self, guild, word, emoji, message):
+        try:
+            emoji = str(emoji)
+            reactions = await self.conf.guild(guild).reactions()
+            if emoji in reactions:
+                if word.lower() in reactions[emoji]:
+                    reactions[emoji].remove(word.lower())
+                    await self.conf.guild(guild).reactions.set(reactions)
+                    await message.channel.send("Removed this smart reaction.")
+                else:
+                    await message.channel.send("That emoji is not used as a reaction "
+                                               "for that word.")
+            else:
+                await message.channel.send("There are no smart reactions which use "
+                                           "this emoji.")
+
+        except (discord.errors.HTTPException, discord.errors.InvalidArgument):
+            await message.channel.send("That's not an emoji I recognize. "
+                               "(might be custom!)")
