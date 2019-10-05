@@ -18,8 +18,8 @@ class seqreact:
         self.NONWORDS = set(" ~!@#$%^?&*()_=+`'\"/.,;:\\|[]\{\}<>")
 
     #test command to understand dataflow
-    @commands.command(name="addseq", no_pm=True, pass_context=True)
-    async def addseq(self, ctx, word, num):
+    @commands.command()
+    async def addseq(ctx, word, num):
         """Add an auto sequenced reaction to a word.
         Use the actual emoji and not the emoji name.
         Syntax: [p]addseq word num
