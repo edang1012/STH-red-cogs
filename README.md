@@ -9,9 +9,9 @@ Working Cogs:
 - saido (V2 only): works just like mycog, just made into a standalone cog
 
 Wishlist: 
-- make saido chesto standalone
-- make oh my 
-- make ayaya react support regex
+- update saido to V3
+- make oh my (V3)
+- make ayaya react support regex (V3)
 
 Current list of (important) cogs used on the STH server: 
 - bigmoji
