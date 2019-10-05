@@ -18,15 +18,14 @@ class seqreact(commands.Cog):
         
         
     async def create_reaction_sequence(self, guild, message, word, emoji):
-        try:
-            #split emoji list into string array 
-            emotes = emoji.split(" ")
-            
-            #check to see if 
-            for x in emotes:
-                if ':' in x:
-                    sequence.append(x)
-                    #await message.channel.send(x)
-                    
-            for i in sequence:
-                await message.channel.send(i)
+        #split emoji list into string array 
+        emotes = emoji.split(" ")
+
+        #check to see if 
+        for x in emotes:
+            if ':' in x:
+                sequence.append(x)
+                #await message.channel.send(x)
+
+        for i in sequence:
+            await message.channel.send(i)
