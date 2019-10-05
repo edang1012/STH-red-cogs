@@ -41,7 +41,11 @@ class seqreact(commands.Cog):
     async def create_reaction_sequence(self, guild, message, word, emoji):
         try:
             # Use the reaction to see if it's valid
-            await message.add_reaction(emoji)
+            #await message.add_reaction(emoji)
+            test = emoji.split(" ")
+            for x in emotes:
+                await message.channel.send(x)
+                            
             emoji = str(emoji)
             reactions = await self.conf.guild(guild).reactions()
             
