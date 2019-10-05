@@ -64,6 +64,7 @@ class seqreact(commands.Cog):
     async def remove_reaction_sequence(self, guild, word, emoji, message):
         try:
             reactions = await self.conf.guild(guild).reactions()
+            
             if emoji in reactions:
                 if word.lower() in reactions[emoji]:
                     reactions[emoji].remove(word.lower())
