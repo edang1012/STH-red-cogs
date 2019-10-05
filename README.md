@@ -1,12 +1,12 @@
 # STH-cogs
 Contains the Red Discord Bot cogs made/used by STH. 
-Currently only supports V2 of the bot, V3 branch for working on new code. 
+Has a mix of V2/V3 cogs as we work towards a full transistion to V3 
 
-When adding this repository to bot's repo list, make the master branch 'STH', make the V2_testing branch 'test', make the V3_in_progress branch 'v3'. Could change if we have better names for these. 
-
+Beta-chan is the bot used to test V3 cogs. This repository is set to 'test' in Beta-chan
 
 Working Cogs:
 - seqreact (V3 only): based on smartreact, but allows you to send a sequence of reactions
+- saido (V2 only): works just like mycog, just made into a standalone cog
 
 Wishlist: 
 - make saido chesto standalone
