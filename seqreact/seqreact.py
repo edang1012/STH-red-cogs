@@ -42,7 +42,7 @@ class seqreact(commands.Cog):
         try:
             # Use the reaction to see if it's valid
             #await message.add_reaction(emoji)
-            test = emoji.split(" ")
+            test = emoji.split()
             for x in test:
                 if ':' in x:
                     await message.channel.send(x)
@@ -96,7 +96,7 @@ class seqreact(commands.Cog):
             if set(w.lower() for w in reacts[emoji]).intersection(words):
                 try:
                     #emoji.replace('_', '>')
-                    emotes = emoji.split(" ")
+                    emotes = emoji.split()
                     #check to see if emotes in list and place into sequence
                     #kinda a crappy workaround to remove the leading/trailing spaces in the list
                     sequence = []
