@@ -105,7 +105,8 @@ class seqreact(commands.Cog):
             return
         words = message.content.lower().split()
         for emoji in reacts:
-            if set(w.lower() for w in reacts[emoji]).intersection(words):
+            #if set(w.lower() for w in reacts[emoji]).intersection(words):
+            if reacts[emoji] in words:
                 try:
                     #split emoji list into a list
                     emotes = emoji.split()
