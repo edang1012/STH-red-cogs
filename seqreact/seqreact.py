@@ -100,10 +100,9 @@ class seqreact(commands.Cog):
                     #kinda a crappy workaround to remove the leading/trailing spaces in the list
                     sequence = []
                     for x in emotes:
-                        if ':' in x:
-                            #x.replace('>', '_')
-                            sequence.append(x)
-                            await message.channel.send(x)
+                        #x.replace('>', '_')
+                        sequence.append(x)
+                        await message.channel.send(x)
 
                     for i in sequence:
                         await message.add_reaction(i)
