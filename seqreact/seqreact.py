@@ -94,11 +94,6 @@ class seqreact(commands.Cog):
                 try:
                     #split emoji list into a list
                     emotes = emoji.split()
-                    sequence = []
-                    
-                    
-                    for x in emotes:
-                        sequence.append(x)
 
                     for i in emotes:
                         await message.add_reaction(i)
