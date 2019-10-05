@@ -95,14 +95,14 @@ class seqreact(commands.Cog):
         for emoji in reacts:
             if set(w.lower() for w in reacts[emoji]).intersection(words):
                 try:
-                    emoji.replace('_', '-')
+                    emoji.replace('_', '>')
                     emotes = emoji.split(" ")
                     #check to see if emotes in list and place into sequence
                     #kinda a crappy workaround to remove the leading/trailing spaces in the list
                     sequence = []
                     for x in emotes:
                         if ':' in x:
-                            x.replace('-', '_')
+                            x.replace('>', '_')
                             sequence.append(x)
                             await message.channel.send(x)
 
