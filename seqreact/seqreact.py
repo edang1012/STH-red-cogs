@@ -1,4 +1,7 @@
-from redbot.core import commands
+import copy
+import discord
+from redbot.core import Config, commands, checks
+from redbot.core.utils.chat_formatting import pagify
 
 class seqreact(commands.Cog):
 
