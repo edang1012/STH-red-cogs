@@ -29,7 +29,7 @@ class seqreact(commands.Cog):
         guild = ctx.message.guild
         message = ctx.message
         await self.create_reaction_sequence(guild, message, word, emoji)
-        
+      
         
     async def create_reaction_sequence(self, guild, message, word, emoji):
         #split emoji list into string array 
@@ -45,3 +45,23 @@ class seqreact(commands.Cog):
 
         for i in sequence:
             await message.channel.send(i)
+            
+        try:
+            # Use the reaction to see if it's valid
+            #await message.add_reaction(emoji)
+            #emoji = str(emoji)
+            reactions = await self.conf.guild(guild).reactions()
+            
+            if sequence in reactions:
+                if word.lower() in reactions[sequence]:
+                    await message.channel.send("This smart reaction already exists.")
+                    return
+                reactions[sequence].append(word.lower())
+            else:
+                reactions[sequence] = [word.lower()]
+            await self.conf.guild(guild).reactions.set(reactions)
+            await message.channel.send("Successfully added this reaction.")
+
+        except (discord.errors.HTTPException, discord.errors.InvalidArgument):
+            await message.channel.send("That's not an emoji I recognize. "
+                                       "(might be custom!)")
