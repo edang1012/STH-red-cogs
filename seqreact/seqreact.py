@@ -19,7 +19,7 @@ class seqreact:
 
     #test command to understand dataflow
     @commands.command(name="addseq", no_pm=True, pass_context=True)
-    async def addseq(self, ctx, *command):
+    async def addseq(self, ctx, word, num):
         """Add an auto sequenced reaction to a word.
         Use the actual emoji and not the emoji name.
         Syntax: [p]addseq word num
@@ -29,43 +29,9 @@ class seqreact:
         server = ctx.message.server
         message = ctx.message
         self.load_settings(server.id)
-
-        trigger, num = parse_command(command)
-        await ctx.send('the trigger is {}'.format(trigger))
-        await ctx.send('the num is {}'.format(num))
-
         
-    @commands.command(name="addreact", no_pm=True, pass_context=True)
-    async def addreact(self, ctx, *command):
-        """Add an auto reaction to a word.
-        Use the actual emoji and not the emoji name.
-        Syntax: [p]addreact word emoji
-        """
-        if not command:
-            return await send_cmd_help(ctx)
-        server = ctx.message.server
-        message = ctx.message
-        self.load_settings(server.id)
-
-        trigger, emoji = parse_command(command)
-        emoji = self.fix_custom_emoji(emoji)
-        await self.create_smart_reaction(server, trigger, emoji, message)
-
-    @commands.command(name="delreact", no_pm=True, pass_context=True)
-    async def delreact(self, ctx, *command):
-        """Delete an auto reaction to a word.
-        Use the actual emoji and not the emoji name.
-        Syntax: [p]delreact word emoji
-        """
-        if not command:
-            return await send_cmd_help(ctx)
-        server = ctx.message.server
-        message = ctx.message
-        self.load_settings(server.id)
-
-        trigger, emoji = parse_command(command)
-        emoji = self.fix_custom_emoji(emoji)
-        await self.remove_smart_reaction(server, trigger, emoji, message)
+        await ctx.send('the trigger is {}'.format(word))
+        await ctx.send('the num is {}'.format(num))
 
     def load_settings(self, server_id):
         self.settings = dataIO.load_json(self.settings_path)
