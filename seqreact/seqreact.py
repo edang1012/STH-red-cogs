@@ -14,9 +14,9 @@ class seqreact(commands.Cog):
         await self.create_reaction_sequence(guild, message, word, num)
         
     async def create_reaction_sequence(self, guild, message, word, num):
-    try:
-        await message.channel.send('Word is {}, num is {}'.format(word, num))
+        try:
+            await message.channel.send('Word is {}, num is {}'.format(word, num))
 
-    except (discord.errors.HTTPException, discord.errors.InvalidArgument):
-        await message.channel.send("That's not an emoji I recognize. "
-                                   "(might be custom!)")
+        except (discord.errors.HTTPException, discord.errors.InvalidArgument):
+            await message.channel.send("That's not an emoji I recognize. "
+                                       "(might be custom!)")
