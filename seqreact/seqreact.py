@@ -19,8 +19,8 @@ class seqreact(commands.Cog):
     @checks.mod_or_permissions(administrator=True)
     @commands.guild_only()
     @commands.command()
-    async def test(self, ctx, word, emoji):
-        """Create a sequence of reactions to a keyword/phrase'
+    async def addseq(self, ctx, word, emoji):
+        """Add a sequence of reactions to a keyword/phrase
         Usage:  pass a keyword or keyphrase(in quotations) to <word>
                 pass an emoji or emojis (in quotations) to <emoji>"""
         
@@ -31,8 +31,11 @@ class seqreact(commands.Cog):
     @checks.mod_or_permissions(administrator=True)
     @commands.guild_only()
     @commands.command()
-    async def test1(self, ctx, word, emoji):
-        """Delete an auto reaction to a word"""
+    async def remseq(self, ctx, word, emoji):
+        """Remove a sequence of reactions to a keyword/phrase
+        Usage:  pass a keyword or keyphrase(in quotations) to <word>
+                pass an emoji or emojis (in quotations) to <emoji>"""
+        
         guild = ctx.message.guild
         message = ctx.message
         await self.remove_reaction_sequence(guild, word, emoji, message)
