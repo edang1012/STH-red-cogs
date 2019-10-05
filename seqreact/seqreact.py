@@ -22,7 +22,7 @@ class seqreact(commands.Cog):
             emotes = emoji.split(" ")
             
             for x in emotes:
-                if ':xenpog:' in x:
+                if ':' in x:
                     await message.channel.send(x)
 
             #await message.channel.send('Word is {}, num is {}'.format(word, emoji))
