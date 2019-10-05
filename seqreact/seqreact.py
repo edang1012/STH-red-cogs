@@ -42,12 +42,12 @@ class seqreact(commands.Cog):
         try:
             # Use the reaction to see if it's valid
             #await message.add_reaction(emoji)
-            test = emoji.split(" ")
-            for x in test:
-                if ':' in x:
-                    await message.channel.send(x)
+            #test = emoji.split(" ")
+            #for x in test:
+            #    if ':' in x:
+            #        await message.channel.send(x)
                             
-            emoji = str(emoji)
+            #emoji = str(emoji)
             reactions = await self.conf.guild(guild).reactions()
             
             if emoji in reactions:
