@@ -27,5 +27,6 @@ class seqreact(commands.Cog):
                 sequence.append(x)
                 #await message.channel.send(x)
 
+        sequence = []
         for i in sequence:
             await message.channel.send(i)
