@@ -42,6 +42,20 @@ class seqreact(commands.Cog):
         message = ctx.message
         await self.remove_reaction_sequence(guild, word, emoji, message)
       
+    
+    @checks.mod_or_permissions(administrator=True)
+    @commands.guild_only()
+    @commands.command()
+    async def listseq(self, ctx):
+        """List reactions for this server"""
+        emojis = await self.conf.guild(ctx.guild).reactions()
+        msg = f"Smart Reactions for {ctx.guild.name}:\n"
+        for emoji in emojis:
+            for command in emojis[emoji]:
+                msg += f"{emoji}: {command}\n"
+        for page in pagify(msg, delims=["\n"]):
+            await ctx.send(msg)
+        
         
     async def create_reaction_sequence(self, guild, message, word, emoji):
         try:
