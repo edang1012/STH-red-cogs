@@ -24,11 +24,6 @@ class seqreact:
         Use the actual emoji and not the emoji name.
         Syntax: [p]addseq word num
         """
-        if not command:
-            return await send_cmd_help(ctx)
-        server = ctx.message.server
-        message = ctx.message
-        self.load_settings(server.id)
         
         await ctx.send('the trigger is {}'.format(word))
         await ctx.send('the num is {}'.format(num))
