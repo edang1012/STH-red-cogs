@@ -6,13 +6,13 @@ from .utils.dataIO import dataIO
 from __main__ import send_cmd_help
 
 
-class SmartReact:
+class seqreact:
 
     """Create automatic reactions when trigger words are typed in chat"""
 
     def __init__(self, bot):
         self.bot = bot
-        self.settings_path = "data/smartreact/settings.json"
+        self.settings_path = "data/seqreact/settings.json"
         self.settings = dataIO.load_json(self.settings_path)
         self.NONWORDS = set(" ~!@#$%^?&*()_=+`'\"/.,;:\\|[]\{\}<>")
 
@@ -161,7 +161,7 @@ def parse_command(command):
     return trigger, emoji
 
 def check_folders():
-    folder = "data/smartreact"
+    folder = "data/seqreact"
     if not os.path.exists(folder):
         print("Creating {} folder...".format(folder))
         os.makedirs(folder)
@@ -169,14 +169,14 @@ def check_folders():
 
 def check_files():
     default = {}
-    if not dataIO.is_valid_json("data/smartreact/settings.json"):
-        print("Creating default smartreact settings.json...")
-        dataIO.save_json("data/smartreact/settings.json", default)
+    if not dataIO.is_valid_json("data/seqreact/settings.json"):
+        print("Creating default seqreact settings.json...")
+        dataIO.save_json("data/seqreact/settings.json", default)
 
 
 def setup(bot):
     check_folders()
     check_files()
-    n = SmartReact(bot)
+    n = seqreact(bot)
     bot.add_cog(n)
     bot.add_listener(n.msg_listener, "on_message")
