@@ -66,7 +66,7 @@ class seqreact(commands.Cog):
             
     async def remove_reaction_sequence(self, guild, word, emoji, message):
         try:
-            emoji = str(emoji)
+            #emoji = str(emoji)
             reactions = await self.conf.guild(guild).reactions()
             if emoji in reactions:
                 if word.lower() in reactions[emoji]:
@@ -95,12 +95,14 @@ class seqreact(commands.Cog):
         for emoji in reacts:
             if set(w.lower() for w in reacts[emoji]).intersection(words):
                 try:
+                    emoji.replace('_', '-')
                     emotes = emoji.split(" ")
                     #check to see if emotes in list and place into sequence
                     #kinda a crappy workaround to remove the leading/trailing spaces in the list
                     sequence = []
                     for x in emotes:
                         if ':' in x:
+                            x.replace('-', '_')
                             sequence.append(x)
                             await message.channel.send(x)
 
