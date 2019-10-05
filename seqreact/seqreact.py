@@ -42,10 +42,10 @@ class seqreact(commands.Cog):
         try:
             # Use the reaction to see if it's valid
             #await message.add_reaction(emoji)
-            #test = emoji.split(" ")
-            #for x in test:
-            #    if ':' in x:
-            #        await message.channel.send(x)
+            test = emoji.split(" ")
+            for x in test:
+                if ':' in x:
+                    await message.channel.send(x)
                             
             #emoji = str(emoji)
             reactions = await self.conf.guild(guild).reactions()
@@ -95,16 +95,16 @@ class seqreact(commands.Cog):
         for emoji in reacts:
             if set(w.lower() for w in reacts[emoji]).intersection(words):
                 try:
-                    emoji.replace('_', '>')
+                    #emoji.replace('_', '>')
                     emotes = emoji.split(" ")
                     #check to see if emotes in list and place into sequence
                     #kinda a crappy workaround to remove the leading/trailing spaces in the list
                     sequence = []
                     for x in emotes:
                         if ':' in x:
-                            x.replace('>', '_')
+                            #x.replace('>', '_')
                             sequence.append(x)
-                            #await message.channel.send(x)
+                            await message.channel.send(x)
 
                     for i in sequence:
                         await message.add_reaction(i)
