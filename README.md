@@ -14,19 +14,19 @@ Wishlist:
 - make ayaya react support regex (V3)
 
 Current list of (important) cogs used on the STH server: 
-- bigmoji
-- downloader
-- insult
-- mycog: for 'sigh'
-- mod
-- owner
-- pressf
-- remindme
-- scheduler
-- smartreact
-- translated
-- trivia
-- wat
+- bigmoji (V2)
+- downloader (V2)
+- insult (V2)
+- mycog: for 'sigh' (V2)
+- mod (V2)
+- owner (V2)
+- pressf (V2)
+- remindme (V2)
+- scheduler (V2)
+- smartreact (V2)
+- translated (V2)
+- trivia (V2)
+- wat (V2)
 
 Useful links:
 - V3 cogs documentation: https://red-discordbot.readthedocs.io/en/latest/guide_cog_creation.html
