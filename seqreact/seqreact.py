@@ -9,13 +9,32 @@ from __main__ import send_cmd_help
 class seqreact:
 
     """Create automatic reactions when trigger words are typed in chat"""
-
+    
+    #initialize the bot and necessary files
     def __init__(self, bot):
         self.bot = bot
         self.settings_path = "data/seqreact/settings.json"
         self.settings = dataIO.load_json(self.settings_path)
         self.NONWORDS = set(" ~!@#$%^?&*()_=+`'\"/.,;:\\|[]\{\}<>")
 
+    #test command to understand dataflow
+    @commands.command(name="addseq", no_pm=True, pass_context=True)
+    async def addseq(self, ctx, *command):
+        """Add an auto sequenced reaction to a word.
+        Use the actual emoji and not the emoji name.
+        Syntax: [p]addseq word num
+        """
+        if not command:
+            return await send_cmd_help(ctx)
+        server = ctx.message.server
+        message = ctx.message
+        self.load_settings(server.id)
+
+        trigger, num = parse_command(command)
+        await ctx.send('the trigger is {}'.format(trigger))
+        await ctx.send('the num is {}'.format(num))
+
+        
     @commands.command(name="addreact", no_pm=True, pass_context=True)
     async def addreact(self, ctx, *command):
         """Add an auto reaction to a word.
