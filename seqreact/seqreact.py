@@ -16,7 +16,8 @@ class seqreact(commands.Cog):
             **self.default_guild_settings
         )
 
-
+    @checks.mod_or_permissions(administrator=True)
+    @commands.guild_only()
     @commands.command()
     async def test(self, ctx, word, emoji):
         """Create a sequence of reactions to a keyword/phrase'
@@ -29,6 +30,8 @@ class seqreact(commands.Cog):
         message = ctx.message
         await self.create_reaction_sequence(guild, message, word, emoji)
         
+    @checks.mod_or_permissions(administrator=True)
+    @commands.guild_only()
     @commands.command()
     async def test1(self, ctx, word, emoji):
         """Delete an auto reaction to a word"""
