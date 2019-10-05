@@ -20,7 +20,7 @@ class seqreact:
     #test command to understand dataflow
     @commands.command()
     async def addseq(ctx, word, num):
-        """Add an auto sequenced reaction to a word.
+        """1Add an auto sequenced reaction to a word.
         Use the actual emoji and not the emoji name.
         Syntax: [p]addseq word num
         """
