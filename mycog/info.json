@@ -1,1 +1,15 @@
-
+{
+  "author": [
+    "Xenosen"
+  ],
+  "bot_version": [
+    0,
+    1,
+    0
+  ],
+  "description": "Add sequential reactions to messages!",
+  "hidden": true,
+  "tags": [
+    "Xenosen"
+  ]
+}
