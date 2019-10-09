@@ -37,3 +37,4 @@ Current list of (important) cogs used on the STH server:
 
 Useful links:
 - V3 cogs documentation: https://red-discordbot.readthedocs.io/en/latest/guide_cog_creation.html
+- Repos to get cogs: https://cogboard.red/t/approved-repositories/210
