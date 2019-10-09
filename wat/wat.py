@@ -85,7 +85,7 @@ class Wat(BaseCog):
                 name = author.display_name
                 content = before.clean_content
                 if not author.bot\
-                        and not author == message.author\
+                        and not author == message.author:
                         #and not pattern.fullmatch(content):
                         #and not self.is_command(before)\
                     emoji = "\N{CHEERING MEGAPHONE}"
