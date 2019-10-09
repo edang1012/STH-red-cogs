@@ -77,19 +77,19 @@ class Wat(BaseCog):
         if message.channel.id in await self.conf.channels_ignored():
             return
         
-        pattern = 'sigh'
+        pattern = 'test'
         if content[0] == pattern:
             #await message.channel.send("test")
-            async for before in message.channel.history(limit=5, before=message):
-                author = before.author
+            async for check in message.channel.history(limit=5, before=message):
+                author = message.author
                 name = author.display_name
                 content = before.clean_content
-                if not author.bot\
-                        and not author == message.author:
+                #if not author.bot\
+                        #and not author == message.author:
                         #and not pattern.fullmatch(content):
                         #and not self.is_command(before)\
-                    emoji = "\N{CHEERING MEGAPHONE}"
-                    msg = "{0} said, **{1}   {2}**".format(name, emoji,
+                emoji = "\N{CHEERING MEGAPHONE}"
+                msg = "{0} said, **{1}   {2}**".format(name, emoji,
                                                            content)
-                    await message.channel.send(msg)
-                    break
+                await message.channel.send(msg)
+                    #break
