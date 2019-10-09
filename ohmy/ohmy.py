@@ -6,9 +6,9 @@ from redbot.core import checks, Config, commands
 BaseCog = getattr(commands, "Cog", object)
 
 
-class Wat(BaseCog):
+class Ohmy(BaseCog):
 
-    """Repeat messages when other users are having trouble hearing"""
+    """Tu ya estas muertos!!!"""
 
     default_global_settings = {
         "channels_ignored": [],
@@ -22,15 +22,15 @@ class Wat(BaseCog):
             **self.default_global_settings
         )
 
-    @commands.group(name="watignore", pass_context=True, no_pm=True)
+    @commands.group(name="ohmyignore", pass_context=True, no_pm=True)
     @checks.admin_or_permissions(manage_guild=True)
-    async def watignore(self, ctx):
-        """Change Wat cog ignore settings."""
+    async def ohmyignore(self, ctx):
+        """Change Oh my cog ignore settings."""
         pass
 
-    @watignore.command(name="server", pass_context=True, no_pm=True)
+    @ohmyignore.command(name="server", pass_context=True, no_pm=True)
     @checks.admin_or_permissions(manage_guild=True)
-    async def _watignore_server(self, ctx):
+    async def _ohmyignore_server(self, ctx):
         """Ignore/Unignore the current server"""
 
         guild = ctx.message.guild
@@ -45,20 +45,20 @@ class Wat(BaseCog):
                            "this server.")
         await self.conf.guilds_ignored.set(guilds)
 
-    @watignore.command(name="channel", pass_context=True, no_pm=True)
+    @ohmyignore.command(name="channel", pass_context=True, no_pm=True)
     @checks.admin_or_permissions(manage_guild=True)
-    async def _watignore_channel(self, ctx):
+    async def _ohmyignore_channel(self, ctx):
         """Ignore/Unignore the current channel"""
 
         chan = ctx.message.channel
         chans = await self.conf.channels_ignored()
         if chan.id in chans:
             chans.remove(chan.id)
-            await ctx.send("wut? Ok, I will no longer "
+            await ctx.send("nani? Ok, I will no longer "
                            "ignore this channel.")
         else:
             chans.append(chan.id)
-            await ctx.send("wat? Alright, I will ignore "
+            await ctx.send("nani? Alright, I will ignore "
                            "this channel.")
         await self.conf.channels_ignored.set(chans)
 
