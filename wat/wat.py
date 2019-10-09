@@ -76,7 +76,10 @@ class Wat(BaseCog):
             return
         if message.channel.id in await self.conf.channels_ignored():
             return
-        await message.channel.send("test")
+        
+        pattern = 'test'
+        if content[0] == pattern
+            await message.channel.send("test")
         #pattern = re.compile(r'wh*a*o*u*t?*!*', re.IGNORECASE)
         #if pattern.fullmatch(content[0]):
         #    async for before in message.channel.history(limit=5, before=message):
