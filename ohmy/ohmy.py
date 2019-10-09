@@ -68,7 +68,7 @@ class Ohmy(BaseCog):
             return
         if message.author == self.bot.user:
             return
-        content = message.content.lower()
+        content = message.content.lower().split()
         if len(content) != 1:
             return
         if message.guild.id in await self.conf.guilds_ignored():
@@ -77,7 +77,8 @@ class Ohmy(BaseCog):
             return
 
         
-        pattern = re.match(r"oh\smy", content)
-        if pattern:
+        pattern1 = re.match(r"oh", content[0])
+        pattern2 = re.match(r"my", content[1])
+        if pattern1 and pattern2:
             msg = "https://i.makeagif.com/media/2-21-2015/RDVwim.gif \n oh my...\nomae...\nOMAE WA MOU SHINDEIRU!!!"
             await message.channel.send(msg)
