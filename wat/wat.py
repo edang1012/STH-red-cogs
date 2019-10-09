@@ -78,7 +78,7 @@ class Wat(BaseCog):
             return
         
         #pattern = 'test'
-        pattern = re.match(r"wh?{aou}t", content[0])
+        pattern = re.match(r"wh?[aou]t", content[0])
         #if content[0] == pattern:
         if pattern:
             #await message.channel.send("test")
