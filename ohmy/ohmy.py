@@ -78,7 +78,7 @@ class Ohmy(BaseCog):
         if message.channel.id in await self.conf.channels_ignored():
             return
 
-        pattern = re.compile(r'o+h+m+y[.?!]*', re.IGNORECASE)
+        pattern = re.compile(r'o+h+m+y+[.?!]*', re.IGNORECASE)
         if pattern.fullmatch(content[0]):
             async for before in message.channel.history(limit=5, before=message):
                 msg = "https://i.makeagif.com/media/2-21-2015/RDVwim.gif \n oh my...\nomae...\nOMAE WA MOU SHINDEIRU!!!"
