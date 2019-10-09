@@ -77,7 +77,7 @@ class Wat(BaseCog):
         if message.channel.id in await self.conf.channels_ignored():
             return
 
-        pattern = re.compile(r'w+h*[aou]+t+[?!]*', re.IGNORECASE)
+        pattern = re.compile(r'wh*a*o*u*t?*!*', re.IGNORECASE)
         if pattern.fullmatch(content[0]):
             async for before in message.channel.history(limit=5, before=message):
                 author = before.author
