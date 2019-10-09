@@ -77,8 +77,10 @@ class Wat(BaseCog):
         if message.channel.id in await self.conf.channels_ignored():
             return
         
-        pattern = 'test'
-        if content[0] == pattern:
+        #pattern = 'test'
+        pattern = re.match(r"wh*a*o*u*t", content[0]
+        #if content[0] == pattern:
+        if pattern:
             #await message.channel.send("test")
             async for check in message.channel.history(limit=5, before=message):
                 author = check.author
