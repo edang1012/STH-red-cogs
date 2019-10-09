@@ -80,5 +80,5 @@ class Ohmy(BaseCog):
         pattern1 = re.match(r"oh", content[0])
         pattern2 = re.match(r"my", content[1])
         if pattern1 and pattern2:
-            msg = "https://i.makeagif.com/media/2-21-2015/RDVwim.gif \n oh my...\nomae...\nOMAE WA MOU SHINDEIRU!!!"
+            msg = "https://i.makeagif.com/media/2-21-2015/RDVwim.gif \noh my...\nomae...\nOMAE WA MOU SHINDEIRU!!!"
             await message.channel.send(msg)
