@@ -81,7 +81,7 @@ class Wat(BaseCog):
         if content[0] == pattern:
             #await message.channel.send("test")
             async for check in message.channel.history(limit=5, before=message):
-                author = message.author
+                author = check.author
                 name = author.display_name
                 content = check.clean_content
                 #if not author.bot\
