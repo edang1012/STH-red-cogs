@@ -75,7 +75,7 @@ class saido:
         if message.channel.id in self.settings['ignore_channels']:
             return
 
-        pattern = re.compile(r's+i+g+h', re.IGNORECASE)
+        pattern = re.compile(r's+i+g+h+[.]*', re.IGNORECASE)
         if pattern.fullmatch(content[0]):
             msg = "https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif \n\nsigh...\nsai...\nSAIDO CHESTO!!"
             await self.bot.send_message(message.channel, msg)
