@@ -17,7 +17,7 @@ Working Cogs:
 
 Wishlist: 
 - update saido to V3
-- make oh my (V3)
+- ~~make oh my (V3)~~
 - make ayaya react support regex (V3)
 
 Current list of (important) cogs used on the STH server: 
