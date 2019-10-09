@@ -62,15 +62,13 @@ class Ohmy(BaseCog):
                            "this channel.")
         await self.conf.channels_ignored.set(chans)
 
-    # Come up with a new method to ignore bot commands
+    @commands.Cog.listener()
     async def on_message(self, message):
         if message.guild is None:
             return
-        if message.author.bot:
+        if message.author == self.bot.user:
             return
-        #if self.is_command(message):
-        #    return
-        content = message.content.lower().split()
+        content = message.content.lower()
         if len(content) != 1:
             return
         if message.guild.id in await self.conf.guilds_ignored():
@@ -78,8 +76,8 @@ class Ohmy(BaseCog):
         if message.channel.id in await self.conf.channels_ignored():
             return
 
-        pattern = re.compile(r'o+h+m+y+[.?!]*', re.IGNORECASE)
-        if pattern.fullmatch(content[0]):
-            async for before in message.channel.history(limit=5, before=message):
-                msg = "https://i.makeagif.com/media/2-21-2015/RDVwim.gif \n oh my...\nomae...\nOMAE WA MOU SHINDEIRU!!!"
+        
+        pattern = re.match(r"oh\smy", content)
+        if pattern:
+            msg = "https://i.makeagif.com/media/2-21-2015/RDVwim.gif \n oh my...\nomae...\nOMAE WA MOU SHINDEIRU!!!"
                 await message.channel.send(msg)
