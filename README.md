@@ -12,6 +12,7 @@ Working Cogs:
     - make it react to emotes
 - saido (~~V2~~ V3 only): works just like mycog, just made into a standalone cog
 - ohmy (V3 only): same as said, but you are already dead
+- wat (V3 only): fixed to work in V3
 
 Wishlist: 
 - update saido to V3
