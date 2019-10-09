@@ -63,13 +63,12 @@ class Wat(BaseCog):
         await self.conf.channels_ignored.set(chans)
 
     # Come up with a new method to ignore bot commands
+    @commands.Cog.listener()
     async def on_message(self, message):
         if message.guild is None:
             return
-        if message.author.bot:
+        if message.author == self.bot.user:
             return
-        #if self.is_command(message):
-        #    return
         content = message.content.lower().split()
         if len(content) != 1:
             return
