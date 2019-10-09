@@ -83,7 +83,7 @@ class Wat(BaseCog):
             async for check in message.channel.history(limit=5, before=message):
                 author = message.author
                 name = author.display_name
-                content = before.clean_content
+                content = check.clean_content
                 #if not author.bot\
                         #and not author == message.author:
                         #and not pattern.fullmatch(content):
