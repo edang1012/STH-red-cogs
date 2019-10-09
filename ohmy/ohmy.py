@@ -80,4 +80,4 @@ class Ohmy(BaseCog):
         pattern = re.match(r"oh\smy", content)
         if pattern:
             msg = "https://i.makeagif.com/media/2-21-2015/RDVwim.gif \n oh my...\nomae...\nOMAE WA MOU SHINDEIRU!!!"
-                await message.channel.send(msg)
+            await message.channel.send(msg)
