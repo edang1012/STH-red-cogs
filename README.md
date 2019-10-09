@@ -7,10 +7,11 @@ Beta-chan is the bot used to test V3 cogs. This repository is set to 'test' in B
 Working Cogs:
 - seqreact (V3 only): based on smartreact, but allows you to send a sequence of reactions
   - todo: 
-    - add listseq command
+    - ~~add listseq command~~
     - add support for phrases
     - make it react to emotes
-- saido (V2 only): works just like mycog, just made into a standalone cog
+- saido (~~V2~~ V3 only): works just like mycog, just made into a standalone cog
+- ohmy (V3 only): same as said, but you are already dead
 
 Wishlist: 
 - update saido to V3
