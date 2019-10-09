@@ -84,12 +84,9 @@ class Wat(BaseCog):
                 author = check.author
                 name = author.display_name
                 content = check.clean_content
-                #if not author.bot\
-                        #and not author == message.author:
-                        #and not pattern.fullmatch(content):
-                        #and not self.is_command(before)\
-                emoji = "\N{CHEERING MEGAPHONE}"
-                msg = "{0} said, **{1}   {2}**".format(name, emoji,
+                if author != message.author and author != self.bot.user:
+                    emoji = "\N{CHEERING MEGAPHONE}"
+                    msg = "{0} said, **{1}   {2}**".format(name, emoji,
                                                            content)
-                await message.channel.send(msg)
-                    #break
+                    await message.channel.send(msg)
+                    break
