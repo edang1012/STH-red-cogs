@@ -94,7 +94,7 @@ class sthreact(BaseCog):
             embed.set_image(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
             embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
             embed.add_field(name='Field Name', value='Field Value', inline=False)
-            await message.channel.send(embed=embed)
+            await message.channel.send(msg)
 
         if re.search(pattern1, content):
             msg = "https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif \n\nsigh...\nsai...\nSAIDO CHESTO!!"
