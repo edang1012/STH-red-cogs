@@ -84,6 +84,7 @@ class sthreact(BaseCog):
         pattern2 = re.compile(r'(oh my)', re.IGNORECASE)
         pattern3 = re.compile(r'(keikaku)', re.IGNORECASE)
         pattern4 = re.compile(r'\A(\.\.\.)+[.]*', re.IGNORECASE)
+        pattern5 = re.compile(r'(sorry)+( )*+(not)+( )*+(sorry)', re.IGNORECASE)
         
         if re.search(pattern0, content):
             msg = "it works!!! shishou"
@@ -127,4 +128,11 @@ class sthreact(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://cdn.discordapp.com/attachments/464597387504123905/631584595627868180/bakuman-ep-14-5.png')
+            await message.channel.send(embed=embed)
+            
+        if re.search(pattern5, content):
+            embed = discord.Embed(
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://i.pinimg.com/236x/81/95/4c/81954cf575ffa7bd8b573efc848c92c0.jpg')
             await message.channel.send(embed=embed)
