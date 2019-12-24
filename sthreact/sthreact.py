@@ -83,8 +83,8 @@ class sthreact(BaseCog):
         pattern2 = re.compile(r'(oh my)', re.IGNORECASE)
         
         if re.search(pattern0, content):
-        #    msg = "it works!!! shishou"
-        #    await message.channel.send(msg)
+            msg = "it works!!! shishou"
+            await message.channel.send(msg)
             embed = discord.Embed(
                 title = 'Title',
                 description = 'This is a description',
