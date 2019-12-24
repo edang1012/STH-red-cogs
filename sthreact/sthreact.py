@@ -79,17 +79,18 @@ class sthreact(BaseCog):
 
         
         pattern0 = re.compile(r'(test)+( phrase)?', re.IGNORECASE)
-        pattern1 = re.compile(r'(oh my)', re.IGNORECASE)
-        pattern2 = re.compile(r'(sigh)+[.]*', re.IGNORECASE)
+        pattern1 = re.compile(r'(sigh)+[.]*', re.IGNORECASE)
+        pattern2 = re.compile(r'(oh my)', re.IGNORECASE)
         
-        if re.search(pattern0, content):
-            msg = "it works!!! shishou"
-            await message.channel.send(msg)
+        #if re.search(pattern0, content):
+        #    msg = "it works!!! shishou"
+        #    await message.channel.send(msg)
             
-        elif re.search(pattern1, content):
-            msg = "https://i.makeagif.com/media/2-21-2015/RDVwim.gif \noh my...\nomae...\nOMAE WA MOU SHINDEIRU!!!"
-            await message.channel.send(msg)
-            
-        elif re.search(pattern2, content):
+        #elif re.search(pattern1, content):
+        if re.search(pattern1, content):
             msg = "https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif \n\nsigh...\nsai...\nSAIDO CHESTO!!"
+            await message.channel.send(msg)
+            
+        if re.search(pattern2, content):
+            msg = "https://i.makeagif.com/media/2-21-2015/RDVwim.gif \noh my...\nomae...\nOMAE WA MOU SHINDEIRU!!!"
             await message.channel.send(msg)
