@@ -84,18 +84,20 @@ class sthreact(BaseCog):
         pattern2 = re.compile(r'(oh my)', re.IGNORECASE)
         
         if re.search(pattern0, content):
-            msg0 = "it works!!! shishou"
-            await message.channel.send(msg0)
-            msg = discord.Embed(
-                title = 'Title',
-                description = 'This is a description',
-                colour = discord.Colour.blue()
-            )
-            msg.set_footer(text='This is a footer')
-            msg.set_image(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
-            msg.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
-            msg.add_field(name='Field Name', value='Field Value', inline=False)
-            await message.channel.send(embed=msg)
+            content_split = content.split()
+            if pattern0 in content_split[0]:
+                msg = "it works!!! shishou"
+                await message.channel.send(msg)
+                embed = discord.Embed(
+                    title = 'Title',
+                    description = 'This is a description',
+                    colour = discord.Colour.blue()
+                )
+                embed.set_footer(text='This is a footer')
+                embed.set_image(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
+                embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
+                embed.add_field(name='Field Name', value='Field Value', inline=False)
+                await message.channel.send(embed=embed)
 
         if re.search(pattern1, content):
             msg = "https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif \n\nsigh...\nsai...\nSAIDO CHESTO!!"
