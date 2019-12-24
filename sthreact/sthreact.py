@@ -101,8 +101,15 @@ class sthreact(BaseCog):
                 await message.channel.send(embed=embed)
 
         if re.search(pattern1, content):
-            msg = "https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif \n\nsigh...\nsai...\nSAIDO CHESTO!!"
-            await message.channel.send(msg)
+            embed = discord.Embed(
+                    colour = discord.Colour.red()
+                )
+            embed.set_image(url='https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif')
+            embed.add_field(value='sign...', inline=False)
+            await message.channel.send(embed=embed)
+            
+            #msg = "https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif \n\nsigh...\nsai...\nSAIDO CHESTO!!"
+            #await message.channel.send(msg)
             
         if re.search(pattern2, content):
             msg = "https://i.makeagif.com/media/2-21-2015/RDVwim.gif \n\noh my...\nomae...\nOMAE WA MOU SHINDEIRU!!!"
