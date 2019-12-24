@@ -92,7 +92,7 @@ class sthreact(BaseCog):
                 embed = discord.Embed(
                     title = 'Title',
                     description = 'This is a description',
-                    colour = discord.Colour.blue()
+                    color = discord.Color.blue()
                 )
                 embed.set_footer(text='This is a footer')
                 embed.set_image(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
@@ -101,11 +101,8 @@ class sthreact(BaseCog):
                 await message.channel.send(embed=embed)
 
         if re.search(pattern1, content):
-            embed = discord.Embed(
-                    colour = discord.Colour.red()
-                )
+            embed = discord.Embed(color = discord.Color.red())
             embed.set_image(url='https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif')
-            embed.add_field(name='oh my', value='sign...', inline=False)
             await message.channel.send(embed=embed)
             
             #msg = "https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif \n\nsigh...\nsai...\nSAIDO CHESTO!!"
