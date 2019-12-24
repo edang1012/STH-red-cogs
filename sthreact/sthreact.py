@@ -80,7 +80,7 @@ class sthreact(BaseCog):
         
         #pattern1 = re.match(r"oh", content[0])
         #pattern2 = re.match(r"my", content[1])
-        pattern0 = "test phrase"
+        pattern0 = re.compile(r't+e+s+t+[ phrase]', re.IGNORECASE)
         pattern1 = "oh my"
         pattern2 = re.compile(r's+i+g+h+[.]*', re.IGNORECASE)
         
