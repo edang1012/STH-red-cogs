@@ -105,7 +105,7 @@ class sthreact(BaseCog):
                     colour = discord.Colour.red()
                 )
             embed.set_image(url='https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif')
-            embed.add_field(value='sign...', inline=False)
+            embed.add_field(name='', value='sign...', inline=False)
             await message.channel.send(embed=embed)
             
             #msg = "https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif \n\nsigh...\nsai...\nSAIDO CHESTO!!"
