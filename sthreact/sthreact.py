@@ -84,7 +84,8 @@ class sthreact(BaseCog):
         pattern1 = "oh my"
         pattern2 = re.compile(r's+i+g+h+[.]*', re.IGNORECASE)
         
-        if pattern0 in content:
+        #if pattern0 in content:
+        if re.search(pattern0, content):
             msg = "it works!!! shishou"
             await message.channel.send(msg)
             
