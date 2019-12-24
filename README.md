@@ -10,30 +10,22 @@ Working Cogs:
     - ~~add listseq command~~
     - add support for phrases
     - make it react to emotes
-- saido (~~V2~~ V3 only): works just like mycog, just made into a standalone cog
-- ohmy (V3 only): same as said, but you are already dead
+- sthreact (V3 only): contains all the fun react commands in one file
+  - saido: added to sthreact, old files in Archive
+  - ohmy: added to sthreact, old files in Archive
 - wat (V3 only): fixed to work in V3
 - bigmoji (V3 only): flapjacks rewrite of bigmoji
 
 Wishlist: 
-- update saido to V3
-- ~~make oh my (V3)~~
 - make ayaya react support regex (V3)
+- add insult
 
-Current list of (important) cogs used on the STH server: 
-- bigmoji (V2)
-- downloader (V2)
-- insult (V2)
-- mycog: for 'sigh' (V2)
-- mod (V2)
-- owner (V2)
-- pressf (V2)
-- remindme (V2)
-- scheduler (V2)
-- smartreact (V2)
-- translated (V2)
-- trivia (V2)
-- wat (V2)
+Current list of (important) cogs used on the STH server from other sources: 
+- downloader
+- insult
+  - need to add
+- scheduler
+- trivia
 
 Useful links:
 - V3 cogs documentation: https://red-discordbot.readthedocs.io/en/latest/guide_cog_creation.html
