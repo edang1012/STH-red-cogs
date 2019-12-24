@@ -83,7 +83,7 @@ class sthreact(BaseCog):
         pattern1 = re.compile(r'(sigh)+[.]*', re.IGNORECASE)
         pattern2 = re.compile(r'(oh my)', re.IGNORECASE)
         pattern3 = re.compile(r'(keikaku)', re.IGNORECASE)
-        pattern4 = re.compile(r'^(...)+[.]*', re.IGNORECASE)
+        pattern4 = re.compile(r'\A(...)+[.]*', re.IGNORECASE)
         
         if re.search(pattern0, content):
             msg = "it works!!! shishou"
