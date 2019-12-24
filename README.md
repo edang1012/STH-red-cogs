@@ -5,6 +5,7 @@ Has a mix of V2/V3 cogs as we work towards a full transistion to V3
 Beta-chan is the bot used to test V3 cogs. This repository is set to 'test' in Beta-chan
 
 Working Cogs:
+- bigmoji (V3 only): flapjacks rewrite of bigmoji
 - seqreact (V3 only): based on smartreact, but allows you to send a sequence of reactions
   - todo: 
     - ~~add listseq command~~
@@ -14,7 +15,6 @@ Working Cogs:
   - saido: added to sthreact, old files in Archive
   - ohmy: added to sthreact, old files in Archive
 - wat (V3 only): fixed to work in V3
-- bigmoji (V3 only): flapjacks rewrite of bigmoji
 
 Wishlist: 
 - make ayaya react support regex (V3)
