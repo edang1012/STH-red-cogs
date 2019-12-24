@@ -101,7 +101,11 @@ class sthreact(BaseCog):
                 await message.channel.send(embed=embed)
 
         if re.search(pattern1, content):
-            embed = discord.Embed(color = discord.Color.red())
+            embed = discord.Embed(
+                title = 'Oh My',
+                description = 'sigh...\nsai...\nSAIDO CHESTO!!',
+                color = discord.Color.red()
+            )
             embed.set_image(url='https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif')
             await message.channel.send(embed=embed)
             
