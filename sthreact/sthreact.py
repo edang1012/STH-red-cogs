@@ -82,6 +82,7 @@ class sthreact(BaseCog):
         pattern0 = re.compile(r'(test)+( phrase)?', re.IGNORECASE)
         pattern1 = re.compile(r'(sigh)+[.]*', re.IGNORECASE)
         pattern2 = re.compile(r'(oh my)', re.IGNORECASE)
+        pattern3 = re.compile(r'(keikaku)', re.IGNORECASE)
         
         if re.search(pattern0, content):
             msg = "it works!!! shishou"
@@ -115,3 +116,8 @@ class sthreact(BaseCog):
             )
             embed.set_image(url='https://i.makeagif.com/media/2-21-2015/RDVwim.gif')
             await message.channel.send(embed=embed)
+            
+        if re.search(pattern3, content):
+            msg = "TL's Note: Keikaku means plan."
+            await message.channel.send(msg)
+
