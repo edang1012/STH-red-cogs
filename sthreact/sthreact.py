@@ -85,6 +85,8 @@ class sthreact(BaseCog):
         pattern3 = re.compile(r'(keikaku)', re.IGNORECASE)
         pattern4 = re.compile(r'\A(\.\.\.)+[.]*', re.IGNORECASE)
         pattern5 = re.compile(r'(sorry not sorry)', re.IGNORECASE)
+        pattern5_1 = re.compile(r'(sorrynotsorry)', re.IGNORECASE)
+        pattern5_2 = re.compile(r'(gomenasike)', re.IGNORECASE)
         
         if re.search(pattern0, content):
             msg = "it works!!! shishou"
@@ -130,7 +132,7 @@ class sthreact(BaseCog):
             embed.set_image(url='https://cdn.discordapp.com/attachments/464597387504123905/631584595627868180/bakuman-ep-14-5.png')
             await message.channel.send(embed=embed)
             
-        if re.search(pattern5, content):
+        if re.search(pattern5, content) or re.search(pattern5_1, content) or re.search(pattern5_2, content):
             embed = discord.Embed(
                 color = discord.Color.red()
             )
