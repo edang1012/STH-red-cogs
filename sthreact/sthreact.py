@@ -109,5 +109,9 @@ class sthreact(BaseCog):
             await message.channel.send(embed=embed)
             
         if re.search(pattern2, content):
-            msg = "https://i.makeagif.com/media/2-21-2015/RDVwim.gif \n\noh my...\nomae...\nOMAE WA MOU SHINDEIRU!!!"
-            await message.channel.send(msg)
+            embed = discord.Embed(
+                description = 'oh my...\nomae...\nOMAE WA MOU SHINDEIRU!!!',
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://i.makeagif.com/media/2-21-2015/RDVwim.gif')
+            await message.channel.send(embed=embed)
