@@ -16,9 +16,11 @@ Working Cogs:
   - ohmy: added to sthreact, old files in Archive
 - wat (V3 only): fixed to work in V3
 
+
 Wishlist: 
 - make ayaya react support regex (V3)
 - add insult
+
 
 Current list of (important) cogs used on the STH server from other sources: 
 - downloader
@@ -26,6 +28,7 @@ Current list of (important) cogs used on the STH server from other sources:
   - need to add
 - scheduler
 - trivia
+
 
 Useful links:
 - V3 cogs documentation: https://red-discordbot.readthedocs.io/en/latest/guide_cog_creation.html
