@@ -1,6 +1,5 @@
 # STH-cogs
 Contains the Red Discord Bot cogs made/used by STH. 
-Has a mix of V2/V3 cogs as we work towards a full transistion to V3 
 
 Beta-chan is the bot used to test V3 cogs. This repository is set to 'test' in Beta-chan
 
