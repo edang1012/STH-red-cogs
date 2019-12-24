@@ -68,7 +68,8 @@ class sthreact(BaseCog):
             return
         if message.author == self.bot.user:
             return
-        content = message.content.lower().split()
+        #content = message.content.lower().split()
+        content = message.content.lower()
         if len(content) < 2:
             return
         if message.guild.id in await self.conf.guilds_ignored():
@@ -77,8 +78,9 @@ class sthreact(BaseCog):
             return
 
         
-        pattern1 = re.match(r"oh", content[0])
-        pattern2 = re.match(r"my", content[1])
-        if pattern1 and pattern2:
-            msg = "https://i.makeagif.com/media/2-21-2015/RDVwim.gif \noh my...\nomae...\nOMAE WA MOU SHINDEIRU!!!"
+        #pattern1 = re.match(r"oh", content[0])
+        #pattern2 = re.match(r"my", content[1])
+        pattern1 = "test"
+        if pattern1 in content:
+            msg = "it works!!! shishou"
             await message.channel.send(msg)
