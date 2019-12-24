@@ -83,6 +83,7 @@ class sthreact(BaseCog):
         pattern1 = re.compile(r'(sigh)+[.]*', re.IGNORECASE)
         pattern2 = re.compile(r'(oh my)', re.IGNORECASE)
         pattern3 = re.compile(r'(keikaku)', re.IGNORECASE)
+        pattern4 = re.compile(r'^(...)+[.]*', re.IGNORECASE)
         
         if re.search(pattern0, content):
             msg = "it works!!! shishou"
@@ -121,3 +122,9 @@ class sthreact(BaseCog):
             msg = "TL's Note: Keikaku means plan."
             await message.channel.send(msg)
 
+        if re.search(pattern4, content):
+            embed = discord.Embed(
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://cdn.discordapp.com/attachments/464597387504123905/631584595627868180/bakuman-ep-14-5.png')
+            await message.channel.send(embed=embed)
