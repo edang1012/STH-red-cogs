@@ -79,7 +79,7 @@ class sthreact(BaseCog):
             return
 
         
-        pattern0 = "test"
+        pattern0 = re.compile(r'(test)+( phrase)*', re.IGNORECASE)
         pattern1 = re.compile(r'(sigh)+[.]*', re.IGNORECASE)
         pattern2 = re.compile(r'(oh my)', re.IGNORECASE)
         pattern3 = re.compile(r'(keikaku)', re.IGNORECASE)
@@ -90,9 +90,8 @@ class sthreact(BaseCog):
         
         if re.search(pattern0, content):
             content_split = content.split()
-            if "test" in content_split[0]:
-                msg = "it works!!! shishou"
-                await message.channel.send(msg)
+            #msg = "it works!!! shishou"
+            #await message.channel.send(msg)
                 
             if "embed" in content_split[1]:
                 embed = discord.Embed(
