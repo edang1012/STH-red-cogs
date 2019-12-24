@@ -92,6 +92,7 @@ class sthreact(BaseCog):
             msg = "https://i.makeagif.com/media/2-21-2015/RDVwim.gif \noh my...\nomae...\nOMAE WA MOU SHINDEIRU!!!"
             await message.channel.send(msg)
             
-        elif pattern2 in content:
+        #elif pattern2 in content:
+        elif re.search(pattern2, content):
             msg = "https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif \n\nsigh...\nsai...\nSAIDO CHESTO!!"
             await message.channel.send(msg)
