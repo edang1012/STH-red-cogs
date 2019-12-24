@@ -82,6 +82,7 @@ class sthreact(BaseCog):
         #pattern2 = re.match(r"my", content[1])
         pattern0 = "test phrase"
         pattern1 = "oh my"
+        pattern2 = re.compile(r's+i+g+h+[.]*', re.IGNORECASE)
         
         if pattern0 in content:
             msg = "it works!!! shishou"
@@ -89,4 +90,8 @@ class sthreact(BaseCog):
             
         elif pattern1 in content:
             msg = "https://i.makeagif.com/media/2-21-2015/RDVwim.gif \noh my...\nomae...\nOMAE WA MOU SHINDEIRU!!!"
+            await message.channel.send(msg)
+            
+        elif pattern2 in content:
+            msg = "https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif \n\nsigh...\nsai...\nSAIDO CHESTO!!"
             await message.channel.send(msg)
