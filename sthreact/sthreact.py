@@ -85,7 +85,7 @@ class sthreact(BaseCog):
         
         if re.search(pattern0, content):
             content_split = content.split()
-            if pattern0 in content_split[0]:
+            if "test" in content_split[0]:
                 msg = "it works!!! shishou"
                 await message.channel.send(msg)
                 embed = discord.Embed(
