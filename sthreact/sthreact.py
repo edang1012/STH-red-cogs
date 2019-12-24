@@ -91,7 +91,7 @@ class sthreact(BaseCog):
                 description = 'This is a description',
                 colour = discord.Colour.blue()
             )
-            msg.set_footer(test='This is a footer')
+            msg.set_footer(text='This is a footer')
             msg.set_image(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
             msg.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
             msg.add_field(name='Field Name', value='Field Value', inline=False)
