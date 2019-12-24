@@ -80,7 +80,7 @@ class sthreact(BaseCog):
         
         #pattern1 = re.match(r"oh", content[0])
         #pattern2 = re.match(r"my", content[1])
-        pattern1 = "test"
+        pattern1 = "test phrase"
         if pattern1 in content:
             msg = "it works!!! shishou"
             await message.channel.send(msg)
