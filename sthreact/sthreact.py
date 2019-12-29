@@ -129,7 +129,7 @@ class sthreact(BaseCog):
             embed = discord.Embed(
                 color = discord.Color.red()
             )
-            embed.set_image(url='https://cdn.discordapp.com/attachments/464597387504123905/631584595627868180/bakuman-ep-14-5.png')
+            embed.set_image(url='https://i.imgur.com/RrbvQYz.jpg')
             await message.channel.send(embed=embed)
             
         if re.search(pattern5, content) or re.search(pattern5_1, content) or re.search(pattern5_2, content):
