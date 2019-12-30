@@ -20,6 +20,10 @@ SAMPLE_RANGE_NAME = 'Class Data!A2:E'
 class jp2021money(commands.Cog):
     """This bot reminds us about how much money we should have 
         saved up for the Japan trip planned for May 2021."""
+    
+    default_guild_settings = {
+        "money": {}
+    }
 
     def __init__(self, bot):
         self.bot = bot
