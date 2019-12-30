@@ -34,7 +34,9 @@ class jp2021money(commands.Cog):
         # Call the Sheets API
         sheet = client.open("Bot Money Saving Goals").sheet1  # Open the spreadhseet
         data = sheet.get_all_records()
-        pprint(data)
+        row = sheet.row_values(3)
+        
+        pprint(row)
    
         embed = discord.Embed(
             title = 'Title',
