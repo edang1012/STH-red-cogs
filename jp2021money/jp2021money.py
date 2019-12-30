@@ -30,7 +30,7 @@ class jp2021money(commands.Cog):
         self.conf = Config.get_conf(self, identifier=964952632)
         self.conf.register_guild(
             **self.default_guild_settings
-            
+            )
         self.creds = None
         # The file token.pickle stores the user's access and refresh tokens, and is
         # created automatically when the authorization flow completes for the first
