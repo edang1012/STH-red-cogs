@@ -63,14 +63,26 @@ class jp2021money(commands.Cog):
         result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                     range=SAMPLE_RANGE_NAME).execute()
         values = result.get('values', [])
+   
+        embed = discord.Embed(
+            title = 'Title',
+            description = 'This is a description',
+            color = discord.Color.blue()
+        )
+        embed.set_footer(text='This is a footer')
+        embed.set_image(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
+        embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
+        embed.add_field(name='Field Name', value='Field Value', inline=False)
+        await ctx.send(embed=embed)
 
         if not values:
-            print('No data found.')
-        else:
-            print('Name, Major:')
-            for row in values:
+            msg = "No data found"
+            await ctx.send(msg)
+
+        #else:
+            #print('Name, Major:')
+            #for row in values:
                 # Print columns A and E, which correspond to indices 0 and 4.
-                print('%s, %s' % (row[0], row[4]))
+                #msg = ('%s, %s' % (row[0], row[4]))
                 
-        msg = "test command stuff"
-        await ctx.send(msg)
+
