@@ -44,6 +44,9 @@ class jp2021money(commands.Cog):
         while sent[week] != 'no':
             week+=1
             
+        if sent[week-1] == 'end':
+            week-=1
+            
         # check for end of list
         if sent[week] == 'end':
             # ping the role to be reminded
