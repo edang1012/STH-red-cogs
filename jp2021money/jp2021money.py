@@ -42,7 +42,8 @@ class jp2021money(commands.Cog):
         
         # find the next row to send reminder
         while sent[week] != 'no':
-            week+=1
+            if sent[week] != 'end':
+                week+=1
             
         # check for end of list
         if sent[week] == 'end':
