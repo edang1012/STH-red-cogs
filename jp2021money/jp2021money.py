@@ -3,6 +3,12 @@ import discord
 from redbot.core import Config, commands, checks
 from redbot.core.utils.chat_formatting import pagify
 
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+from pprint import pprint
+
+scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/sprea...,"https://www.googleapis.com/auth/drive...","https://www.googleapis.com/auth/drive"]
+         
 class jp2021money(commands.Cog):
     """This bot reminds us about how much money we should have 
         saved up for the Japan trip planned for May 2021."""
