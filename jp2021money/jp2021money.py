@@ -29,8 +29,8 @@ class jp2021money(commands.Cog):
     @checks.mod_or_permissions(administrator=True)
     @commands.guild_only()
     @commands.command()
-    async def test(self, ctx):
-        """test command"""
+    async def saving(self, ctx):
+        """Japan 2021 Trip Savings Reminder"""
         # Call the Sheets API
         sheet = client.open("Bot Money Saving Goals").sheet1
         
@@ -79,7 +79,7 @@ class jp2021money(commands.Cog):
 
             # constuct embedded message
             embed = discord.Embed(
-                title = 'Japan 2021 Trip: Savings Reminder',
+                title = 'Japan 2021 Trip: Savings Reminder (Week %s/Week 68)' % (week),
                 description = """Sup weebs, this is your weekly reminder on roughly how much money you should have saved for the trip. You should be saving at least **$30** each week to meet the goals set by this guideline.\n\nSo far, you should have roughly saved **%s/%s**.""" % (saved,goal),
                 color = discord.Color.red()
             )
