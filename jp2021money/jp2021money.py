@@ -60,15 +60,14 @@ class jp2021money(commands.Cog):
             embed = discord.Embed(
                 title = 'Japan 2021 Trip: Savings Reminder',
                 description = """Sup weebs, this is your weekly reminder on roughly how 
-								much money you should have saved for the trip. You should 
-								be saving at least $30 each week to meet the goals set by 
-								this guideline.\n\n
-								So far, you should have roughly saved **%s/%s**.""" % (saved,goal),
+		much money you should have saved for the trip. You should be saving at 
+		least $30 each week to meet the goals set by this guideline.\n\n
+		So far, you should have roughly saved **%s/%s**.""" % (saved,goal),
                 color = discord.Color.red()
             )
             footer = """These stretchgoals are not binding, but rather they serve as a 
-						guideline to keep our finances in check. It\'s not like I wanted 
-						to remind you or anything, baka..."""
+	    guideline to keep our finances in check. It\'s not like I wanted 
+	    to remind you or anything, baka..."""
             embed.set_footer(text=footer)
             embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
             await ctx.send(embed=embed)
