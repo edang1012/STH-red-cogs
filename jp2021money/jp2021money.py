@@ -68,3 +68,5 @@ class jp2021money(commands.Cog):
             await ctx.send(embed=embed)
 
             sheet.update_cell(week+1,2,"yes")
+            sheet.update_cell(week+1,5,"yes")
+
