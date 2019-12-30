@@ -9,15 +9,17 @@ import discord
 from redbot.core import Config, commands, checks
 from redbot.core.utils.chat_formatting import pagify
 
+# If modifying these scopes, delete the file token.pickle.
+SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
+
+# The ID and range of a sample spreadsheet.
+SAMPLE_SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
+SAMPLE_RANGE_NAME = 'Class Data!A2:E'
+
 
 class jp2021money(commands.Cog):
     """This bot reminds us about how much money we should have 
         saved up for the Japan trip planned for May 2021."""
-    
-    default_guild_settings = {
-        #remove this when i figure out what this does
-        "reactions": {}
-    }
 
     def __init__(self, bot):
         self.bot = bot
