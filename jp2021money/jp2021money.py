@@ -58,5 +58,19 @@ class jp2021money(commands.Cog):
     @commands.command()
     async def test(self, ctx):
         """test command"""
+        # Call the Sheets API
+        sheet = service.spreadsheets()
+        result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                    range=SAMPLE_RANGE_NAME).execute()
+        values = result.get('values', [])
+
+        if not values:
+            print('No data found.')
+        else:
+            print('Name, Major:')
+            for row in values:
+                # Print columns A and E, which correspond to indices 0 and 4.
+                print('%s, %s' % (row[0], row[4]))
+                
         msg = "test command stuff"
         await ctx.send(msg)
