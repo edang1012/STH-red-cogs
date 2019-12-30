@@ -7,8 +7,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from pprint import pprint
 
-scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/sprea...,"https://www.googleapis.com/auth/drive...","https://www.googleapis.com/auth/drive"]
-         
+scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]         
 class jp2021money(commands.Cog):
     """This bot reminds us about how much money we should have 
         saved up for the Japan trip planned for May 2021."""
