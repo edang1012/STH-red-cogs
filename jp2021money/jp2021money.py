@@ -50,3 +50,5 @@ class jp2021money(commands.Cog):
         embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
         embed.add_field(name='Field Name', value='Field Value', inline=False)
         await ctx.send(embed=embed)
+        
+        sheet.update_cell(week+1, 2, "yes")
