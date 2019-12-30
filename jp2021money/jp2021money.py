@@ -10,10 +10,10 @@ from redbot.core import Config, commands, checks
 from redbot.core.utils.chat_formatting import pagify
 
 # If modifying these scopes, delete the file token.pickle.
-SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
+SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
 # The ID and range of a sample spreadsheet.
-SAMPLE_SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
+SAMPLE_SPREADSHEET_ID = '1SOskKBFHYbVvdGIJ0ExGXCGYmSlajqUJDHHbVOlzGug'
 SAMPLE_RANGE_NAME = 'Class Data!A2:E'
 
 
@@ -67,7 +67,40 @@ class jp2021money(commands.Cog):
         embed = discord.Embed(
             title = 'Title',
             description = 'This is a description',
-            color = discord.Color.blue()
+            color = discord.Color.red()
+        )
+        embed.set_footer(text='This is a footer')
+        embed.set_image(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
+        embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
+        embed.add_field(name='Field Name', value='Field Value', inline=False)
+        await ctx.send(embed=embed)
+
+        if not values:
+            msg = "No data found"
+            await ctx.send(msg)
+
+        else:
+            print('Test:')
+            for row in values:
+                # Print columns A and E, which correspond to indices 0 and 4.
+                print ('%s' % (row[0]))
+                
+                
+    @checks.mod_or_permissions(administrator=True)
+    @commands.guild_only()
+    @commands.command()
+    async def test2(self, ctx):
+        """test2 command"""
+        # Call the Sheets API
+        sheet = self.service.spreadsheets()
+        result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
+                                    range=SAMPLE_RANGE_NAME).execute()
+        values = result.get('values', [])
+   
+        embed = discord.Embed(
+            title = 'Title',
+            description = 'This is a description',
+            color = discord.Color.red()
         )
         embed.set_footer(text='This is a footer')
         embed.set_image(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
