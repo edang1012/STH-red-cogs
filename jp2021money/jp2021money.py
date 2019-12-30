@@ -3,7 +3,8 @@ import pickle
 import os.path
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
-from google.auth.transport.requests import Requestimport copy
+from google.auth.transport.requests import Request
+import copy
 import discord
 from redbot.core import Config, commands, checks
 from redbot.core.utils.chat_formatting import pagify
