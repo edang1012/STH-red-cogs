@@ -72,9 +72,9 @@ class jp2021money(commands.Cog):
 
             # ping the role to be reminded
             # admin role
-            role = '<@&232216294437421056>'
+            #role = '<@&232216294437421056>'
             # japan trip role
-            #role = '<@&660958548024360960>'
+            role = '<@&660958548024360960>'
             await ctx.send(role)
 
             # constuct embedded message
