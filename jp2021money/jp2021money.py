@@ -33,10 +33,7 @@ class jp2021money(commands.Cog):
         """test command"""
         # Call the Sheets API
         sheet = client.open("Bot Money Saving Goals").sheet1  # Open the spreadhseet
-        data = sheet.get_all_records()
-        row = sheet.row_values(3)
-        
-        pprint(row)
+        sheet.update_cell(2,2,"1")
    
         embed = discord.Embed(
             title = 'Title',
