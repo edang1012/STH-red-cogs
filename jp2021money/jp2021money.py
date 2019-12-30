@@ -44,6 +44,8 @@ class jp2021money(commands.Cog):
         while sent[week] != 'no':
             if sent[week] != 'end':
                 week+=1
+            else:
+                break
             
         # check for end of list
         if sent[week] == 'end':
