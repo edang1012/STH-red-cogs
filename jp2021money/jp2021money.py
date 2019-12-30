@@ -37,7 +37,7 @@ class jp2021money(commands.Cog):
         week = 1
         sent = sheet.col_values(2)
         
-        while sent[week] > 0
+        while sent[week] > 0:
             week+=1
    
         embed = discord.Embed(
