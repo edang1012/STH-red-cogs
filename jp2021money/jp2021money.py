@@ -34,12 +34,18 @@ class jp2021money(commands.Cog):
         # Call the Sheets API
         sheet = client.open("Bot Money Saving Goals").sheet1
         
+        # initalize week list at 1
         week = 1
+        
+        # grab column containing sent data
         sent = sheet.col_values(2)
         
+        # find the next row to send reminder
         while sent[week] != 'no':
             week+=1
    
+        # constuct embedded message
+        role = '<@&232216294437421056>'
         embed = discord.Embed(
             title = 'Japan 2021 Trip: Savings Reminder',
             description = 'Week '+ str(week),
@@ -48,7 +54,7 @@ class jp2021money(commands.Cog):
         embed.set_footer(text='This is a footer')
         embed.set_image(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
         embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
-        embed.add_field(name='Field Name', value='Field Value', inline=False)
+        embed.add_field(name='Field Name', value=role, inline=False)
         await ctx.send(embed=embed)
         
         sheet.update_cell(week+1, 2, "yes")
