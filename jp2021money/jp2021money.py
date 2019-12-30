@@ -45,8 +45,21 @@ class jp2021money(commands.Cog):
             week+=1
             
         # check for end of list
-        if week == 'end':
-            stuff
+        if sent[week] == 'end':
+            # ping the role to be reminded
+            role = '<@&232216294437421056>'
+            await ctx.send(role)
+
+            # constuct embedded message
+            embed = discord.Embed(
+                title = 'Japan 2021 Trip: Savings Reminder',
+                description = """If I made this bot correctly, we shoud be currently at the end of April 2021 or the beginning of May 2021. \n\nAt this point, you should have reached the savings goal of at least **$2000**. If not, well uh, gambate...""",
+                color = discord.Color.red()
+            )
+            footer = """Someone tell Erick to turn off this reminder. That dumbass. It\'s not like I wanted to remind you or anything, baka..."""
+            embed.set_footer(text=footer)
+            embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
+            await ctx.send(embed=embed)
         
         else:
             saved = sheet.cell(week+1,3).value
