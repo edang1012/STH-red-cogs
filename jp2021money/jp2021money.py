@@ -43,20 +43,25 @@ class jp2021money(commands.Cog):
         # find the next row to send reminder
         while sent[week] != 'no':
             week+=1
+            
+        saved = sheet.cell(week+1,3).value
+        goal = sheet.cell(week+1,4).value
    
-        # constuct embedded message
+        # ping the role to be reminded
         role = '<@&232216294437421056>'
-        #await ctx.send(role)
+        await ctx.send(role)
 
+        # constuct embedded message
         embed = discord.Embed(
             title = 'Japan 2021 Trip: Savings Reminder',
-            description = 'Week '+ str(week),
+            description = """Sup weebs, this is your weekly reminder on roughly 
+                            how much money you should have saved for the trip.\n
+                            So far, you should have roughly saved %s/%s.""" % (saved,goal),
             color = discord.Color.red()
         )
-        embed.set_footer(text='This is a footer')
-        embed.set_image(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
+        embed.set_footer(text='It\'s not like I wanted to remind you or anything, baka...')
         embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
-        embed.add_field(name='Field Name', value=role, inline=False)
+        embed.add_field(name='Current Week', value='Week' + str(week), inline=False)
         await ctx.send(embed=embed)
         
-        sheet.update_cell(week+1, 2, "yes")
+        sheet.update_cell(week+1,2,"yes")
