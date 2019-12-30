@@ -44,7 +44,7 @@ class jp2021money(commands.Cog):
                 self.creds.refresh(Request())
             else:
                 flow = InstalledAppFlow.from_client_secrets_file(
-                    'credentials.json', SCOPES)
+                    '/home/pi/redbot-beta/cogs/CogManager/cogs/jp2021money/credentials.json', SCOPES)
                 self.creds = flow.run_local_server()
             # Save the credentials for the next run
             with open('token.pickle', 'wb') as token:
