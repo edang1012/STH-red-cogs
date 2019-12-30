@@ -44,6 +44,7 @@ class jp2021money(commands.Cog):
         while sent[week] != 'no':
             week+=1
             
+        # cause the nested while/if loop didnt work... dont hurt me...
         if sent[week-1] == 'end':
             week-=1
             
