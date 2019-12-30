@@ -32,12 +32,17 @@ class jp2021money(commands.Cog):
     async def test(self, ctx):
         """test command"""
         # Call the Sheets API
-        sheet = client.open("Bot Money Saving Goals").sheet1  # Open the spreadhseet
-        sheet.update_cell(2,2,"1")
+        sheet = client.open("Bot Money Saving Goals").sheet1
+        
+        week = 1
+        sent = sheet.col_values(2)
+        
+        while sent[week] > 0
+            week+=1
    
         embed = discord.Embed(
-            title = 'Title',
-            description = 'This is a description',
+            title = 'Japan 2021 Trip: Savings Reminder',
+            description = 'Week '+ week,
             color = discord.Color.red()
         )
         embed.set_footer(text='This is a footer')
