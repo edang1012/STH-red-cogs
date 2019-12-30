@@ -56,7 +56,7 @@ class jp2021money(commands.Cog):
             title = 'Japan 2021 Trip: Savings Reminder',
             description = """Sup weebs, this is your weekly reminder on roughly 
                             how much money you should have saved for the trip.\n
-                            So far, you should have roughly saved %s/%s.""" % (saved,goal),
+                            So far, you should have roughly saved **%s/%s**.""" % (saved,goal),
             color = discord.Color.red()
         )
         embed.set_footer(text='It\'s not like I wanted to remind you or anything, baka...')
