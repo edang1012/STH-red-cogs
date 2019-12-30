@@ -46,7 +46,7 @@ class jp2021money(commands.Cog):
    
         # constuct embedded message
         role = '<@&232216294437421056>'
-        await ctx.send(role)
+        #await ctx.send(role)
 
         embed = discord.Embed(
             title = 'Japan 2021 Trip: Savings Reminder',
