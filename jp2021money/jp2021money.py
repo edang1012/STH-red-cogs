@@ -8,12 +8,15 @@ from oauth2client.service_account import ServiceAccountCredentials
 from pprint import pprint
 
 scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]         
+creds = ServiceAccountCredentials.from_json_keyfile_name("creds.json", scope)
+client = gspread.authorize(creds)
+
 class jp2021money(commands.Cog):
     """This bot reminds us about how much money we should have 
         saved up for the Japan trip planned for May 2021."""
     
     default_guild_settings = {
-        "money": {}
+        "settings": {}
     }
 
     def __init__(self, bot):
@@ -29,6 +32,7 @@ class jp2021money(commands.Cog):
     async def test(self, ctx):
         """test command"""
         # Call the Sheets API
+        sheet = client.open("Bot Money Saving Goals").sheet1  # Open the spreadhseet
    
         embed = discord.Embed(
             title = 'Title',
