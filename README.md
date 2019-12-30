@@ -5,6 +5,7 @@ Beta-chan is the bot used to test V3 cogs. This repository is set to 'test' in B
 
 Working Cogs:
 - bigmoji (V3 only): flapjacks rewrite of bigmoji
+- jp2021money (V3 only): uses google sheets API to keep track of how much money should be saved for the trip
 - seqreact (V3 only): based on smartreact, but allows you to send a sequence of reactions
   - todo: 
     - ~~add listseq command~~
