@@ -13,7 +13,7 @@ from redbot.core.utils.chat_formatting import pagify
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
 # The ID and range of a sample spreadsheet.
-SAMPLE_SPREADSHEET_ID = '1SOskKBFHYbVvdGIJ0ExGXCGYmSlajqUJDHHbVOlzGug'
+SAMPLE_SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
 SAMPLE_RANGE_NAME = 'Class Data!A2:E'
 
 
