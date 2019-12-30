@@ -42,7 +42,7 @@ class jp2021money(commands.Cog):
    
         embed = discord.Embed(
             title = 'Japan 2021 Trip: Savings Reminder',
-            description = 'Week '+ week,
+            description = 'Week '+ str(week),
             color = discord.Color.red()
         )
         embed.set_footer(text='This is a footer')
