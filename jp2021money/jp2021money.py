@@ -19,8 +19,8 @@ from pprint import pprint
 
 # google sheets API
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-SAMPLE_SPREADSHEET_ID = '1SOskKBFHYbVvdGIJ0ExGXCGYmSlajqUJDHHbVOlzGug'
-SAMPLE_RANGE_NAME = 'A2:D'
+SPREADSHEET_ID = '1SOskKBFHYbVvdGIJ0ExGXCGYmSlajqUJDHHbVOlzGug'
+RANGE_NAME = 'A2:E'
 
 # google drive API from youtube
 scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]         
@@ -130,7 +130,7 @@ class jp2021money(commands.Cog):
     @checks.mod_or_permissions(administrator=True)
     @commands.guild_only()
     @commands.command()
-    async def test(self, ctx):    
+    async def beta(self, ctx):    
         """Shows basic usage of the Sheets API.
         Prints values from a sample spreadsheet.
         """
@@ -157,15 +157,14 @@ class jp2021money(commands.Cog):
 
         # Call the Sheets API
         sheet = service.spreadsheets()
-        result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                                    range=SAMPLE_RANGE_NAME).execute()
+        result = sheet.values().get(spreadsheetId=SPREADSHEET_ID,range=RANGE_NAME).execute()
         values = result.get('values', [])
 
         if not values:
-            print('No data found.')
+            msg = "Shishou, there is no data..."
+            await ctx.send(msg)
+            
         else:
-            print('Name, Major:')
             for row in values:
-                # Print columns A and E, which correspond to indices 0 and 4.
-                print('%s, %s' % (row[0], row[3]))
+                print('%s, %s' % (row[0,1], row[3,1]))
 
