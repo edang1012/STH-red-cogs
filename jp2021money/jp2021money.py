@@ -91,3 +91,19 @@ class jp2021money(commands.Cog):
             sheet.update_cell(week+1,2,"yes")
             sheet.update_cell(week+1,5,"yes")
 
+    @checks.mod_or_permissions(administrator=True)
+    @commands.guild_only()
+    @commands.command()
+    async def testing(self, ctx):
+        """Japan 2021 Trip Savings Reminder"""
+        # Call the Sheets API
+        sheet = client.open("Bot Money Saving Goals").sheet1
+       
+        # grab column data
+        col = sheet.col_values(1)
+
+        # test output message
+        if col[0] == 'Week'
+            msg = "I can talk to the sheet shishou!"
+            await ctx.send(msg)
+
