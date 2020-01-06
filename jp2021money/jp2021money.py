@@ -103,7 +103,7 @@ class jp2021money(commands.Cog):
         col = sheet.col_values(1)
 
         # test output message
-        if col[0] == 'Week'
+        if col[0] == 'Week':
             msg = "I can talk to the sheet shishou!"
             await ctx.send(msg)
 
