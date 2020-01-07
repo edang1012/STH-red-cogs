@@ -177,7 +177,7 @@ class jp2021money(commands.Cog):
                     #role = '<@&660958548024360960>'
                     await ctx.send(role)
 
-                    # constuct embedded message
+                    # constuct embedded message and send
                     embed = discord.Embed(
                         title = 'Japan 2021 Trip: Savings Reminder (Week %s/Week 68)' % (row[0]),
                         description = """Sup weebs, this is your weekly reminder on roughly how much money you should have saved for the trip. You should be saving at least **$30** each week to meet the goals set by this guideline.\n\nSo far, you should have roughly saved **%s/%s**.""" % (row[2],row[3]),
@@ -187,5 +187,9 @@ class jp2021money(commands.Cog):
                     embed.set_footer(text=footer)
                     embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
                     await ctx.send(embed=embed)
+                    
+                    cell = 'A3'
+                    cell_write = service.spreadsheets().values().update(spreadsheetId=SPREADSHEET_ID, range=cell, valueInputOption=RAW, body='yes').execute
+
                     break;
 
