@@ -12,20 +12,10 @@ import discord
 from redbot.core import Config, commands, checks
 from redbot.core.utils.chat_formatting import pagify
 
-# google drive api from youtube
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
-from pprint import pprint
-
 # google sheets API
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 SPREADSHEET_ID = '116sfWwMvsA6rsEE8qG6xrfAOlH1jG5jkGgQ24HWtEu0'
 RANGE_NAME = 'A2:E'
-
-# google drive API from youtube
-scope = ["https://spreadsheets.google.com/feeds",'https://www.googleapis.com/auth/spreadsheets',"https://www.googleapis.com/auth/drive.file","https://www.googleapis.com/auth/drive"]         
-creds = ServiceAccountCredentials.from_json_keyfile_name("/home/pi/Bot_Archive/creds.json", scope)
-client = gspread.authorize(creds)
 
 class jp2021money(commands.Cog):
     """This bot reminds us about how much money we should have 
@@ -168,6 +158,25 @@ class jp2021money(commands.Cog):
             for row in values:
                 if row[1] == 'yes':
                     print('yes')
+                
+                else if row[1] == 'end':
+                    # ping the role to be reminded
+                    # admin role
+                    role = '<@&232216294437421056>'
+                    await ctx.send(role)
+
+                    # constuct embedded message
+                    embed = discord.Embed(
+                        title = 'Japan 2021 Trip: Savings Reminder',
+                        description = """If I made this bot correctly, we shoud be currently at the end of April 2021 or the beginning of May 2021. \n\nAt this point, you should have reached the savings goal of at least **$2000**. If not, well uh, gambate...""",
+                        color = discord.Color.red()
+                    )
+                    footer = """Someone tell Erick to turn off this reminder. That dumbass. It\'s not like I wanted to remind you or anything, baka..."""
+                    embed.set_footer(text=footer)
+                    embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
+                    await ctx.send(embed=embed)
+                    
+                    break;
                     
                 else:
                     # ping the role to be reminded
