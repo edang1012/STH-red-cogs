@@ -188,7 +188,7 @@ class jp2021money(commands.Cog):
                     embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
                     await ctx.send(embed=embed)
                     
-                    cell = 'B' + (row[0]+1)
+                    cell = 'B' + str(row[0]+1)
                     body = {
                         'values': [['yes']]
                     }
