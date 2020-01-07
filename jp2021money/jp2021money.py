@@ -117,7 +117,7 @@ class jp2021money(commands.Cog):
         else:
             for row in values:
                 if row[1] == 'yes':
-                    print('yes')
+                    pass
                 
                 # end of list
                 elif row[1] == 'end':
