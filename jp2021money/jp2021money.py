@@ -187,4 +187,5 @@ class jp2021money(commands.Cog):
                     embed.set_footer(text=footer)
                     embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
                     await ctx.send(embed=embed)
+                    break;
 
