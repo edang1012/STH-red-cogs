@@ -190,7 +190,7 @@ class jp2021money(commands.Cog):
                     
                     cell = 'A3'
                     body = {
-                        'values': 'yes'
+                        'values': [['yes']]
                     }
 
                     cell_write = service.spreadsheets().values().update(spreadsheetId=SPREADSHEET_ID, range=cell, valueInputOption='RAW', body=body).execute()
