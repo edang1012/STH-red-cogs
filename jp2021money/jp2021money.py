@@ -19,7 +19,7 @@ from pprint import pprint
 
 # google sheets API
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-SPREADSHEET_ID = '1SOskKBFHYbVvdGIJ0ExGXCGYmSlajqUJDHHbVOlzGug'
+SPREADSHEET_ID = '116sfWwMvsA6rsEE8qG6xrfAOlH1jG5jkGgQ24HWtEu0'
 RANGE_NAME = 'A2:E'
 
 # google drive API from youtube
@@ -166,5 +166,25 @@ class jp2021money(commands.Cog):
             
         else:
             for row in values:
-                print('%s, %s' % (row[0,1], row[3,1]))
+                if row[1] == 'yes':
+                    print('yes')
+                    
+                else:
+                    # ping the role to be reminded
+                    # admin role
+                    role = '<@&232216294437421056>'
+                    # japan trip role
+                    #role = '<@&660958548024360960>'
+                    await ctx.send(role)
+
+                    # constuct embedded message
+                    embed = discord.Embed(
+                        title = 'Japan 2021 Trip: Savings Reminder (Week %s/Week 68)' % (row[0]),
+                        description = """Sup weebs, this is your weekly reminder on roughly how much money you should have saved for the trip. You should be saving at least **$30** each week to meet the goals set by this guideline.\n\nSo far, you should have roughly saved **%s/%s**.""" % (row[2],row[3]),
+                        color = discord.Color.red()
+                    )
+                    footer = """These stretchgoals are not binding, but rather they serve as a guideline to keep our finances in check. It\'s not like I wanted to remind you or anything, baka..."""
+                    embed.set_footer(text=footer)
+                    embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
+                    await ctx.send(embed=embed)
 
