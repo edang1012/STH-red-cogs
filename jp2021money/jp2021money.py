@@ -189,7 +189,7 @@ class jp2021money(commands.Cog):
                     await ctx.send(embed=embed)
                     
                     cell = 'A3'
-                    cell_write = service.spreadsheets().values().update(spreadsheetId=SPREADSHEET_ID, range=cell, valueInputOption=RAW, body='yes').execute
+                    cell_write = service.spreadsheets().values().update(spreadsheetId=SPREADSHEET_ID, range=cell, valueInputOption='RAW', body='yes').execute
 
                     break;
 
