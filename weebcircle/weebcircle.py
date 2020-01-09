@@ -37,6 +37,6 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def circle(self, ctx):
-        for member in circle:
+        for member in self.circle:
             msg += "{}\n".format(member)
             await ctx.send(msg)
