@@ -1,4 +1,3 @@
-
 import discord
 import os
 import re
@@ -24,5 +23,6 @@ class weebcircle(commands.Cog):
     @checks.mod_or_permissions(administrator=True)
     @commands.guild_only()
     @commands.command()
-    async def ping(self, ctx, member: discord.member):
-        await ctx.send(f"PONG {member}")
+    async def ping(self, ctx):
+        msg = "pong"
+        await ctx.send(msg)
