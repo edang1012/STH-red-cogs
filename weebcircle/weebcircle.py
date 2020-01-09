@@ -27,6 +27,7 @@ class weebcircle(commands.Cog):
         msg = "<:ayaya:611753251888562187> {}".format(ctx.author.mention)
         await ctx.send(msg)
 
+        
     @commands.guild_only()
     @commands.command()
     async def optin(self, ctx):
@@ -34,10 +35,13 @@ class weebcircle(commands.Cog):
         msg = "{} has been added to the circle".format(ctx.author.mention)
         await ctx.send(msg)
         
+        
     @commands.guild_only()
     @commands.command()
     async def circle(self, ctx):
         msg = "Currently members:\n"
+        
         for member in self.circle:
             msg += "{}\n".format(member)
-            await ctx.send(msg)
+        
+        await ctx.send(msg)
