@@ -24,5 +24,5 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def weebping(self, ctx, member: discord.Member):
-        msg = ":ayaya:"
-        await ctx.send(f":ayaya: {member}")
+        msg = ":ayaya:" + member
+        await ctx.send(msg)
