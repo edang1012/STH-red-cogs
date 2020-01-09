@@ -23,6 +23,6 @@ class weebcircle(commands.Cog):
     @checks.mod_or_permissions(administrator=True)
     @commands.guild_only()
     @commands.command()
-    async def weebping(self, ctx, member: discord.Member):
-        msg = ":ayaya:" + member
+    async def weebping(self, ctx, event):
+        msg = "ayaya {}".format(event.author.mention)
         await ctx.send(msg)
