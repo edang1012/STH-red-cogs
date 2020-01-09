@@ -23,6 +23,6 @@ class weebcircle(commands.Cog):
     @checks.mod_or_permissions(administrator=True)
     @commands.guild_only()
     @commands.command()
-    async def ping(self, ctx):
-        msg = "pong"
-        await ctx.send(msg)
+    async def weebping(self, ctx, member: discord.Member):
+        msg = ":ayaya:"
+        await ctx.send(f":ayaya: {member}")
