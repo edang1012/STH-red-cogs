@@ -18,11 +18,25 @@ class weebcircle(commands.Cog):
         self.conf.register_guild(
             **self.default_guild_settings
             )
+        self.circle = []
         
 
-    @checks.mod_or_permissions(administrator=True)
     @commands.guild_only()
     @commands.command()
     async def weebping(self, ctx):
         msg = "<:ayaya:611753251888562187> {}".format(ctx.author.mention)
         await ctx.send(msg)
+
+    @commands.guild_only()
+    @commands.command()
+    async def optin(self, ctx):
+        self.circle.append(ctx.author.mention)
+        msg = "{} has been added to the circle".format(ctx.author.mention)
+        await ctx.send(msg)
+        
+    @commands.guild_only()
+    @commands.command()
+    async def circle(self, ctx):
+        for member in circle:
+            msg += "{}\n".format(member)
+            await ctx.send(msg)
