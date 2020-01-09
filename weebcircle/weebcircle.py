@@ -24,5 +24,5 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def weebping(self, ctx):
-        msg = ":ayaya: {}".format(ctx.author.mention)
+        msg = "<:ayaya:611753251888562187> {}".format(ctx.author.mention)
         await ctx.send(msg)
