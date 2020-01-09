@@ -6,7 +6,7 @@ import re
 from redbot.core import checks, Config, commands
 
 
-class jp2021money(commands.Cog):
+class weebcircle(commands.Cog):
     """This bot was made to be used for weebcircle things."""
     
     default_guild_settings = {
@@ -24,4 +24,5 @@ class jp2021money(commands.Cog):
     @checks.mod_or_permissions(administrator=True)
     @commands.guild_only()
     @commands.command()
-    async def test(self, ctx):
+    async def ping(self, ctx, member: discord.member):
+        await ctx.send(f"PONG {member}")
