@@ -32,7 +32,7 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def optin(self, ctx, arg1):
-        if any(ctx.author.member in list for list in self.list):
+        if any(ctx.author.mention in list for list in self.list):
             msg = "You are already in the list baka"
             
         else:
