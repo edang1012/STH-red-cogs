@@ -40,7 +40,7 @@ class weebcircle(commands.Cog):
         
     @commands.guild_only()
     @commands.command()
-    async def optout(self, ctx, arg1):
+    async def optout(self, ctx):
         for member in self.list:
             if ctx.author.mention == member[0]:
                 self.list.remove(ctx.author.mention)
