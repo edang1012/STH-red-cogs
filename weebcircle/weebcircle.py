@@ -44,6 +44,9 @@ class weebcircle(commands.Cog):
         for member in self.list:
             if ctx.author.mention == member[0]:
                 self.list.remove(member)
+                
+        with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+            pickle.dump(self.list,f)
         msg = "{} has been removed from the list.".format(ctx.author.mention)
         await ctx.send(msg)
                 
