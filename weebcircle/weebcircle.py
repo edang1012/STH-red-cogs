@@ -67,3 +67,8 @@ class weebcircle(commands.Cog):
         for member in self.list:
             msg += "{}\n".format(member)
         await ctx.send(msg)
+
+    @commands.guild_only()
+    @commands.command()
+    async def print(self, ctx):
+        await ctx.send(self.list[0][0])
