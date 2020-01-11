@@ -32,13 +32,14 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def optin(self, ctx, arg1):
-        if any (ctx.author.member not in list for list in self.list):
+        if any(ctx.author.member in list for list in self.list):
+            msg = "You are already in the list baka"
+            
+        else:
             self.list.append([ctx.author.mention, arg1])
             with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                 pickle.dump(self.list,f)
             msg = "{} has been added to the list and wants {} cour.".format(ctx.author.mention,arg1)
-        else:
-            msg = "You are already in the list baka"
         await ctx.send(msg)
         
     @commands.guild_only()
