@@ -19,7 +19,6 @@ class weebcircle(commands.Cog):
         self.conf.register_guild(
             **self.default_guild_settings
             )
-        self.circle = []
         self.list = []
         
 
@@ -33,21 +32,10 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def optin(self, ctx, arg1):
-        self.circle.append([ctx.author.mention, arg1])
+        self.list.append([ctx.author.mention, arg1])
         with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-            pickle.dump(self.circle,f)
-        msg = "{} has been added to the circle and wants {} cour.".format(ctx.author.mention,arg1)
-        await ctx.send(msg)
-        
-        
-    @commands.guild_only()
-    @commands.command()
-    async def circle(self, ctx):
-        msg = "Currently members:\n"
-        
-        for member in self.circle:
-            msg += "{}\n".format(member)
-        
+            pickle.dump(self.list,f)
+        msg = "{} has been added to the list and wants {} cour.".format(ctx.author.mention,arg1)
         await ctx.send(msg)
         
     @commands.guild_only()
@@ -78,4 +66,13 @@ class weebcircle(commands.Cog):
         for member in self.list:
             msg += "{} wants to watch ".format(member[0])
             msg += "{} cour(s)\n".format(member[1])
+        await ctx.send(msg)
+
+    @commands.guild_only()
+    @commands.command()
+    async def clear(self, ctx):
+        self.list = []
+        with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+            pickle.dump(self.list,f)
+        msg = "The list has been cleared"
         await ctx.send(msg)
