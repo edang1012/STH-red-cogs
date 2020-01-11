@@ -71,4 +71,10 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def print(self, ctx):
-        await ctx.send(self.list[0][0])
+        
+        msg = "Currently members:\n"
+        for member in self.list:
+            msg += "{} wants to watch ".format(member)
+            for cour in member
+                msg += "{} cours\n".format(cour)
+        await ctx.send(msg)
