@@ -20,6 +20,7 @@ class weebcircle(commands.Cog):
             **self.default_guild_settings
             )
         self.circle = []
+        self.list = []
         
 
     @commands.guild_only()
@@ -53,4 +54,13 @@ class weebcircle(commands.Cog):
     @commands.command()
     async def rec(self, ctx, *, arg):
         msg = "You said {}".format(arg)
+        await ctx.send(msg)
+        
+    @commands.guild_only()
+    @commands.command()
+    async def list(self, ctx, *, arg):
+        with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+            self.list = pickle.load(f)
+        for member in self.list:
+            msg += "{}\n".format(member)
         await ctx.send(msg)
