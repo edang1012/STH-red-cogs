@@ -43,7 +43,7 @@ class weebcircle(commands.Cog):
     async def optout(self, ctx):
         for member in self.list:
             if ctx.author.mention == member[0]:
-                self.list.remove(ctx.author.mention)
+                self.list.remove(member)
         msg = "{} has been removed from the list.".format(ctx.author.mention)
         await ctx.send(msg)
                 
