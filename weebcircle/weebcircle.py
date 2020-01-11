@@ -75,6 +75,6 @@ class weebcircle(commands.Cog):
         msg = "Currently members:\n"
         for member in self.list:
             msg += "{} wants to watch ".format(member)
-            for cour in member
+            for cour in member:
                 msg += "{} cours\n".format(cour)
         await ctx.send(msg)
