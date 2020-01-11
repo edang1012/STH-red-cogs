@@ -41,9 +41,9 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def optout(self, ctx, arg1):
-        for index, member in emumerate(self.list):
+        for member in self.list:
             if ctx.author.mention == member[0]:
-                del self.list(index[0])
+                self.list.remove(ctx.author.mention)
         msg = "{} has been removed from the list.".format(ctx.author.mention)
         await ctx.send(msg)
                 
