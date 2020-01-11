@@ -58,7 +58,7 @@ class weebcircle(commands.Cog):
         
     @commands.guild_only()
     @commands.command()
-    async def list(self, ctx, *, arg):
+    async def list(self, ctx):
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             self.list = pickle.load(f)
         for member in self.list:
