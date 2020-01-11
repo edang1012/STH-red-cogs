@@ -45,3 +45,9 @@ class weebcircle(commands.Cog):
             msg += "{}\n".format(member)
         
         await ctx.send(msg)
+        
+    @commands.guild_only()
+    @commands.command()
+    async def rec(self, ctx):
+        msg = ctx.message
+        await ctx.send(msg)
