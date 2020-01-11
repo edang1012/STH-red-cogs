@@ -61,6 +61,9 @@ class weebcircle(commands.Cog):
     async def list(self, ctx):
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             self.list = pickle.load(f)
+            
+        msg = "Currently members:\n"
+
         for member in self.list:
             msg += "{}\n".format(member)
         await ctx.send(msg)
