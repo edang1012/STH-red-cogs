@@ -33,8 +33,9 @@ class weebcircle(commands.Cog):
     @commands.command()
     async def optin(self, ctx):
         self.circle.append(ctx.author.mention)
+        test = "poop"
         with open('/home/pi/Bot_Archive/weeb_list.data', 'w') as f:
-            pickle.dump(self.circle,f)
+            pickle.dump(test,f)
         msg = "{} has been added to the circle".format(ctx.author.mention)
         await ctx.send(msg)
         
