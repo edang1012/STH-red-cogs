@@ -32,7 +32,7 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def optin(self, ctx, arg1):
-        if self.list.find(ctx.author.mention) == -1:
+        if any (ctx.author.member not in list for list in self.list):
             self.list.append([ctx.author.mention, arg1])
             with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                 pickle.dump(self.list,f)
