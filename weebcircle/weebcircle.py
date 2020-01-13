@@ -32,16 +32,20 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def optin(self, ctx, arg1):
-        """Usage: Enter the number of cours you
-           you would like to watch"""
+        """Usage: Enter the number of cours you would like to watch"""
+        
         if any(ctx.author.mention in list for list in self.list):
             msg = "You are already in the list baka"
             
         else:
-            self.list.append([ctx.author.mention, arg1])
-            with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-                pickle.dump(self.list,f)
-            msg = "{} has been added to the list and wants {} cour.".format(ctx.author.mention,arg1)
+            if arg1.isnumeric():
+                self.list.append([ctx.author.mention, arg1])
+                with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+                    pickle.dump(self.list,f)
+                msg = "{} has been added to the list and wants {} cour.".format(ctx.author.mention,arg1)
+            else:
+                msg = "Thats not a valid number of cours, baka..."
+                
         await ctx.send(msg)
         
     @commands.guild_only()
