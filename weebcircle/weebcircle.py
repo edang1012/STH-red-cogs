@@ -143,8 +143,8 @@ class weebcircle(commands.Cog):
     @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
     async def randomize(self, ctx):
-        self.rand = self.list
-        random.shuffle(self.rand)
+        temp = self.list
+        random.shuffle(temp)
         
         msg = "Not Rand:\n"
         for member in self.list:
@@ -152,7 +152,7 @@ class weebcircle(commands.Cog):
             msg += "{} cour(s)\n".format(member[1])
             
         msg += "\n\n Rand:\n"
-        for member in self.rand:
+        for member in temp:
             msg += "{} wants to watch ".format(member[0])
             msg += "{} cour(s)\n".format(member[1])
         await ctx.send(msg)
