@@ -147,7 +147,7 @@ class weebcircle(commands.Cog):
         rand = np.array(self.list)
         list = np.array(self.list)
         
-        while rand[:,1] != list[:,1]:
+        while rand[:,0] != list[:,0]:
             np.random.shuffle(rand)
         
         msg = "Not Rand:\n"
