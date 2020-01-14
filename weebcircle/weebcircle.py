@@ -134,11 +134,13 @@ class weebcircle(commands.Cog):
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             self.list = pickle.load(f)
             
-        rand_list = np.array(self.list)
-        old_list = np.array(self.list)
+        #rand_list = np.array(self.list)
+        #old_list = np.array(self.list)
+        rand_list = self.list
+        old_list = self.list
         
         while (rand_list[:,0] == old_list[:,0]).any():
-            np.random.shuffle(rand_list)
+            random.shuffle(rand_list)
             
         self.rand = rand_list
         self.list = old_list
