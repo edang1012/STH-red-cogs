@@ -139,7 +139,7 @@ class weebcircle(commands.Cog):
         
         print(list)
         
-        while (rand[:,0] == list[:,0]).all():
+        while (rand == list).all():
             np.random.shuffle(rand)
         
         msg = "Not Rand:\n"
