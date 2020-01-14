@@ -66,9 +66,9 @@ class weebcircle(commands.Cog):
                 msg = "{} has been added to the list and wants 3+ cours.".format(ctx.author.mention)
             
             elif (arg1.lower() == 'dragon') or (arg1.lower() == 'ryu'):
-                msg = "Just watch One Piece of Detective Conan, you don't need this. Fucking masochist..."
+                msg = "Just watch One Piece or Detective Conan, you don't need this. Fucking masochist..."
             
-            elif (arg1.lower() == 'hard') or (arg1.lower() == 'demon') or (arg1.lower() == 'oni'):
+            elif (arg1.lower() == 'god') or (arg1.lower() == 'kami'):
                 self.list.append([ctx.author.mention, '3+'])
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                     pickle.dump(self.list,f)
