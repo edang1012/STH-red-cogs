@@ -92,6 +92,7 @@ class weebcircle(commands.Cog):
         await ctx.send(msg)
 
     @commands.guild_only()
+    @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
     async def clear(self, ctx):
         self.list = []
