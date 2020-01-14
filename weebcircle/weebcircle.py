@@ -21,7 +21,7 @@ class weebcircle(commands.Cog):
         self.conf.register_guild(
             **self.default_guild_settings
             )
-        self.list = []
+        self.list = np.array()
         self.rand = []
 
         
@@ -44,8 +44,7 @@ class weebcircle(commands.Cog):
             
         else:
             if arg1.isnumeric():
-                #self.list.append([ctx.author.mention, arg1])
-                self.list = np.append(self.list, [[ctx.author.mention, arg1]], axis = 0)
+                self.list.append([ctx.author.mention, arg1])
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                     pickle.dump(self.list,f)
                 msg = "{} has been added to the list and wants at most {} cour(s).".format(ctx.author.mention,arg1)
@@ -145,8 +144,8 @@ class weebcircle(commands.Cog):
         while (rand_list[:,0] == old_list[:,0]).any():
             np.random.shuffle(rand_list)
             
-        self.rand = rand_list
-        self.list = old_list
+        self.rand = list(rand_list)
+        self.list = list(old_list)
         with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
             pickle.dump(self.list,f)
         
