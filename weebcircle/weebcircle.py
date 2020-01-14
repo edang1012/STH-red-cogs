@@ -141,6 +141,7 @@ class weebcircle(commands.Cog):
             np.random.shuffle(rand_list)
             
         self.rand = rand_list
+        self.list = old_list
         
         msg = "Not Rand:\n"
         for member in self.list:
