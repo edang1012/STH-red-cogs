@@ -47,7 +47,7 @@ class weebcircle(commands.Cog):
                     pickle.dump(self.list,f)
                 msg = "{} has been added to the list and wants {} cour.".format(ctx.author.mention,arg1)
             
-            else if (arg1.lower() == 'easy') or (arg1.lower() == 'wolf'):
+            elif (arg1.lower() == 'easy') or (arg1.lower() == 'wolf'):
                 self.list.append([ctx.author.mention, '1'])
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                     pickle.dump(self.list,f)
