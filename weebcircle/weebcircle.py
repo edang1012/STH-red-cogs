@@ -21,7 +21,7 @@ class weebcircle(commands.Cog):
         self.conf.register_guild(
             **self.default_guild_settings
             )
-        self.list = np.array()
+        self.list = []
         self.rand = []
 
         
