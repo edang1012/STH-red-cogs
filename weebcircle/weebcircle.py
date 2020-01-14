@@ -45,14 +45,35 @@ class weebcircle(commands.Cog):
                 self.list.append([ctx.author.mention, arg1])
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                     pickle.dump(self.list,f)
-                msg = "{} has been added to the list and wants {} cour.".format(ctx.author.mention,arg1)
+                msg = "{} has been added to the list and wants {} cour(s).".format(ctx.author.mention,arg1)
             
-            elif (arg1.lower() == 'easy') or (arg1.lower() == 'wolf'):
+            elif (arg1.lower() == 'easy') or (arg1.lower() == 'wolf') or (arg1.lower() == 'okami'):
                 self.list.append([ctx.author.mention, '1'])
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                     pickle.dump(self.list,f)
                 msg = "{} has been added to the list and wants 1 cour.".format(ctx.author.mention)
+            
+            elif (arg1.lower() == 'med') or (arg1.lower() == 'medium') or (arg1.lower() == 'tiger') or (arg1.lower() == 'tora'):
+                self.list.append([ctx.author.mention, '2'])
+                with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+                    pickle.dump(self.list,f)
+                msg = "{} has been added to the list and wants 2 cours.".format(ctx.author.mention)
                 
+            elif (arg1.lower() == 'hard') or (arg1.lower() == 'demon') or (arg1.lower() == 'oni'):
+                self.list.append([ctx.author.mention, '3+'])
+                with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+                    pickle.dump(self.list,f)
+                msg = "{} has been added to the list and wants 3+ cours.".format(ctx.author.mention)
+            
+            elif (arg1.lower() == 'dragon') or (arg1.lower() == 'ryu'):
+                msg = "Just watch One Piece of Detective Conan, you don't need this. Fucking masochist..."
+            
+            elif (arg1.lower() == 'hard') or (arg1.lower() == 'demon') or (arg1.lower() == 'oni'):
+                self.list.append([ctx.author.mention, '3+'])
+                with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+                    pickle.dump(self.list,f)
+                msg = "Just pick something from here: https://en.wikipedia.org/wiki/List_of_anime_series_by_episode_count\n Enjoy ya damn masochist..."
+            
             else:
                 msg = "Thats not a valid number of cours, baka..."
                 
