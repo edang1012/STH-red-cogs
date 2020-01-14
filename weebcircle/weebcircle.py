@@ -72,7 +72,7 @@ class weebcircle(commands.Cog):
                 self.list.append([ctx.author.mention, '3+'])
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                     pickle.dump(self.list,f)
-                msg = "Just pick something from here: https://en.wikipedia.org/wiki/List_of_anime_series_by_episode_count\n Enjoy ya damn masochist..."
+                msg = "Just pick something from here: https://en.wikipedia.org/wiki/List_of_anime_series_by_episode_count \nEnjoy ya damn masochist..."
             
             else:
                 msg = "Thats not a valid number of cours, baka..."
