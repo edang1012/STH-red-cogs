@@ -108,6 +108,10 @@ class weebcircle(commands.Cog):
             msg = "You can't recommend unless you are in the list, baka..."
         for member in self.list:
             if member[0] == ctx.author.mention:
+                if len(member) >= 3:
+                    member[2] = arg
+                    
+                else:
                 member.extend([arg])
                               
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
