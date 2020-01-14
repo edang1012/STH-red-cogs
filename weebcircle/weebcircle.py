@@ -154,8 +154,8 @@ class weebcircle(commands.Cog):
             np.random.shuffle(rand_list)
         
         # convert numpy array back to lists since its just easier
-        self.rand = list(rand_list)
-        self.list = list(old_list)
+        self.rand = rand_list.tolist()
+        self.list = old_list.tolist()
         
         with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
             pickle.dump(self.list,f)
