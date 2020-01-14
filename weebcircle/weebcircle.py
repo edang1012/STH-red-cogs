@@ -3,6 +3,7 @@ import os
 import re
 import pickle
 import random
+import numpy as np
 
 from redbot.core import checks, Config, commands
 
@@ -143,8 +144,8 @@ class weebcircle(commands.Cog):
     @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
     async def randomize(self, ctx):
-        temp = self.list
-        random.shuffle(temp)
+        temp = np.array(self.list)
+        np.random.shuffle(temp)
         
         msg = "Not Rand:\n"
         for member in self.list:
@@ -155,4 +156,5 @@ class weebcircle(commands.Cog):
         for member in temp:
             msg += "{} wants to watch ".format(member[0])
             msg += "{} cour(s)\n".format(member[1])
+        
         await ctx.send(msg)
