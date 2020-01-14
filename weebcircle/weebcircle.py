@@ -35,6 +35,7 @@ class weebcircle(commands.Cog):
         3 cours: 3, Hard, Demon
         3+ cours: Expert, Dragon, Ryu"""
         
+        # open list from file to ensure most up to date version
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             self.list = pickle.load(f)
             
@@ -86,6 +87,7 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def optout(self, ctx):
+        # open list from file to ensure most up to date version
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             self.list = pickle.load(f)
             
@@ -108,6 +110,7 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def list(self, ctx):
+        # open list from file to ensure most up to date version
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             self.list = pickle.load(f)
             
@@ -131,6 +134,7 @@ class weebcircle(commands.Cog):
     @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
     async def randomize(self, ctx):
+        # open list from file to ensure most up to date version
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             self.list = pickle.load(f)
             
@@ -142,6 +146,8 @@ class weebcircle(commands.Cog):
             
         self.rand = rand_list
         self.list = old_list
+        with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+            pickle.dump(self.list,f)
         
         msg = "Not Rand:\n"
         for member in self.list:
