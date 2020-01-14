@@ -104,14 +104,16 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def rec(self, ctx, *, arg):
+        if not any(ctx.author.mention in list for list in self.list):
+            msg = "You can't recommend unless you are in the list, baka..."
         for member in self.list:
             if member[0] == ctx.author.mention:
-                member.extend(arg)
+                member.extend([arg])
                               
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                     pickle.dump(self.list,f)
                               
-        msg = "You said {}".format(arg)
+                msg = "You said {}".format(arg)
         await ctx.send(msg)
         
     @commands.guild_only()
