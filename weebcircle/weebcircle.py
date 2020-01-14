@@ -23,13 +23,6 @@ class weebcircle(commands.Cog):
             )
         self.list = []
         self.rand = []
-        
-
-    @commands.guild_only()
-    @commands.command()
-    async def weebping(self, ctx):
-        msg = "<:ayaya:611753251888562187> {}".format(ctx.author.mention)
-        await ctx.send(msg)
 
         
     @commands.guild_only()
@@ -42,6 +35,9 @@ class weebcircle(commands.Cog):
         3 cours: 3, Hard, Demon
         3+ cours: Expert, Dragon, Ryu"""
         
+        with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+            self.list = pickle.load(f)
+            
         if any(ctx.author.mention in list for list in self.list):
             msg = "You are already in the list baka"
             
@@ -90,6 +86,9 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def optout(self, ctx):
+        with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+            self.list = pickle.load(f)
+            
         for member in self.list:
             if ctx.author.mention == member[0]:
                 self.list.remove(member)
@@ -119,18 +118,6 @@ class weebcircle(commands.Cog):
         await ctx.send(msg)
 
     @commands.guild_only()
-    @commands.command()
-    async def print(self, ctx):
-        with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
-            self.list = pickle.load(f)
-        
-        msg = "Currently members:\n"
-        for member in self.list:
-            msg += "{} wants to watch ".format(member[0])
-            msg += "{} cour(s)\n".format(member[1])
-        await ctx.send(msg)
-
-    @commands.guild_only()
     @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
     async def clear(self, ctx):
@@ -144,13 +131,16 @@ class weebcircle(commands.Cog):
     @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
     async def randomize(self, ctx):
+        with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+            self.list = pickle.load(f)
+            
         rand = np.array(self.list)
         list = np.array(self.list)
         
         print(list)
         
-        #while rand[:,0] != list[:,0]:
-            #np.random.shuffle(rand)
+        while rand[:,0] != list[:,0]:
+            np.random.shuffle(rand)
         
         msg = "Not Rand:\n"
         for member in self.list:
