@@ -38,7 +38,7 @@ class weebcircle(commands.Cog):
         # open list from file to ensure most up to date version
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             self.list = pickle.load(f)
-            
+                
         if any(ctx.author.mention in list for list in self.list):
             msg = "You are already in the list baka"
             
@@ -104,6 +104,9 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def rec(self, ctx, *, arg):
+        for member in self.list:
+            if member[0] == ctx.author.mention:
+                member.extend(arg)
         msg = "You said {}".format(arg)
         await ctx.send(msg)
         
@@ -143,9 +146,11 @@ class weebcircle(commands.Cog):
         
         while (rand_list[:,0] == old_list[:,0]).any():
             np.random.shuffle(rand_list)
-            
+        
+        # convert numpy array back to lists since its just easier
         self.rand = list(rand_list)
         self.list = list(old_list)
+        
         with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
             pickle.dump(self.list,f)
         
