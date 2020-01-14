@@ -45,7 +45,7 @@ class weebcircle(commands.Cog):
         else:
             if arg1.isnumeric():
                 #self.list.append([ctx.author.mention, arg1])
-                np.append(self.list, [ctx.author.mention, arg1], axis = 0)
+                self.list = np.append(self.list, [ctx.author.mention, arg1], axis = 0)
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                     pickle.dump(self.list,f)
                 msg = "{} has been added to the list and wants at most {} cour(s).".format(ctx.author.mention,arg1)
