@@ -183,13 +183,13 @@ class weebcircle(commands.Cog):
     @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
     async def start(self, ctx):
+        msg = "none"
+        
         for member in self.list:
             if len(member) < 3:
                 msg = "{} needs to recommend something.".format(member[0])
                 
-        if msg:
-            pass
-        else:
+        if msg == "none":
             msg = "everyone rec'd something"
-            
+
         await ctx.send(msg)
