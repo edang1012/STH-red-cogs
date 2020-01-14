@@ -97,6 +97,7 @@ class weebcircle(commands.Cog):
                 
         with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
             pickle.dump(self.list,f)
+            
         msg = "{} has been removed from the list.".format(ctx.author.mention)
         await ctx.send(msg)
                 
@@ -106,6 +107,7 @@ class weebcircle(commands.Cog):
     async def rec(self, ctx, *, arg):
         if not any(ctx.author.mention in list for list in self.list):
             msg = "You can't recommend unless you are in the list, baka..."
+            
         for member in self.list:
             if member[0] == ctx.author.mention:
                 if len(member) >= 3:
@@ -118,6 +120,7 @@ class weebcircle(commands.Cog):
                     pickle.dump(self.list,f)
                               
                 msg = "You said {}".format(arg)
+                
         await ctx.send(msg)
         
     @commands.guild_only()
@@ -174,4 +177,13 @@ class weebcircle(commands.Cog):
             msg += "{} wants to watch ".format(member[0])
             msg += "{} cour(s)\n".format(member[1])
         
+        await ctx.send(msg)
+
+    @commands.guild_only()
+    @checks.admin_or_permissions(manage_guild=True)
+    @commands.command()
+    async def start(self, ctx):
+        for member in self.list:
+            if len(member) < 3:
+                msg = "{} needs to recommend something.".format(member[0])
         await ctx.send(msg)
