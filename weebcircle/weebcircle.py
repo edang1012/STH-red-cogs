@@ -189,7 +189,7 @@ class weebcircle(commands.Cog):
                 
         if msg:
             pass
-        else
+        else:
             msg = "everyone rec'd something"
             
         await ctx.send(msg)
