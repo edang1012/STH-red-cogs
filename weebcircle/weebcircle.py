@@ -112,7 +112,7 @@ class weebcircle(commands.Cog):
                     member[2] = arg
                     
                 else:
-                member.extend([arg])
+                    member.extend([arg])
                               
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                     pickle.dump(self.list,f)
