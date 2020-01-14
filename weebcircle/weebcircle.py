@@ -33,6 +33,7 @@ class weebcircle(commands.Cog):
     @commands.command()
     async def optin(self, ctx, arg1):
         """Usage: Enter the number of cours you would like to watch
+        Input any number of cours or specify with the keywords below:
         1 cour: 1, Easy, Wolf
         2 cour: 2, Med, Medium, Tiger
         3 cour: 3, Hard, Demon"""
