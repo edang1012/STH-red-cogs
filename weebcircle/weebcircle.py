@@ -107,6 +107,10 @@ class weebcircle(commands.Cog):
         for member in self.list:
             if member[0] == ctx.author.mention:
                 member.extend(arg)
+                              
+                with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+                    pickle.dump(self.list,f)
+                              
         msg = "You said {}".format(arg)
         await ctx.send(msg)
         
