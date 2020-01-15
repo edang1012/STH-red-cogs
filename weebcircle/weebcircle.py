@@ -30,7 +30,7 @@ class weebcircle(commands.Cog):
     async def start(self, ctx):
         embed = discord.Embed(
             title = 'Welcome to the Weeb Circle',
-            description = """This purpose of this circle is to get others in the group to watch anime they haven't seen before.""",
+            description = """The purpose of this circle is to get others in the group to watch anime they haven't seen before.""",
             color = discord.Color.red()
         )
         footer = """Why are you looking down here baka..."""
@@ -38,17 +38,17 @@ class weebcircle(commands.Cog):
         embed.add_field(name='**Instructions:**', 
                         value=("To start the circle, please follow the procedure listed below:\n\n"
 
-                        "1.  **\".optin <count>\"**:\n  Use this command to opt into the circle. " 
-                                                    "   Specify the number of cours you want to watch with a number or keywords such as: easy, med, hard. " 
-                                                    "   If you want to opt out after opting in, simply use the command **\".optout\"**.\n\n"
+                        "1.  **\".optin <count>\"**:\nUse this command to opt into the circle. " 
+                                                    "Specify the number of cours you want to watch with a number or keywords such as: easy, med, hard. " 
+                                                    "If you want to opt out after opting in, simply use the command **\".optout\"**.\n\n"
 
-                        "2.  **\".randomize\"**:     Use this command to create a randomized list for the members to recommend "
+                        "2.  **\".randomize\"**:     \nUse this command to create a randomized list for the members to recommend "
                                                     "anime. This is a mod/admin only command.\n\n"
 
-                        "3.  **\".rec <anime>\"**:   Use this command to recommend an anime to your assigned member. If you want "
+                        "3.  **\".rec <anime>\"**:   \nUse this command to recommend an anime to your assigned member. If you want "
                                                     "to see who is your assigned member use the command **\".list\"**.\n\n"
 
-                        "4.  **\".watch\"**:         Use this command to display the final list of what each member is watching. " 
+                        "4.  **\".watch\"**:         \nUse this command to display the final list of what each member is watching. " 
                                                     "This is a mod/admin only command.\n\n"), 
                         inline=False
         )
