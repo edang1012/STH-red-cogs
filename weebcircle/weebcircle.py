@@ -27,6 +27,33 @@ class weebcircle(commands.Cog):
         
     @commands.guild_only()
     @commands.command()
+    async def start(self, ctx):
+        embed = discord.Embed(
+            title = 'Welcome to the Weeb Circle',
+            description = """This purpose of this circle is to get others in the group to watch anime they haven't seen before.
+            To start the circle, please follow the procedure listed below:
+            
+            1.  \".optin <count>\": Use this command to opt into the circle. Specifiy the number of cours 
+                                    you want to watch with a number or keywords such as: easy, med, hard.
+                                    If you want to opt out after opting in, simply use the command **\".optout\"**.
+                                            
+            2.  \".randomize\":     Use this command to create a randomized list for the members to recommend
+                                    anime. This is a mod/admin only command.
+                                            
+            3.  \".rec <anime>\":   Use this command to recommend an anime to your assigned member. If you want
+                                    to see how is your assigned member use the command **\".list|**.
+
+            4.  \".watch\":         Use this command to display the final list of what each member is watching. 
+                                    This is a mod/admin only command.""",
+            color = discord.Color.red()
+        )
+        footer = """Why are you looking down here baka..."""
+        embed.set_footer(text=footer)
+        embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
+        await ctx.send(embed=embed)
+        
+    @commands.guild_only()
+    @commands.command()
     async def optin(self, ctx, arg1):
         """Usage: Enter the number of cours you would like to watch
         Input any number of cours or specify with the keywords below:
@@ -180,9 +207,8 @@ class weebcircle(commands.Cog):
         await ctx.send(msg)
 
     @commands.guild_only()
-    @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
-    async def start(self, ctx):
+    async def watch(self, ctx):
         msg = "none"
         
         for member in self.list:
