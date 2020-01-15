@@ -60,10 +60,10 @@ class weebcircle(commands.Cog):
     async def optin(self, ctx, arg1):
         """Usage: Enter the number of cours you would like to watch\n
         Input any number of cours or specify with the keywords below:
-        1 cour:     1, Easy, Wolf
-        2 cours:    2, Med, Medium, Tiger
-        3 cours:    3, Hard, Demon
-        3+ cours:   Expert, Dragon, Ryu"""
+        1 cour:   1, Easy, Wolf
+        2 cours:  2, Med, Medium, Tiger
+        3 cours:  3, Hard, Demon
+        3+ cours: Expert, Dragon, Ryu"""
         
         # open list from file to ensure most up to date version
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
@@ -135,10 +135,12 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def rec(self, ctx, *, arg):
+        """Usage: Recommend an anime using this command"""
+        
         if not any(ctx.author.mention in list for list in self.list):
             msg = "You can't recommend unless you are in the list, baka..."
             
-        for member in self.list:
+        for member,rand in zip(self.list,self.rand):
             if member[0] == ctx.author.mention:
                 if len(member) >= 3:
                     member[2] = arg
@@ -149,7 +151,7 @@ class weebcircle(commands.Cog):
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                     pickle.dump(self.list,f)
                               
-                msg = "You said {}".format(arg)
+                msg = "{} recommended {} to {}".format(ctx.author.mention, arg, rand[0])
                 
         await ctx.send(msg)
         
