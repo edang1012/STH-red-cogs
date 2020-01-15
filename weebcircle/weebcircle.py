@@ -39,17 +39,17 @@ class weebcircle(commands.Cog):
                         value=("To start the circle, please follow the procedure listed below:\n\n"
 
                         "1.  **\".optin <count>\"**:\nUse this command to opt into the circle. " 
-                                                    "Specify the number of cours you want to watch with a number or keywords such as: easy, med, hard. " 
-                                                    "If you want to opt out after opting in, simply use the command **\".optout\"**.\n\n"
+                                                    "Specify the number of cours you want to watch with a number or keywords such as: *easy, med, hard*. " 
+                                                    "\nIf you want to opt out after opting in, simply use the command **\".optout\"**.\n\n"
 
                         "2.  **\".randomize\"**:     \nUse this command to create a randomized list for the members to recommend "
                                                     "anime. This is a mod/admin only command.\n\n"
 
-                        "3.  **\".rec <anime>\"**:   \nUse this command to recommend an anime to your assigned member. If you want "
+                        "3.  **\".rec <anime>\"**:   \nUse this command to recommend an anime to your assigned member. \nIf you want "
                                                     "to see who is your assigned member use the command **\".list\"**.\n\n"
 
                         "4.  **\".watch\"**:         \nUse this command to display the final list of what each member is watching. " 
-                                                    "This is a mod/admin only command.\n\n"), 
+                                                    "\n\n"), 
                         inline=False
         )
         embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
@@ -58,12 +58,12 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def optin(self, ctx, arg1):
-        """Usage: Enter the number of cours you would like to watch
+        """Usage: Enter the number of cours you would like to watch\n
         Input any number of cours or specify with the keywords below:
-        1 cour: 1, Easy, Wolf
-        2 cours: 2, Med, Medium, Tiger
-        3 cours: 3, Hard, Demon
-        3+ cours: Expert, Dragon, Ryu"""
+        1 cour:     1, Easy, Wolf
+        2 cours:    2, Med, Medium, Tiger
+        3 cours:    3, Hard, Demon
+        3+ cours:   Expert, Dragon, Ryu"""
         
         # open list from file to ensure most up to date version
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
