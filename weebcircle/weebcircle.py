@@ -38,9 +38,9 @@ class weebcircle(commands.Cog):
         embed.add_field(name='**Instructions:**', 
                         value=("To start the circle, please follow the procedure listed below:\n\n"
 
-                        "1.  **\".optin <count>\"**: Use this command to opt into the circle. " 
-                                                    "Specifiy the number of cours you want to watch with a number or keywords such as: easy, med, hard. " 
-                                                    "If you want to opt out after opting in, simply use the command **\".optout\"**.\n\n"
+                        "1.  **\".optin <count>\"**:\n  Use this command to opt into the circle. " 
+                                                    "   Specify the number of cours you want to watch with a number or keywords such as: easy, med, hard. " 
+                                                    "   If you want to opt out after opting in, simply use the command **\".optout\"**.\n\n"
 
                         "2.  **\".randomize\"**:     Use this command to create a randomized list for the members to recommend "
                                                     "anime. This is a mod/admin only command.\n\n"
