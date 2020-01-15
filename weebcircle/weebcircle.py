@@ -49,7 +49,7 @@ class weebcircle(commands.Cog):
                                                 "to see who is your assigned member use the command **\".list\"**.\n\n"
 
                         "4.  \".watch\":         Use this command to display the final list of what each member is watching." 
-                                                "This is a mod/admin only command.\n\n", 
+                                                "This is a mod/admin only command.\n\n"), 
                         inline=False
         )
         embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
