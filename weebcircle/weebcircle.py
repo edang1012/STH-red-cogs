@@ -158,6 +158,19 @@ class weebcircle(commands.Cog):
         
     @commands.guild_only()
     @commands.command()
+    async def oldlist(self, ctx):
+        # open list from file to ensure most up to date version
+        #with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+            #self.list = pickle.load(f)
+            
+        msg = "This is the oldlist:\n"
+
+        for member in self.old:
+            msg += "{}\n".format(member)
+        await ctx.send(msg)
+        
+    @commands.guild_only()
+    @commands.command()
     async def list(self, ctx):
         # open list from file to ensure most up to date version
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
@@ -168,7 +181,7 @@ class weebcircle(commands.Cog):
         for member in self.list:
             msg += "{}\n".format(member)
         await ctx.send(msg)
-
+        
     @commands.guild_only()
     @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
