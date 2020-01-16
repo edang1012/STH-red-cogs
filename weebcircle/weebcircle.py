@@ -179,7 +179,7 @@ class weebcircle(commands.Cog):
         msg = "Current members:\n"
 
         for member in self.list:
-            msg += "{}\n".format(member)
+            msg += "member[0]{}     member[1]{}\n".format(member[0],member[1])
         await ctx.send(msg)
         
     @commands.guild_only()
