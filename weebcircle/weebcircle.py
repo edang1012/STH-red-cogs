@@ -211,6 +211,9 @@ class weebcircle(commands.Cog):
         self.rand = rand_list.tolist()
         self.list = old_list.tolist()
         
+        for member,rand in zip(self.list,self.rand):
+            self.list[member].extend(self.rand[member[0]]
+        
         with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
             pickle.dump(self.list,f)
         
