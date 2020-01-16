@@ -238,7 +238,7 @@ class weebcircle(commands.Cog):
             msg = "everyone rec'd something"
             
             for member,rand in zip(self.list,self.rand):
-                self.old.append([member,rand])
+                self.old.append(member.extend(rand))
                 
             
 
