@@ -23,6 +23,7 @@ class weebcircle(commands.Cog):
             )
         self.list = []
         self.rand = []
+        self.old =  []
 
         
     @commands.guild_only()
@@ -162,7 +163,7 @@ class weebcircle(commands.Cog):
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             self.list = pickle.load(f)
             
-        msg = "Currently members:\n"
+        msg = "Current members:\n"
 
         for member in self.list:
             msg += "{}\n".format(member)
@@ -222,5 +223,10 @@ class weebcircle(commands.Cog):
                 
         if msg == "none":
             msg = "everyone rec'd something"
+            
+            for member,rand in zip(self.list,self.rand):
+                self.old.append([member, rand])
+                
+            
 
         await ctx.send(msg)
