@@ -166,7 +166,7 @@ class weebcircle(commands.Cog):
         msg = "This is the oldlist:\n"
 
         for member in self.old:
-            msg += "{}\n".format(member)
+            msg += "member[0]{}     member[1]{}\n".format(member[0],member[1])
         await ctx.send(msg)
         
     @commands.guild_only()
@@ -179,7 +179,8 @@ class weebcircle(commands.Cog):
         msg = "Current members:\n"
 
         for member in self.list:
-            msg += "member[0]{}     member[1]{}\n".format(member[0],member[1])
+            msg += "{}\n".format(member)
+
         await ctx.send(msg)
         
     @commands.guild_only()
