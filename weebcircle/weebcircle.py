@@ -221,8 +221,8 @@ class weebcircle(commands.Cog):
         """Usage: Recommend an anime using this command"""
         
         # open list from file to ensure most up to date version
-            with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
-                self.list = pickle.load(f)
+        with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+            self.list = pickle.load(f)
                 
         print(len(self.list))
         if not self.list:
