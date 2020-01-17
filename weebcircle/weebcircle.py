@@ -79,23 +79,23 @@ class weebcircle(commands.Cog):
         if arg1.isnumeric():
                 pass
             
-            elif (arg1.lower() == 'easy') or (arg1.lower() == 'wolf') or (arg1.lower() == 'okami'):
-                arg1 = '1'
-                            
-            elif (arg1.lower() == 'med') or (arg1.lower() == 'medium') or (arg1.lower() == 'tiger') or (arg1.lower() == 'tora'):
-                arg1 = '2'
-                
-            elif (arg1.lower() == 'hard') or (arg1.lower() == 'demon') or (arg1.lower() == 'oni'):
-                arg1 = '3'
-                
-            elif (arg1.lower() == 'expert') or (arg1.lower() == 'dragon') or (arg1.lower() == 'ryu'):
-                arg1 = '3+'
-                
-            elif (arg1.lower() == 'god') or (arg1.lower() == 'kami'):
-                arg1 = 'f'
-            
-            else:
-               arg1 = '0'
+        elif (arg1.lower() == 'easy') or (arg1.lower() == 'wolf') or (arg1.lower() == 'okami'):
+            arg1 = '1'
+
+        elif (arg1.lower() == 'med') or (arg1.lower() == 'medium') or (arg1.lower() == 'tiger') or (arg1.lower() == 'tora'):
+            arg1 = '2'
+
+        elif (arg1.lower() == 'hard') or (arg1.lower() == 'demon') or (arg1.lower() == 'oni'):
+            arg1 = '3'
+
+        elif (arg1.lower() == 'expert') or (arg1.lower() == 'dragon') or (arg1.lower() == 'ryu'):
+            arg1 = '3+'
+
+        elif (arg1.lower() == 'god') or (arg1.lower() == 'kami'):
+            arg1 = 'f'
+
+        else:
+           arg1 = '0'
             
         # check if author is in list already
         for member in self.list:
