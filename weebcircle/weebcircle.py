@@ -41,7 +41,7 @@ class weebcircle(commands.Cog):
         
         # create file if doesn't exist
         weebfile += 'weeb_list.data'
-        with open(self.dir, 'wb') as f:
+        with open(weebfile, 'wb') as f:
             pickle.dump(self.list,f)
         
         # create embed welcome message, no real code here, just formatting
