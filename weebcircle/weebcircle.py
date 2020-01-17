@@ -30,7 +30,7 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def start(self, ctx):
-        self.dir += '{}'.format(ctx.message.channel)
+        self.dir += '{}/'.format(ctx.message.channel)
 
         Path(self.dir).mkdir(parents=True, exist_ok=True)
         
@@ -74,7 +74,9 @@ class weebcircle(commands.Cog):
         3+ cours: Expert, Dragon, Ryu"""
         
         # open list from file to ensure most up to date version
-        with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+        self.dir += 'weeb_list.data'
+        #with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+        with open('self.dir', 'rb+') as f:
             self.list = pickle.load(f)
         
         msg = 'none'
