@@ -35,6 +35,10 @@ class weebcircle(commands.Cog):
     @commands.command()
     async def start(self, ctx):
         
+        # save list to old and clear list for next circle
+        self.old = self.list
+        self.list = []
+        
         # create director for channel if doesn't exist
         weebfile = self.dir + '{}/'.format(ctx.message.channel)
         Path(weebfile).mkdir(parents=True, exist_ok=True)
@@ -165,14 +169,15 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def optout(self, ctx):
+        weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
         #check if .start was run by looking at the directory
-        if self.dir == '/home/pi/Bot_Archive/weebcircle/':
-            msg = 'You cant optout without starting the circle. Use **.start** to start the circle.'
+        if not path.exists(weebfile):
+            msg = 'You cant optin without starting the circle. Use **.start** to start the circle.'
             
         else:
             # open list from file to ensure most up to date version
             #with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
-            with open(self.dir, 'rb') as f:
+            with open(weebfile, 'rb') as f:
                 self.list = pickle.load(f)
 
             # go through list to find author and remove
@@ -182,7 +187,7 @@ class weebcircle(commands.Cog):
 
             # update the list
             #with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-            with open(self.dir, 'wb') as f:
+            with open(weebfile, 'wb') as f:
                 pickle.dump(self.list,f)
 
             msg = "{} has been removed from the list.".format(ctx.author.mention)
@@ -195,14 +200,15 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def randomize(self, ctx):  
+        weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
         #check if .start was run by looking at the directory
-        if self.dir == '/home/pi/Bot_Archive/weebcircle/':
-            msg = 'You cant randomize without starting the circle. Use **.start** to start the circle.'
+        if not path.exists(weebfile):
+            msg = 'You cant optin without starting the circle. Use **.start** to start the circle.'
             
         else:
             # open list from file to ensure most up to date version
             #with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
-            with open(self.dir, 'rb') as f:
+            with open(weebfile, 'rb') as f:
                 self.list = pickle.load(f)
 
             if not self.list:
@@ -236,7 +242,7 @@ class weebcircle(commands.Cog):
 
                 # update the list
                 #with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-                with open(self.dir, 'wb') as f:
+                with open(weebfile, 'wb') as f:
                     pickle.dump(self.list,f)
 
                 # debug text printing
@@ -258,14 +264,15 @@ class weebcircle(commands.Cog):
     async def rec(self, ctx, *, arg):
         """Usage: Recommend an anime using this command"""
         
+        weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
         #check if .start was run by looking at the directory
-        if self.dir == '/home/pi/Bot_Archive/weebcircle/':
-            msg = 'You cant recommend without starting the circle. Use **.start** to start the circle.'
+        if not path.exists(weebfile):
+            msg = 'You cant optin without starting the circle. Use **.start** to start the circle.'
             
         else:
             # open list from file to ensure most up to date version
             #with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
-            with open(self.dir, 'rb') as f:
+            with open(weebfile, 'rb') as f:
                 self.list = pickle.load(f)
 
             if not self.list:
@@ -299,7 +306,7 @@ class weebcircle(commands.Cog):
 
                         # update the list
                         #with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-                        with open(self.dir, 'wb') as f:
+                        with open(weebfile, 'wb') as f:
                             pickle.dump(self.list,f)
 
                         msg = "{} recommended {} to {}".format(ctx.author.mention, arg, member[2])
@@ -310,9 +317,10 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def watch(self, ctx):
+        weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
         #check if .start was run by looking at the directory
-        if self.dir == '/home/pi/Bot_Archive/weebcircle/':
-            msg = 'You cant watch without starting the circle. Use **.start** to start the circle.'
+        if not path.exists(weebfile):
+            msg = 'You cant optin without starting the circle. Use **.start** to start the circle.'
             
         else:
             msg = "none"
@@ -348,14 +356,15 @@ class weebcircle(commands.Cog):
     async def list(self, ctx):
         # debug command to ensure list is properly populated
         
+        weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
         #check if .start was run by looking at the directory
-        if self.dir == '/home/pi/Bot_Archive/weebcircle/':
-            msg = 'Use **.start** to start the circle.'
+        if not path.exists(weebfile):
+            msg = 'You cant optin without starting the circle. Use **.start** to start the circle.'
             
         else:
             # open list from file to ensure most up to date version
             #with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
-            with open(self.dir, 'rb') as f:
+            with open(weebfile, 'rb') as f:
                 self.list = pickle.load(f)
 
             msg = "Current members:\n"
@@ -369,9 +378,10 @@ class weebcircle(commands.Cog):
     @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
     async def clear(self, ctx):
+        weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
         #check if .start was run by looking at the directory
-        if self.dir == '/home/pi/Bot_Archive/weebcircle/':
-            msg = 'Use **.start** to start the circle.'
+        if not path.exists(weebfile):
+            msg = 'You cant optin without starting the circle. Use **.start** to start the circle.'
             
         else:
             # debug command, to clear the list
@@ -381,7 +391,7 @@ class weebcircle(commands.Cog):
 
             # write empty list to file
             #with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-            with open(self.dir, 'wb') as f:
+            with open(weebfile, 'wb') as f:
                 pickle.dump(self.list,f)
 
             msg = "The list has been cleared"
