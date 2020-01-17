@@ -167,8 +167,8 @@ class weebcircle(commands.Cog):
     @commands.command()
     async def randomize(self, ctx):  
         # open list from file to ensure most up to date version
-            with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
-                self.list = pickle.load(f)
+        with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+            self.list = pickle.load(f)
                 
         if not self.list:
             msg = "You can't randomize an empty list baka..."
