@@ -7,7 +7,7 @@ import numpy as np
 from pathlib import Path
 
 import os.path
-from os import ospath
+from os import path
 
 from redbot.core import checks, Config, commands
 
