@@ -30,9 +30,15 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def start(self, ctx):
+        
+        # create director for channel if doesn't exist
         self.dir += '{}/'.format(ctx.message.channel)
-
         Path(self.dir).mkdir(parents=True, exist_ok=True)
+        
+        # create file if doesn't exist
+        self.dir += 'weeb_list.data'
+        with open(self.dir, 'wb') as f:
+            pickle.dump(self.list,f)
         
         # create embed welcome message, no real code here, just formatting
         embed = discord.Embed(
