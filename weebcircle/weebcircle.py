@@ -75,7 +75,17 @@ class weebcircle(commands.Cog):
         
         # check if author is in list already
         if any(ctx.author.mention in list for list in self.list):
-            msg = "You are already in the list baka"
+            
+            # already in the list, no changes
+            if list[1] == arg1:
+                msg = "You are already in the list baka"
+                
+            # in the list, but differnt cour count
+            else:
+                list[1] = arg1
+                with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+                    pickle.dump(self.list,f)
+                msg = "{} was already in the list, but they now want to watch {} cour(s).".format(ctx.author.mention,arg1)
         
         # bunch of cases for the input
         else:
@@ -210,7 +220,7 @@ class weebcircle(commands.Cog):
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                     pickle.dump(self.list,f)
                               
-                msg = "{} recommended {} to {}".format(ctx.author.mention, arg, member[3])
+                msg = "{} recommended {} to {}".format(ctx.author.mention, arg, member[2])
                 
         await ctx.send(msg)
         
