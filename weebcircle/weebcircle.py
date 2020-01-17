@@ -31,7 +31,9 @@ class weebcircle(commands.Cog):
     @commands.command()
     async def start(self, ctx):
         self.dir += '{}/weebcircle.data'.format(ctx.message.channel)
-        print(self.dir)
+
+        Path(self.dir).mkdir(parents=True, exist_ok=True)
+        
         # create embed welcome message, no real code here, just formatting
         embed = discord.Embed(
             title = 'Welcome to the Weeb Circle',
