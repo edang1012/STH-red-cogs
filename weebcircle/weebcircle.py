@@ -73,6 +73,8 @@ class weebcircle(commands.Cog):
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             self.list = pickle.load(f)
         
+        msg = 'none'
+        
         # check if author is in list already
         for member in self.list:
             if member[0] == ctx.author.mention:
@@ -91,7 +93,7 @@ class weebcircle(commands.Cog):
                     msg = "{} was already in the list, but they now want to watch {} cour(s).".format(ctx.author.mention,arg1)
         
         # bunch of cases for the input
-        if !msg:
+        if msg == 'none':
             if arg1.isnumeric():
                 self.list.append([ctx.author.mention, arg1])
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
