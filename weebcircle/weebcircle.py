@@ -75,26 +75,8 @@ class weebcircle(commands.Cog):
         
         msg = 'none'
         
-        # check if author is in list already
-        for member in self.list:
-            if member[0] == ctx.author.mention:
-                print('1')
-                # already in the list, no changes
-                if member[1] == arg1:
-                    print(2)
-                    msg = "You are already in the list baka"
-
-                # in the list, but different cour count
-                else:
-                    print(3)
-                    member[1] = arg1
-                    with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-                        pickle.dump(self.list,f)
-                    msg = "{} was already in the list, but they now want to watch {} cour(s).".format(ctx.author.mention,arg1)
-        
-        # bunch of cases for the input
-        if msg == 'none':
-            if arg1.isnumeric():
+        # convert input argument to a number if valid
+        if arg1.isnumeric():
                 pass
             
             elif (arg1.lower() == 'easy') or (arg1.lower() == 'wolf') or (arg1.lower() == 'okami'):
@@ -115,6 +97,26 @@ class weebcircle(commands.Cog):
             else:
                arg1 = '0'
             
+        # check if author is in list already
+        for member in self.list:
+            if member[0] == ctx.author.mention:
+                print('1')
+                # already in the list, no changes
+                if member[1] == arg1:
+                    print(2)
+                    msg = "You are already in the list baka"
+
+                # in the list, but different cour count
+                else:
+                    print(3)
+                    member[1] = arg1
+                    with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+                        pickle.dump(self.list,f)
+                    msg = "{} was already in the list, but they now want to watch {} cour(s).".format(ctx.author.mention,arg1)
+        
+        # member wasn't in list cause msg is still 'none'
+        # add them to the list if input was valid
+        if msg == 'none':
             if arg1 == '0':
                 msg = "Thats not a valid number of cours, baka..."
                 
