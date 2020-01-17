@@ -76,7 +76,7 @@ class weebcircle(commands.Cog):
         # open list from file to ensure most up to date version
         self.dir += 'weeb_list.data'
         #with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
-        with open(self.dir, 'rb+') as f:
+        with open(self.dir, '+b') as f:
             self.list = pickle.load(f)
         
         msg = 'none'
