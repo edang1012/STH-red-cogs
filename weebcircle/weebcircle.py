@@ -76,7 +76,7 @@ class weebcircle(commands.Cog):
         # check if author is in list already
         for member in self.list:
             if member[0] == ctx.author.mention:
-
+                print('1')
                 # already in the list, no changes
                 if member[1] == arg1:
                     msg = "You are already in the list baka"
