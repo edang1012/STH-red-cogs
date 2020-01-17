@@ -112,7 +112,7 @@ class weebcircle(commands.Cog):
                     member[1] = arg1
                     with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                         pickle.dump(self.list,f)
-                    msg = "{} was already in the list, but they now want to watch {} cour(s).".format(ctx.author.mention,arg1)
+                    msg = "{} was already in the list, but now they want to watch {} cour(s).".format(ctx.author.mention,arg1)
         
         # member wasn't in list cause msg is still 'none'
         # add them to the list if input was valid
