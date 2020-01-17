@@ -169,12 +169,12 @@ class weebcircle(commands.Cog):
         if not self.list:
             msg = "You can't randomize an empty list baka..."
             
-        # check if the list has only one member
-        elif len(self.list[:,0]) == 1:
+        # check if the list has only one member based on col count
+        elif self.list.shape[1] == 1:
             msg = "You can't randomize a list with only 1 member baka..."
                  
-        # check if the rec command was run based on the list of a list entry
-        elif len(self.list[0]) > 3:
+        # check if the rec command was run based on row count
+        elif self.list.shape[0] > 3:
             msg = "You can't randomize again cause you already ran **.rec**..."
                  
         else:
@@ -223,12 +223,12 @@ class weebcircle(commands.Cog):
         if not self.list:
             msg = "You can't recommend to an empty list, baka..."
         
-        # check list to see if only 1 member
-        elif len(self.list[:,0]) == 1:
+        # check list to see if only 1 member based on col count
+        elif self.list.shape[1] == 1:
             msg = "You can't recommend to yourself, baka..."
         
-        # check if .randomize has run based on list entry length
-        elif len(self.list[0]) < 3:
+        # check if .randomize has run based on row count
+        elif self.list.shape[0] < 3:
             msg = "You can't recommend without a partner, run the **.randomize** command first."
             
         else:
