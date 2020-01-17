@@ -4,6 +4,7 @@ import re
 import pickle
 import random
 import numpy as np
+from pathlib import Path
 
 from redbot.core import checks, Config, commands
 
@@ -22,14 +23,15 @@ class weebcircle(commands.Cog):
             **self.default_guild_settings
             )
         self.list = []
-        #self.rand = []
         self.old =  []
+        self.dir = '/home/pi/Bot_Archive/'
 
         
     @commands.guild_only()
     @commands.command()
     async def start(self, ctx):
-        
+        self.dir += '{}/weebcircle.data'.format(ctx.message.guild)
+        print(self.dir)
         # create embed welcome message, no real code here, just formatting
         embed = discord.Embed(
             title = 'Welcome to the Weeb Circle',
@@ -46,7 +48,7 @@ class weebcircle(commands.Cog):
                                                     "\nIf you want to opt out after opting in, simply use the command **\".optout\"**.\n\n"
 
                         "2.  **\".randomize\"**:     \nUse this command to create a randomized list for the members to recommend "
-                                                    "anime. This is a mod/admin only command.\n\n"
+                                                    "anime.\n\n"
 
                         "3.  **\".rec <anime>\"**:   \nUse this command to recommend an anime to your assigned member. \nIf you want "
                                                     "to see who is your assigned member use the command **\".list\"**.\n\n"
@@ -64,9 +66,9 @@ class weebcircle(commands.Cog):
     async def optin(self, ctx, arg1):
         """Usage: Enter the number of cours you would like to watch\n
         Input any number of cours or specify with the keywords below:
-        1 cour:   1, Easy, Wolf
+        1 cour:   1, Easy, Wolf, Okami
         2 cours:  2, Med, Medium, Tiger
-        3 cours:  3, Hard, Demon
+        3 cours:  3, Hard, Demon, Oni, Akuma
         3+ cours: Expert, Dragon, Ryu"""
         
         # open list from file to ensure most up to date version
@@ -86,7 +88,7 @@ class weebcircle(commands.Cog):
         elif (arg1.lower() == 'med') or (arg1.lower() == 'medium') or (arg1.lower() == 'tiger') or (arg1.lower() == 'tora'):
             arg1 = '2'
 
-        elif (arg1.lower() == 'hard') or (arg1.lower() == 'demon') or (arg1.lower() == 'oni'):
+        elif (arg1.lower() == 'hard') or (arg1.lower() == 'demon') or (arg1.lower() == 'oni') or (arg1.lower() == 'akuma'):
             arg1 = '3'
 
         elif (arg1.lower() == 'expert') or (arg1.lower() == 'dragon') or (arg1.lower() == 'ryu'):
@@ -163,7 +165,6 @@ class weebcircle(commands.Cog):
     # TODO: add a check to the oldlist so people dont get matched
     # two lists in a row
     @commands.guild_only()
-    @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
     async def randomize(self, ctx):  
         # open list from file to ensure most up to date version
@@ -195,13 +196,15 @@ class weebcircle(commands.Cog):
             rand_list = rand_array.tolist()
             self.list = old_array.tolist()
 
-            # figure out why this doesnt work
+            # add randomized partner to member, partner is who watches your recommended show
             for member,rand in zip(self.list,rand_list):
                 member.extend([rand[0]])
 
+            # update the list
             with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                 pickle.dump(self.list,f)
 
+            # debug text printing
             msg = "Not Rand:\n"
             for member in self.list:
                 msg += "{} wants to watch ".format(member[0])
@@ -224,7 +227,6 @@ class weebcircle(commands.Cog):
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             self.list = pickle.load(f)
                 
-        print(len(self.list[0]))
         if not self.list:
             msg = "You can't recommend to an empty list, baka..."
         
@@ -254,6 +256,7 @@ class weebcircle(commands.Cog):
                     else:
                         member.extend([arg])
 
+                    # update the list
                     with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                         pickle.dump(self.list,f)
 
@@ -280,6 +283,7 @@ class weebcircle(commands.Cog):
         
     # DEBUG COMMANDS BELOW:    
     @commands.guild_only()
+    @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
     async def oldlist(self, ctx):
         # debug command to check if the oldlist was saved, nothing important
@@ -291,6 +295,7 @@ class weebcircle(commands.Cog):
         
         
     @commands.guild_only()
+    @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
     async def list(self, ctx):
         # debug command to ensure list is properly populated
