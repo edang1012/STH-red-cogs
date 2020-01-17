@@ -6,6 +6,9 @@ import random
 import numpy as np
 from pathlib import Path
 
+import os.path
+from os import ospath
+
 from redbot.core import checks, Config, commands
 
 
@@ -32,11 +35,11 @@ class weebcircle(commands.Cog):
     async def start(self, ctx):
         
         # create director for channel if doesn't exist
-        self.dir += '{}/'.format(ctx.message.channel)
+        weebfile = self.dir + '{}/'.format(ctx.message.channel)
         Path(self.dir).mkdir(parents=True, exist_ok=True)
         
         # create file if doesn't exist
-        self.dir += 'weeb_list.data'
+        weebfile += 'weeb_list.data'
         with open(self.dir, 'wb') as f:
             pickle.dump(self.list,f)
         
@@ -79,8 +82,9 @@ class weebcircle(commands.Cog):
         3 cours:  3, Hard, Demon, Oni, Akuma
         3+ cours: Expert, Dragon, Ryu"""
         
+        weebfile = self.dir + ctx.message.channel + '/weeb_list.data'
         #check if .start was run by looking at the directory
-        if self.dir == '/home/pi/Bot_Archive/weebcircle/':
+        if not ospath.exists(weebfile)':
             msg = 'You cant optin without starting the circle. Use **.start** to start the circle.'
             
         else:
