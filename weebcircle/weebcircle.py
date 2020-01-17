@@ -82,7 +82,7 @@ class weebcircle(commands.Cog):
                 
             # in the list, but differnt cour count
             else:
-                list(1) = arg1
+                list[1] = arg1
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                     pickle.dump(self.list,f)
                 msg = "{} was already in the list, but they now want to watch {} cour(s).".format(ctx.author.mention,arg1)
