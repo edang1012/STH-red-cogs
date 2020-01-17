@@ -172,7 +172,7 @@ class weebcircle(commands.Cog):
         weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
         #check if .start was run by looking at the directory
         if not path.exists(weebfile):
-            msg = 'You cant optin without starting the circle. Use **.start** to start the circle.'
+            msg = 'You cant optout without starting the circle. Use **.start** to start the circle.'
             
         else:
             # open list from file to ensure most up to date version
@@ -203,7 +203,7 @@ class weebcircle(commands.Cog):
         weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
         #check if .start was run by looking at the directory
         if not path.exists(weebfile):
-            msg = 'You cant optin without starting the circle. Use **.start** to start the circle.'
+            msg = 'You cant randomize without starting the circle. Use **.start** to start the circle.'
             
         else:
             # open list from file to ensure most up to date version
@@ -267,7 +267,7 @@ class weebcircle(commands.Cog):
         weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
         #check if .start was run by looking at the directory
         if not path.exists(weebfile):
-            msg = 'You cant optin without starting the circle. Use **.start** to start the circle.'
+            msg = 'You cant rec without starting the circle. Use **.start** to start the circle.'
             
         else:
             # open list from file to ensure most up to date version
@@ -320,7 +320,7 @@ class weebcircle(commands.Cog):
         weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
         #check if .start was run by looking at the directory
         if not path.exists(weebfile):
-            msg = 'You cant optin without starting the circle. Use **.start** to start the circle.'
+            msg = 'You cant watch without starting the circle. Use **.start** to start the circle.'
             
         else:
             msg = "none"
@@ -359,7 +359,7 @@ class weebcircle(commands.Cog):
         weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
         #check if .start was run by looking at the directory
         if not path.exists(weebfile):
-            msg = 'You cant optin without starting the circle. Use **.start** to start the circle.'
+            msg = 'Use **.start** to start the circle.'
             
         else:
             # open list from file to ensure most up to date version
@@ -381,7 +381,7 @@ class weebcircle(commands.Cog):
         weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
         #check if .start was run by looking at the directory
         if not path.exists(weebfile):
-            msg = 'You cant optin without starting the circle. Use **.start** to start the circle.'
+            msg = 'Use **.start** to start the circle.'
             
         else:
             # debug command, to clear the list
