@@ -224,12 +224,12 @@ class weebcircle(commands.Cog):
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             self.list = pickle.load(f)
                 
-        print(len(self.list))
+        print(len(self.list[0]))
         if not self.list:
             msg = "You can't recommend to an empty list, baka..."
         
         # check list to see if only 1 member based on col count
-        elif len(self.list[0]) == 0:
+        elif len(self.list[0]) == 1:
             msg = "You can't recommend to yourself, baka..."
         
         # check if .randomize has run based on row count
