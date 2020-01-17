@@ -37,7 +37,7 @@ class weebcircle(commands.Cog):
         
         # create director for channel if doesn't exist
         weebfile = self.dir + '{}/'.format(ctx.message.channel)
-        Path(self.dir).mkdir(parents=True, exist_ok=True)
+        Path(weebfile).mkdir(parents=True, exist_ok=True)
         
         # create file if doesn't exist
         weebfile += 'weeb_list.data'
