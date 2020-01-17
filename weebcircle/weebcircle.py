@@ -81,7 +81,7 @@ class weebcircle(commands.Cog):
         
         #check if .start was run by looking at the directory
         if self.dir == '/home/pi/Bot_Archive/weebcircle/':
-            msg = 'You cant optin without starting the circle. Use **.start** to start the circle."
+            msg = 'You cant optin without starting the circle. Use **.start** to start the circle.'
             
         else:
             # open list from file to ensure most up to date version
@@ -162,7 +162,7 @@ class weebcircle(commands.Cog):
     async def optout(self, ctx):
         #check if .start was run by looking at the directory
         if self.dir == '/home/pi/Bot_Archive/weebcircle/':
-            msg = 'You cant optout without starting the circle. Use **.start** to start the circle."
+            msg = 'You cant optout without starting the circle. Use **.start** to start the circle.'
             
         else:
             # open list from file to ensure most up to date version
@@ -192,7 +192,7 @@ class weebcircle(commands.Cog):
     async def randomize(self, ctx):  
         #check if .start was run by looking at the directory
         if self.dir == '/home/pi/Bot_Archive/weebcircle/':
-            msg = 'You cant randomize without starting the circle. Use **.start** to start the circle."
+            msg = 'You cant randomize without starting the circle. Use **.start** to start the circle.'
             
         else:
             # open list from file to ensure most up to date version
@@ -255,7 +255,7 @@ class weebcircle(commands.Cog):
         
         #check if .start was run by looking at the directory
         if self.dir == '/home/pi/Bot_Archive/weebcircle/':
-            msg = 'You cant recommend without starting the circle. Use **.start** to start the circle."
+            msg = 'You cant recommend without starting the circle. Use **.start** to start the circle.'
             
         else:
             # open list from file to ensure most up to date version
@@ -307,7 +307,7 @@ class weebcircle(commands.Cog):
     async def watch(self, ctx):
         #check if .start was run by looking at the directory
         if self.dir == '/home/pi/Bot_Archive/weebcircle/':
-            msg = 'You cant watch without starting the circle. Use **.start** to start the circle."
+            msg = 'You cant watch without starting the circle. Use **.start** to start the circle.'
             
         else:
             msg = "none"
@@ -345,7 +345,7 @@ class weebcircle(commands.Cog):
         
         #check if .start was run by looking at the directory
         if self.dir == '/home/pi/Bot_Archive/weebcircle/':
-            msg = 'Use **.start** to start the circle."
+            msg = 'Use **.start** to start the circle.'
             
         else:
             # open list from file to ensure most up to date version
@@ -366,7 +366,7 @@ class weebcircle(commands.Cog):
     async def clear(self, ctx):
         #check if .start was run by looking at the directory
         if self.dir == '/home/pi/Bot_Archive/weebcircle/':
-            msg = 'Use **.start** to start the circle."
+            msg = 'Use **.start** to start the circle.'
             
         else:
             # debug command, to clear the list
