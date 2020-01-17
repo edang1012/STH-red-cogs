@@ -140,81 +140,7 @@ class weebcircle(commands.Cog):
         msg = "{} has been removed from the list.".format(ctx.author.mention)
         await ctx.send(msg)
                 
-        
-    @commands.guild_only()
-    @commands.command()
-    async def rec(self, ctx, *, arg):
-        """Usage: Recommend an anime using this command"""
-        
-        # check if author is in list
-        if not any(ctx.author.mention in list for list in self.list):
-            msg = "You can't recommend unless you are in the list, baka..."
-        
-        # look for author in list
-        #for member,rand in zip(self.list,self.rand):
-        for member in self.list:
-            if member[0] == ctx.author.mention:
-                
-                # check if author has already recommended
-                # could break cause hard coding index, but will add length checks
-                # to ensure commands can only work in a certain order
-                if len(member) >= 3:
-                    member[2] = arg
-                    
-                else:
-                    member.extend([arg])
-                              
-                with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-                    pickle.dump(self.list,f)
-                              
-                msg = "{} recommended {} to {}".format(ctx.author.mention, arg, member[3])
-                
-        await ctx.send(msg)
-        
-        
-    @commands.guild_only()
-    @commands.command()
-    async def oldlist(self, ctx):
-        # debug command to check if the oldlist was saved, nothing important
-        msg = "This is the oldlist:\n"
-
-        for member in self.old:
-            msg += "member[0]{}     member[1]{}     member[0][0]{}\n".format(member[0],member[1],member[0][0])
-        await ctx.send(msg)
-        
-        
-    @commands.guild_only()
-    @commands.command()
-    async def list(self, ctx):
-        # debug command to ensure list is properly populated
-        # open list from file to ensure most up to date version
-        with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
-            self.list = pickle.load(f)
-            
-        msg = "Current members:\n"
-
-        for member in self.list:
-            msg += "{}\n".format(member)
-
-        await ctx.send(msg)
-        
-    @commands.guild_only()
-    @checks.admin_or_permissions(manage_guild=True)
-    @commands.command()
-    async def clear(self, ctx):
-        # debug command, to clear the list
-        
-        # set list to empty list
-        self.list = []
-        
-        # write empty list to file
-        with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-            pickle.dump(self.list,f)
-            
-        msg = "The list has been cleared"
-        await ctx.send(msg)
-        
-        
+   
     @commands.guild_only()
     @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
@@ -256,7 +182,39 @@ class weebcircle(commands.Cog):
             msg += "{} cour(s)\n".format(member[1])
         
         await ctx.send(msg)
-
+        
+        
+    @commands.guild_only()
+    @commands.command()
+    async def rec(self, ctx, *, arg):
+        """Usage: Recommend an anime using this command"""
+        
+        # check if author is in list
+        if not any(ctx.author.mention in list for list in self.list):
+            msg = "You can't recommend unless you are in the list, baka..."
+        
+        # look for author in list
+        #for member,rand in zip(self.list,self.rand):
+        for member in self.list:
+            if member[0] == ctx.author.mention:
+                
+                # check if author has already recommended
+                # could break cause hard coding index, but will add length checks
+                # to ensure commands can only work in a certain order
+                if len(member) >= 4:
+                    member[2] = arg
+                    
+                else:
+                    member.extend([arg])
+                              
+                with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+                    pickle.dump(self.list,f)
+                              
+                msg = "{} recommended {} to {}".format(ctx.author.mention, arg, member[3])
+                
+        await ctx.send(msg)
+        
+        
     @commands.guild_only()
     @commands.command()
     async def watch(self, ctx):
@@ -268,9 +226,50 @@ class weebcircle(commands.Cog):
                 
         if msg == "none":
             msg = "everyone rec'd something"
-            
             self.old = self.list
-                
-            
 
+        await ctx.send(msg)
+        
+        
+    # DEBUG COMMANDS BELOW:    
+    @commands.guild_only()
+    @commands.command()
+    async def oldlist(self, ctx):
+        # debug command to check if the oldlist was saved, nothing important
+        msg = "This is the oldlist:\n"
+
+        for member in self.old:
+            msg += "member[0]{}     member[1]{}     member[0][0]{}\n".format(member[0],member[1],member[0][0])
+        await ctx.send(msg)
+        
+        
+    @commands.guild_only()
+    @commands.command()
+    async def list(self, ctx):
+        # debug command to ensure list is properly populated
+        # open list from file to ensure most up to date version
+        with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+            self.list = pickle.load(f)
+            
+        msg = "Current members:\n"
+
+        for member in self.list:
+            msg += "{}\n".format(member)
+
+        await ctx.send(msg)
+        
+    @commands.guild_only()
+    @checks.admin_or_permissions(manage_guild=True)
+    @commands.command()
+    async def clear(self, ctx):
+        # debug command, to clear the list
+        
+        # set list to empty list
+        self.list = []
+        
+        # write empty list to file
+        with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+            pickle.dump(self.list,f)
+            
+        msg = "The list has been cleared"
         await ctx.send(msg)
