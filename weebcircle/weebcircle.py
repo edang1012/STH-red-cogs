@@ -80,7 +80,6 @@ class weebcircle(commands.Cog):
         3+ cours: Expert, Dragon, Ryu"""
         
         # open list from file to ensure most up to date version
-        #with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
         with open(self.dir, 'rb') as f:
             self.list = pickle.load(f)
         
@@ -127,7 +126,8 @@ class weebcircle(commands.Cog):
                 else:
                     # update the list with new cour count
                     member[1] = arg1
-                    with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+                    #with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+                    with open(self.dir, 'wb') as f:
                         pickle.dump(self.list,f)
                     msg = "{} was already in the list, but now they want to watch {} cour(s).".format(ctx.author.mention,arg1)
         
@@ -143,7 +143,8 @@ class weebcircle(commands.Cog):
             else:
                 # update list with new member
                 self.list.append([ctx.author.mention, arg1])
-                with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+                #with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+                with open(self.dir, 'wb') as f:
                     pickle.dump(self.list,f)
                 msg = "{} has been added to the list and wants at most {} cour(s).".format(ctx.author.mention,arg1)
 
@@ -155,7 +156,8 @@ class weebcircle(commands.Cog):
     @commands.command()
     async def optout(self, ctx):
         # open list from file to ensure most up to date version
-        with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+        #with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+        with open(self.dir, 'rb') as f:
             self.list = pickle.load(f)
         
         # go through list to find author and remove
@@ -164,7 +166,8 @@ class weebcircle(commands.Cog):
                 self.list.remove(member)
         
         # update the list
-        with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+        #with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+        with open(self.dir, 'wb') as f:
             pickle.dump(self.list,f)
             
         msg = "{} has been removed from the list.".format(ctx.author.mention)
@@ -177,7 +180,8 @@ class weebcircle(commands.Cog):
     @commands.command()
     async def randomize(self, ctx):  
         # open list from file to ensure most up to date version
-        with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+        #with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+        with open(self.dir, 'rb') as f:
             self.list = pickle.load(f)
                 
         if not self.list:
@@ -210,7 +214,8 @@ class weebcircle(commands.Cog):
                 member.extend([rand[0]])
 
             # update the list
-            with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+            #with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+            with open(self.dir, 'wb') as f:
                 pickle.dump(self.list,f)
 
             # debug text printing
@@ -233,7 +238,8 @@ class weebcircle(commands.Cog):
         """Usage: Recommend an anime using this command"""
         
         # open list from file to ensure most up to date version
-        with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+        #with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+        with open(self.dir, 'rb') as f:
             self.list = pickle.load(f)
                 
         if not self.list:
@@ -266,7 +272,8 @@ class weebcircle(commands.Cog):
                         member.extend([arg])
 
                     # update the list
-                    with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+                    #with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+                    with open(self.dir, 'wb') as f:
                         pickle.dump(self.list,f)
 
                     msg = "{} recommended {} to {}".format(ctx.author.mention, arg, member[2])
@@ -309,7 +316,8 @@ class weebcircle(commands.Cog):
     async def list(self, ctx):
         # debug command to ensure list is properly populated
         # open list from file to ensure most up to date version
-        with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+        #with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+        with open(self.dir, 'rb') as f:
             self.list = pickle.load(f)
             
         msg = "Current members:\n"
@@ -329,7 +337,8 @@ class weebcircle(commands.Cog):
         self.list = []
         
         # write empty list to file
-        with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+        #with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+        with open(self.dir, 'wb') as f:
             pickle.dump(self.list,f)
             
         msg = "The list has been cleared"
