@@ -79,6 +79,7 @@ class weebcircle(commands.Cog):
         if arg1.isnumeric():
                 pass
             
+        # check the keywords    
         elif (arg1.lower() == 'easy') or (arg1.lower() == 'wolf') or (arg1.lower() == 'okami'):
             arg1 = '1'
 
@@ -100,15 +101,20 @@ class weebcircle(commands.Cog):
         # check if author is in list already
         for member in self.list:
             if member[0] == ctx.author.mention:
-                print('1')
+                
                 # already in the list, no changes
                 if member[1] == arg1:
-                    print(2)
                     msg = "You are already in the list baka"
-
+                    
+                elif arg1 == '0':
+                    msg = "Thats not a valid number of cours, baka..."
+                    
+                elif arg1 == 'f':
+                    msg = "Just pick something from here: https://en.wikipedia.org/wiki/List_of_anime_series_by_episode_count \nEnjoy ya damn masochist..."
+                
                 # in the list, but different cour count
                 else:
-                    print(3)
+                    # update the list with new cour count
                     member[1] = arg1
                     with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                         pickle.dump(self.list,f)
@@ -124,6 +130,7 @@ class weebcircle(commands.Cog):
                 msg = "Just pick something from here: https://en.wikipedia.org/wiki/List_of_anime_series_by_episode_count \nEnjoy ya damn masochist..."
             
             else:
+                # update list with new member
                 self.list.append([ctx.author.mention, arg1])
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                     pickle.dump(self.list,f)
@@ -131,7 +138,8 @@ class weebcircle(commands.Cog):
 
         await ctx.send(msg)
         
-        
+    
+    # TODO: update to not allow optout if not already in the list
     @commands.guild_only()
     @commands.command()
     async def optout(self, ctx):
@@ -151,7 +159,9 @@ class weebcircle(commands.Cog):
         msg = "{} has been removed from the list.".format(ctx.author.mention)
         await ctx.send(msg)
                 
-   
+            
+    # TODO: add a check to the oldlist so people dont get matched
+    # two lists in a row
     @commands.guild_only()
     @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
@@ -165,8 +175,6 @@ class weebcircle(commands.Cog):
         old_array = np.array(self.list)
         
         # keep randomizing list until no one recommends themself
-        # TODO: add a check to the oldlist so people dont get matched
-        # two lists in a row
         while (rand_array[:,0] == old_array[:,0]).any():
             np.random.shuffle(rand_array)
         
