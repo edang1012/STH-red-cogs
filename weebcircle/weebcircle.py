@@ -90,7 +90,7 @@ class weebcircle(commands.Cog):
             
         else:
             # open list from file to ensure most up to date version
-            with open(self.dir, 'rb') as f:
+            with open(weebfile, 'rb') as f:
                 self.list = pickle.load(f)
 
             msg = 'none'
@@ -137,7 +137,7 @@ class weebcircle(commands.Cog):
                         # update the list with new cour count
                         member[1] = arg1
                         #with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-                        with open(self.dir, 'wb') as f:
+                        with open(weebfile, 'wb') as f:
                             pickle.dump(self.list,f)
                         msg = "{} was already in the list, but now they want to watch {} cour(s).".format(ctx.author.mention,arg1)
 
@@ -154,7 +154,7 @@ class weebcircle(commands.Cog):
                     # update list with new member
                     self.list.append([ctx.author.mention, arg1])
                     #with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-                    with open(self.dir, 'wb') as f:
+                    with open(weebfile, 'wb') as f:
                         pickle.dump(self.list,f)
                     msg = "{} has been added to the list and wants at most {} cour(s).".format(ctx.author.mention,arg1)
 
