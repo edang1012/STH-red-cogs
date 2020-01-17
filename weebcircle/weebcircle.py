@@ -202,7 +202,7 @@ class weebcircle(commands.Cog):
                 # could break cause hard coding index, but will add length checks
                 # to ensure commands can only work in a certain order
                 if len(member) >= 4:
-                    member[2] = arg
+                    member[3] = arg
                     
                 else:
                     member.extend([arg])
