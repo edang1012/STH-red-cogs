@@ -165,40 +165,52 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
-    async def randomize(self, ctx):
-        # open list from file to ensure most up to date version
-        with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
-            self.list = pickle.load(f)
-        
-        # create numpy arrays for random function
-        rand_array = np.array(self.list)
-        old_array = np.array(self.list)
-        
-        # keep randomizing list until no one recommends themself
-        while (rand_array[:,0] == old_array[:,0]).any():
-            np.random.shuffle(rand_array)
-        
-        # convert numpy array back to lists since its just easier
-        #self.rand = rand_list.tolist()
-        rand_list = rand_array.tolist()
-        self.list = old_array.tolist()
-        
-        # figure out why this doesnt work
-        for member,rand in zip(self.list,rand_list):
-            member.extend([rand[0]])
-        
-        with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-            pickle.dump(self.list,f)
-        
-        msg = "Not Rand:\n"
-        for member in self.list:
-            msg += "{} wants to watch ".format(member[0])
-            msg += "{} cour(s)\n".format(member[1])
+    async def randomize(self, ctx):        
+        if not self.list:
+            msg = "You can't randomize an empty list baka..."
             
-        msg += "\n\n Rand:\n"
-        for member in rand_list:
-            msg += "{} wants to watch ".format(member[0])
-            msg += "{} cour(s)\n".format(member[1])
+        # check if the list has only one member
+        elif len(self.list[:,0]) == 1:
+            msg = "You can't randomize a list with only 1 member baka..."
+                 
+        # check if the rec command was run based on the list of a list entry
+        elif len(self.list[0]) > 3:
+            msg = "You can't randomize again cause you already ran **.rec**..."
+                 
+        else:
+            # open list from file to ensure most up to date version
+            with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+                self.list = pickle.load(f)
+
+            # create numpy arrays for random function
+            rand_array = np.array(self.list)
+            old_array = np.array(self.list)
+
+            # keep randomizing list until no one recommends themself
+            while (rand_array[:,0] == old_array[:,0]).any():
+                np.random.shuffle(rand_array)
+
+            # convert numpy array back to lists since its just easier
+            #self.rand = rand_list.tolist()
+            rand_list = rand_array.tolist()
+            self.list = old_array.tolist()
+
+            # figure out why this doesnt work
+            for member,rand in zip(self.list,rand_list):
+                member.extend([rand[0]])
+
+            with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+                pickle.dump(self.list,f)
+
+            msg = "Not Rand:\n"
+            for member in self.list:
+                msg += "{} wants to watch ".format(member[0])
+                msg += "{} cour(s)\n".format(member[1])
+
+            msg += "\n\n Rand:\n"
+            for member in rand_list:
+                msg += "{} wants to watch ".format(member[0])
+                msg += "{} cour(s)\n".format(member[1])
         
         await ctx.send(msg)
         
@@ -208,28 +220,40 @@ class weebcircle(commands.Cog):
     async def rec(self, ctx, *, arg):
         """Usage: Recommend an anime using this command"""
         
-        # check if author is in list
-        if not any(ctx.author.mention in list for list in self.list):
-            msg = "You can't recommend unless you are in the list, baka..."
+        if not self.list:
+            msg = "You can't recommend to an empty list, baka..."
         
-        # look for author in list
-        #for member,rand in zip(self.list,self.rand):
-        for member in self.list:
-            if member[0] == ctx.author.mention:
-                
-                # check if author has already recommended
-                # could break cause hard coding index, but will add length checks
-                # to ensure commands can only work in a certain order
-                if len(member) >= 4:
-                    member[3] = arg
-                    
-                else:
-                    member.extend([arg])
-                              
-                with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-                    pickle.dump(self.list,f)
-                              
-                msg = "{} recommended {} to {}".format(ctx.author.mention, arg, member[2])
+        # check list to see if only 1 member
+        elif len(self.list[:,0]) == 1:
+            msg = "You can't recommend to yourself, baka..."
+        
+        # check if .randomize has run based on list entry length
+        elif len(self.list[0]) < 3:
+            msg = "You can't recommend without a partner, run the **.randomize** command first."
+            
+        else:
+            # check if author is in list
+            if not any(ctx.author.mention in list for list in self.list):
+                msg = "You can't recommend unless you are in the list, baka..."
+
+            # look for author in list
+            #for member,rand in zip(self.list,self.rand):
+            for member in self.list:
+                if member[0] == ctx.author.mention:
+
+                    # check if author has already recommended
+                    # could break cause hard coding index, but will add length checks
+                    # to ensure commands can only work in a certain order
+                    if len(member) >= 4:
+                        member[3] = arg
+
+                    else:
+                        member.extend([arg])
+
+                    with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+                        pickle.dump(self.list,f)
+
+                    msg = "{} recommended {} to {}".format(ctx.author.mention, arg, member[2])
                 
         await ctx.send(msg)
         
