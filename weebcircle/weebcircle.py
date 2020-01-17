@@ -22,13 +22,15 @@ class weebcircle(commands.Cog):
             **self.default_guild_settings
             )
         self.list = []
-        self.rand = []
+        #self.rand = []
         self.old =  []
 
         
     @commands.guild_only()
     @commands.command()
     async def start(self, ctx):
+        
+        # create embed welcome message, no real code here, just formatting
         embed = discord.Embed(
             title = 'Welcome to the Weeb Circle',
             description = """The purpose of this circle is to get others in the group to watch anime they haven't seen before.""",
@@ -56,6 +58,7 @@ class weebcircle(commands.Cog):
         embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
         await ctx.send(embed=embed)
         
+        
     @commands.guild_only()
     @commands.command()
     async def optin(self, ctx, arg1):
@@ -69,10 +72,12 @@ class weebcircle(commands.Cog):
         # open list from file to ensure most up to date version
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             self.list = pickle.load(f)
-                
+        
+        # check if author is in list already
         if any(ctx.author.mention in list for list in self.list):
             msg = "You are already in the list baka"
-            
+        
+        # bunch of cases for the input
         else:
             if arg1.isnumeric():
                 self.list.append([ctx.author.mention, arg1])
@@ -115,17 +120,20 @@ class weebcircle(commands.Cog):
                 
         await ctx.send(msg)
         
+        
     @commands.guild_only()
     @commands.command()
     async def optout(self, ctx):
         # open list from file to ensure most up to date version
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             self.list = pickle.load(f)
-            
+        
+        # go through list to find author and remove
         for member in self.list:
             if ctx.author.mention == member[0]:
                 self.list.remove(member)
-                
+        
+        # update the list
         with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
             pickle.dump(self.list,f)
             
@@ -138,11 +146,18 @@ class weebcircle(commands.Cog):
     async def rec(self, ctx, *, arg):
         """Usage: Recommend an anime using this command"""
         
+        # check if author is in list
         if not any(ctx.author.mention in list for list in self.list):
             msg = "You can't recommend unless you are in the list, baka..."
-            
-        for member,rand in zip(self.list,self.rand):
+        
+        # look for author in list
+        #for member,rand in zip(self.list,self.rand):
+        for member in self.list:
             if member[0] == ctx.author.mention:
+                
+                # check if author has already recommended
+                # could break cause hard coding index, but will add length checks
+                # to ensure commands can only work in a certain order
                 if len(member) >= 3:
                     member[2] = arg
                     
@@ -152,26 +167,26 @@ class weebcircle(commands.Cog):
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                     pickle.dump(self.list,f)
                               
-                msg = "{} recommended {} to {}".format(ctx.author.mention, arg, rand[0])
+                msg = "{} recommended {} to {}".format(ctx.author.mention, arg, member[2])
                 
         await ctx.send(msg)
+        
         
     @commands.guild_only()
     @commands.command()
     async def oldlist(self, ctx):
-        # open list from file to ensure most up to date version
-        #with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
-            #self.list = pickle.load(f)
-            
+        # debug command to check if the oldlist was saved, nothing important
         msg = "This is the oldlist:\n"
 
         for member in self.old:
             msg += "member[0]{}     member[1]{}     member[0][0]{}\n".format(member[0],member[1],member[0][0])
         await ctx.send(msg)
         
+        
     @commands.guild_only()
     @commands.command()
     async def list(self, ctx):
+        # debug command to ensure list is properly populated
         # open list from file to ensure most up to date version
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             self.list = pickle.load(f)
@@ -187,11 +202,18 @@ class weebcircle(commands.Cog):
     @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
     async def clear(self, ctx):
+        # debug command, to clear the list
+        
+        # set list to empty list
         self.list = []
+        
+        # write empty list to file
         with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
             pickle.dump(self.list,f)
+            
         msg = "The list has been cleared"
         await ctx.send(msg)
+        
         
     @commands.guild_only()
     @checks.admin_or_permissions(manage_guild=True)
@@ -200,19 +222,24 @@ class weebcircle(commands.Cog):
         # open list from file to ensure most up to date version
         with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             self.list = pickle.load(f)
-            
-        rand_list = np.array(self.list)
-        old_list = np.array(self.list)
         
-        while (rand_list[:,0] == old_list[:,0]).any():
-            np.random.shuffle(rand_list)
+        # create numpy arrays for random function
+        rand_array = np.array(self.list)
+        old_array = np.array(self.list)
+        
+        # keep randomizing list until no one recommends themself
+        # TODO: add a check to the oldlist so people dont get matched
+        # two lists in a row
+        while (rand_array[:,0] == old_array[:,0]).any():
+            np.random.shuffle(rand_array)
         
         # convert numpy array back to lists since its just easier
-        self.rand = rand_list.tolist()
-        self.list = old_list.tolist()
+        #self.rand = rand_list.tolist()
+        rand_list = rand_array.tolist()
+        self.list = old_array.tolist()
         
         # figure out why this doesnt work
-        for member,rand in zip(self.list,self.rand):
+        for member,rand in zip(self.list,rand_list):
             member.extend([rand[0]])
         
         with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
@@ -224,7 +251,7 @@ class weebcircle(commands.Cog):
             msg += "{} cour(s)\n".format(member[1])
             
         msg += "\n\n Rand:\n"
-        for member in self.rand:
+        for member in rand_list:
             msg += "{} wants to watch ".format(member[0])
             msg += "{} cour(s)\n".format(member[1])
         
