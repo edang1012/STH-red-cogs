@@ -167,7 +167,7 @@ class weebcircle(commands.Cog):
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                     pickle.dump(self.list,f)
                               
-                msg = "{} recommended {} to {}".format(ctx.author.mention, arg, member[2])
+                msg = "{} recommended {} to {}".format(ctx.author.mention, arg, member[3])
                 
         await ctx.send(msg)
         
