@@ -24,13 +24,13 @@ class weebcircle(commands.Cog):
             )
         self.list = []
         self.old =  []
-        self.dir = '/home/pi/Bot_Archive/weebcircle'
+        self.dir = '/home/pi/Bot_Archive/weebcircle/'
 
         
     @commands.guild_only()
     @commands.command()
     async def start(self, ctx):
-        self.dir += '{}/weebcircle.data'.format(ctx.message.channel)
+        self.dir += '{}'.format(ctx.message.channel)
 
         Path(self.dir).mkdir(parents=True, exist_ok=True)
         
