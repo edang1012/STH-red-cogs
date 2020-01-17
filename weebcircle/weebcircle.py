@@ -24,7 +24,7 @@ class weebcircle(commands.Cog):
             )
         self.list = []
         self.old =  []
-        self.dir = '/home/pi/Bot_Archive/'
+        self.dir = '/home/pi/Bot_Archive/weebcircle'
 
         
     @commands.guild_only()
