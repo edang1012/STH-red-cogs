@@ -30,7 +30,7 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @commands.command()
     async def start(self, ctx):
-        self.dir += '{}/weebcircle.data'.format(ctx.message.guild)
+        self.dir += '{}/weebcircle.data'.format(ctx.message.channel)
         print(self.dir)
         # create embed welcome message, no real code here, just formatting
         embed = discord.Embed(
