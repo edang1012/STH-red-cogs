@@ -165,7 +165,11 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
-    async def randomize(self, ctx):        
+    async def randomize(self, ctx):  
+        # open list from file to ensure most up to date version
+            with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+                self.list = pickle.load(f)
+                
         if not self.list:
             msg = "You can't randomize an empty list baka..."
             
@@ -178,10 +182,6 @@ class weebcircle(commands.Cog):
             msg = "You can't randomize again cause you already ran **.rec**..."
                  
         else:
-            # open list from file to ensure most up to date version
-            with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
-                self.list = pickle.load(f)
-
             # create numpy arrays for random function
             rand_array = np.array(self.list)
             old_array = np.array(self.list)
@@ -220,6 +220,11 @@ class weebcircle(commands.Cog):
     async def rec(self, ctx, *, arg):
         """Usage: Recommend an anime using this command"""
         
+        # open list from file to ensure most up to date version
+            with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
+                self.list = pickle.load(f)
+                
+        print(len(self.list))
         if not self.list:
             msg = "You can't recommend to an empty list, baka..."
         
@@ -237,7 +242,6 @@ class weebcircle(commands.Cog):
                 msg = "You can't recommend unless you are in the list, baka..."
 
             # look for author in list
-            #for member,rand in zip(self.list,self.rand):
             for member in self.list:
                 if member[0] == ctx.author.mention:
 
