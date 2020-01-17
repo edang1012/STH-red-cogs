@@ -213,7 +213,7 @@ class weebcircle(commands.Cog):
         
         # figure out why this doesnt work
         for member,rand in zip(self.list,self.rand):
-            member.extend(self.rand[member[0]])
+            member.extend(rand[0])
         
         with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
             pickle.dump(self.list,f)
