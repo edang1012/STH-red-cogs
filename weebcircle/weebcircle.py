@@ -85,7 +85,7 @@ class weebcircle(commands.Cog):
         
         weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
         #check if .start was run by looking at the directory
-        if not ospath.exists(weebfile):
+        if not path.exists(weebfile):
             msg = 'You cant optin without starting the circle. Use **.start** to start the circle.'
             
         else:
