@@ -79,10 +79,12 @@ class weebcircle(commands.Cog):
                 print('1')
                 # already in the list, no changes
                 if member[1] == arg1:
+                    print(2)
                     msg = "You are already in the list baka"
 
                 # in the list, but different cour count
                 else:
+                    print(3)
                     member[1] = arg1
                     with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                         pickle.dump(self.list,f)
