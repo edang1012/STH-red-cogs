@@ -229,11 +229,11 @@ class weebcircle(commands.Cog):
             msg = "You can't recommend to an empty list, baka..."
         
         # check list to see if only 1 member based on col count
-        elif len(self.list[0]) == 1:
+        elif len(self.list[0]) == 0:
             msg = "You can't recommend to yourself, baka..."
         
         # check if .randomize has run based on row count
-        elif len(self.list) < 3:
+        elif len(self.list) < 2:
             msg = "You can't recommend without a partner, run the **.randomize** command first."
             
         else:
