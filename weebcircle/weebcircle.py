@@ -269,8 +269,7 @@ class weebcircle(commands.Cog):
         if msg == "none":
             msg = "everyone rec'd something"
             
-            for member,rand in zip(self.list,self.rand):
-                self.old.append([member,rand])
+            self.old = self.list
                 
             
 
