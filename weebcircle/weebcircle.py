@@ -95,44 +95,38 @@ class weebcircle(commands.Cog):
         # bunch of cases for the input
         if msg == 'none':
             if arg1.isnumeric():
+                pass
+            
+            elif (arg1.lower() == 'easy') or (arg1.lower() == 'wolf') or (arg1.lower() == 'okami'):
+                arg1 = '1'
+                            
+            elif (arg1.lower() == 'med') or (arg1.lower() == 'medium') or (arg1.lower() == 'tiger') or (arg1.lower() == 'tora'):
+                arg1 = '2'
+                
+            elif (arg1.lower() == 'hard') or (arg1.lower() == 'demon') or (arg1.lower() == 'oni'):
+                arg1 = '3'
+                
+            elif (arg1.lower() == 'expert') or (arg1.lower() == 'dragon') or (arg1.lower() == 'ryu'):
+                arg1 = '3+'
+                
+            elif (arg1.lower() == 'god') or (arg1.lower() == 'kami'):
+                arg1 = 'f'
+            
+            else:
+               arg1 = '0'
+            
+            if arg1 == '0':
+                msg = "Thats not a valid number of cours, baka..."
+                
+            elif arg1 == 'f':
+                msg = "Just pick something from here: https://en.wikipedia.org/wiki/List_of_anime_series_by_episode_count \nEnjoy ya damn masochist..."
+            
+            else:
                 self.list.append([ctx.author.mention, arg1])
                 with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
                     pickle.dump(self.list,f)
                 msg = "{} has been added to the list and wants at most {} cour(s).".format(ctx.author.mention,arg1)
 
-            elif (arg1.lower() == 'easy') or (arg1.lower() == 'wolf') or (arg1.lower() == 'okami'):
-                self.list.append([ctx.author.mention, '1'])
-                with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-                    pickle.dump(self.list,f)
-                msg = "{} has been added to the list and wants at most 1 cour.".format(ctx.author.mention)
-
-            elif (arg1.lower() == 'med') or (arg1.lower() == 'medium') or (arg1.lower() == 'tiger') or (arg1.lower() == 'tora'):
-                self.list.append([ctx.author.mention, '2'])
-                with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-                    pickle.dump(self.list,f)
-                msg = "{} has been added to the list and wants at most 2 cours.".format(ctx.author.mention)
-
-            elif (arg1.lower() == 'hard') or (arg1.lower() == 'demon') or (arg1.lower() == 'oni'):
-                self.list.append([ctx.author.mention, '3+'])
-                with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-                    pickle.dump(self.list,f)
-                msg = "{} has been added to the list and wants at most 3 cours.".format(ctx.author.mention)
-
-            elif (arg1.lower() == 'expert') or (arg1.lower() == 'dragon') or (arg1.lower() == 'ryu'):
-                self.list.append([ctx.author.mention, '3+'])
-                with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-                    pickle.dump(self.list,f)
-                msg = "{} has been added to the list and wants 3+ cours.".format(ctx.author.mention)
-
-            elif (arg1.lower() == 'god') or (arg1.lower() == 'kami'):
-                self.list.append([ctx.author.mention, '3+'])
-                with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-                    pickle.dump(self.list,f)
-                msg = "Just pick something from here: https://en.wikipedia.org/wiki/List_of_anime_series_by_episode_count \nEnjoy ya damn masochist..."
-
-            else:
-                msg = "Thats not a valid number of cours, baka..."
-                
         await ctx.send(msg)
         
         
