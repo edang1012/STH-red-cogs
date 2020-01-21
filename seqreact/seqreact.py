@@ -22,8 +22,11 @@ class seqreact(commands.Cog):
     @commands.command()
     async def addseq(self, ctx, word, emoji):
         """Add a sequence of reactions to a keyword/phrase
-        Usage:  pass a keyword or keyphrase(in quotations) to <word>
-                pass an emoji or emojis (in quotations) to <emoji>"""
+        Usage:  
+                pass a keyword or keyphrase(in quotations) to <word>
+                pass an emoji or emojis (in quotations, separated by spaces) to <emoji>
+                also update this to make phrases you bum..."""
+        
         
         guild = ctx.message.guild
         message = ctx.message
@@ -38,7 +41,7 @@ class seqreact(commands.Cog):
         Usage:  
                 pass a keyword or keyphrase(in quotations) to <word>
                 pass an emoji or emojis (in quotations, separated by spaces) to <emoji>
-                also update this to make phrases you bum"""
+                also update this to make phrases you bum..."""
         
         guild = ctx.message.guild
         message = ctx.message
