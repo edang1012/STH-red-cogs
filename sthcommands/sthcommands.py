@@ -27,7 +27,7 @@ class sthcommands(BaseCog):
     @commands.command()
     async def workout(self, ctx, arg):
         msg = arg
-        await message.channel.send(msg)
+        await ctx.send(msg)
 
 
         embed = discord.Embed(
@@ -35,5 +35,5 @@ class sthcommands(BaseCog):
             color = discord.Color.red()
         )
         embed.set_image(url='https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif')
-        await message.channel.send(embed=embed)
+        await ctx.send(embed=embed)
        
