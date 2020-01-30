@@ -7,7 +7,7 @@ from redbot.core import checks, Config, commands
 BaseCog = getattr(commands, "Cog", object)
 
 
-class sthcommand(BaseCog):
+class sthcommands(BaseCog):
 
     """All STH reaction commands conveniently located in one file!"""
 
