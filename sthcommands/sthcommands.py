@@ -26,6 +26,8 @@ class sthcommands(BaseCog):
     @commands.guild_only()
     @commands.command()
     async def workout(self, ctx, arg):
+        """Get motivated to workout"""
+        
         msg = arg
         await ctx.send(msg)
 
