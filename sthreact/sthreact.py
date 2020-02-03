@@ -87,6 +87,7 @@ class sthreact(BaseCog):
         pattern5 = re.compile(r'(sorry not sorry)', re.IGNORECASE)
         pattern5_1 = re.compile(r'(sorrynotsorry)', re.IGNORECASE)
         pattern5_2 = re.compile(r'(gomenasike)', re.IGNORECASE)
+        pattern6 = re.compile(r'(nice)', re.IGNORECASE)
         
         if re.search(pattern0, content):
             content_split = content.split()
@@ -137,4 +138,11 @@ class sthreact(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://i.pinimg.com/236x/81/95/4c/81954cf575ffa7bd8b573efc848c92c0.jpg')
+            await message.channel.send(embed=embed)
+            
+        if re.search(pattern6, content):
+            embed = discord.Embed(
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://media1.tenor.com/images/392da4650dfa83b3055069e39ad74b45/tenor.gif?itemid=7319727')
             await message.channel.send(embed=embed)
