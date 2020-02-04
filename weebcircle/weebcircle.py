@@ -35,8 +35,7 @@ class weebcircle(commands.Cog):
     @commands.command()
     async def start(self, ctx):
         
-        # save list to old and clear list for next circle
-        self.old = self.list
+        # clear list for next circle
         self.list = []
         
         # create director for channel if doesn't exist
@@ -321,7 +320,7 @@ class weebcircle(commands.Cog):
         weebfile_old = self.dir + str(ctx.message.channel) + '/weeb_list_old.data'
         
         #check if .start was run by looking at the directory
-        if (not path.exists(weebfile)) or (self.list == []):
+        if not path.exists(weebfile):
             msg = 'You cant watch without starting the circle. Use **.start** to start the circle.'
             await ctx.send(msg)
             
@@ -345,7 +344,6 @@ class weebcircle(commands.Cog):
                 embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
                 embed_field = ""
                 for member in self.list:
-                    #embed_field += "{}({} cour(s)) rec'd {} by {}\n".format(member[2], member[1], member[3], member[0])
                     embed_field += "{} watches *'{}'* (rec'd by {})\n".format(member[2], member[3], member[0])
                 embed.add_field(name='__**Weebcircle:**__', value=embed_field, inline=False)
                 await ctx.send(embed=embed)
@@ -365,10 +363,21 @@ class weebcircle(commands.Cog):
     @commands.command()
     async def oldlist(self, ctx):
         # debug command to check if the oldlist was saved, nothing important
-        msg = "This is the oldlist:\n"
+        weebfile_old = self.dir + str(ctx.message.channel) + '/weeb_list_old.data'
+        
+        #check if .start was run by looking at the directory
+        if not path.exists(weebfile_old):
+            msg = 'You cant use this command without starting the circle. Use **.start** to start the circle.'
+            
+        else:
+            # open list from file to ensure most up to date version
+            with open(weebfile_old, 'rb') as f:
+                self.old = pickle.load(f)
+                
+            msg = "This is the oldlist: (format is: member, cour count, anime member recommend, to whom member recommend)\n"
 
-        for member in self.old:
-            msg += "member[0]{}     member[1]{}     member[2]{}\n".format(member[0],member[1],member[2])
+            for member in self.old:
+                msg += "{}\n".format(member)
             
         await ctx.send(msg)
         
@@ -386,11 +395,10 @@ class weebcircle(commands.Cog):
             
         else:
             # open list from file to ensure most up to date version
-            #with open('/home/pi/Bot_Archive/weeb_list.data', 'rb') as f:
             with open(weebfile, 'rb') as f:
                 self.list = pickle.load(f)
 
-            msg = "Current members:\n"
+            msg = "Current members: (format is: member, cour count, anime member recommend, to whom member recommend)\n"
 
             for member in self.list:
                 msg += "{}\n".format(member)
