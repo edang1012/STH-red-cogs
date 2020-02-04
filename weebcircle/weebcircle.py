@@ -321,7 +321,7 @@ class weebcircle(commands.Cog):
         weebfile_old = self.dir + str(ctx.message.channel) + '/weeb_list_old.data'
         
         #check if .start was run by looking at the directory
-        if (not path.exists(weebfile)) or (self.list = []):
+        if (not path.exists(weebfile)) or (self.list == []):
             msg = 'You cant watch without starting the circle. Use **.start** to start the circle.'
             await ctx.send(msg)
             
