@@ -218,10 +218,15 @@ class weebcircle(commands.Cog):
                 msg = "You can't randomize a list with only 1 member baka..."
 
             # check if the rec command was run based on row count
-            elif len(self.list[0]) > 2:
+            elif len(self.list[0]) > 3:
                 msg = "You can't randomize again cause you already ran **.rec**..."
 
             else:
+                # check to see if rand was done before, delete old partner
+                for member in self.list:
+                    if len(member) > 2:
+                        member.pop(2)
+                        
                 # create numpy arrays for random function
                 rand_array = np.array(self.list)
                 old_array = np.array(self.list)
