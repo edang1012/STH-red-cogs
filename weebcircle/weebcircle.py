@@ -284,19 +284,60 @@ class weebcircle(commands.Cog):
                     pickle.dump(self.list,f)
 
                 # debug text printing
-                msg = "Not Rand:\n"
-                for member in self.list:
-                    msg += "{} wants to watch ".format(member[0])
-                    msg += "{} cour(s)\n".format(member[1])
+                #msg = "Not Rand:\n"
+                #for member in self.list:
+                #    msg += "{} wants to watch ".format(member[0])
+                #    msg += "{} cour(s)\n".format(member[1])
 
-                msg += "\n\n Rand:\n"
-                for member in rand_list:
-                    msg += "{} wants to watch ".format(member[0])
-                    msg += "{} cour(s)\n".format(member[1])
+                #msg += "\n\n Rand:\n"
+                #for member in rand_list:
+                #    msg += "{} wants to watch ".format(member[0])
+                #    msg += "{} cour(s)\n".format(member[1])
+                
+                embed = discord.Embed(
+                        title = 'Weebcircle List',
+                        description = """Below is the list of all members who opted in and who they are recommending.""",
+                        color = discord.Color.red()
+                    )
+                embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
+                embed_field = ""
+                for member in self.list:
+                    embed_field += "{}, recommend {} an anime that is at most {} cour(s)\n".format(member[0], member[2], member[1])
+                embed.add_field(name='__**Weebcircle:**__', value=embed_field, inline=False)
+                await ctx.send(embed=embed)
+                
+                msg = "The list has been randomized, use **\".list\"** to see this list again"
         
         await ctx.send(msg)
         
         
+    @commands.guild_only()    
+    @commands.command()
+    async def list(self, ctx):        
+        weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
+        #check if .start was run by looking at the directory
+        if not path.exists(weebfile):
+            msg = 'Use **.start** to start the circle.'
+            await ctx.send(msg)
+            
+        else:            
+            # open list from file to ensure most up to date version
+            with open(weebfile, 'rb') as f:
+                self.list = pickle.load(f)
+
+            embed = discord.Embed(
+                        title = 'Weebcircle List',
+                        description = """Below is the list of all members who opted in and who they are recommending.""",
+                        color = discord.Color.red()
+                    )
+            embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
+            embed_field = ""
+            for member in self.list:
+                embed_field += "{}, recommend {} an anime that is at most {} cour(s)\n".format(member[0], member[2], member[1])
+            embed.add_field(name='__**Weebcircle:**__', value=embed_field, inline=False)
+            await ctx.send(embed=embed)    
+            
+            
     @commands.guild_only()
     @commands.command()
     async def rec(self, ctx, *, arg):
@@ -350,37 +391,7 @@ class weebcircle(commands.Cog):
                         msg = "{} recommended {} to {}".format(ctx.author.mention, arg, member[2])
                 
         await ctx.send(msg)
-        
-        
-    @commands.guild_only()    
-    @commands.command()
-    async def list(self, ctx):        
-        weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
-        #check if .start was run by looking at the directory
-        if not path.exists(weebfile):
-            msg = 'Use **.start** to start the circle.'
-            
-        else:
-            msg = ""
-            
-            # open list from file to ensure most up to date version
-            with open(weebfile, 'rb') as f:
-                self.list = pickle.load(f)
 
-            embed = discord.Embed(
-                        title = 'Weebcircle List',
-                        description = """Below is the list of all members who opted in and who they are recommending.""",
-                        color = discord.Color.red()
-                    )
-            embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
-            embed_field = ""
-            for member in self.list:
-                embed_field += "{} recommend {} an anime that is at most {} cour(s)\n".format(member[0], member[2], member[1])
-            embed.add_field(name='__**Weebcircle:**__', value=embed_field, inline=False)
-            await ctx.send(embed=embed)
-
-        await ctx.send(msg)
-        
         
     @commands.guild_only()
     @commands.command()
@@ -391,9 +402,11 @@ class weebcircle(commands.Cog):
         #check if .start was run by looking at the directory
         if not path.exists(weebfile):
             msg = 'You cant watch without starting the circle. Use **.start** to start the circle.'
+            await ctx.send(msg)
         
         elif not self.list:
             msg = 'You cant watch an empty list, baka...'
+            await ctx.send(msg)
             
         else:
             msg = "none"
@@ -401,10 +414,9 @@ class weebcircle(commands.Cog):
             for member in self.list:
                 if len(member) < 3:
                     msg = "{} needs to recommend something.".format(member[0])
+                    await ctx.send(msg)
 
-            if msg == "none":
-                msg = ""
-                
+            if msg == "none":                
                 embed = discord.Embed(
                         title = 'Weebcircle Watch',
                         description = """Below is the list of all members who opted in and what anime they were recommended.""",
@@ -421,9 +433,6 @@ class weebcircle(commands.Cog):
                 with open(weebfile_old, 'wb') as f:
                     pickle.dump(self.list,f)
                     
-        await ctx.send(msg)
-
-        
         
     # DEBUG COMMANDS BELOW:    
     @commands.guild_only()
