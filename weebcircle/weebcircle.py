@@ -340,13 +340,14 @@ class weebcircle(commands.Cog):
                         description = """Below is the list of all members who opted in and what anime they were recommended.""",
                         color = discord.Color.red()
                     )
-                footer = """ayaya"""
-                embed.set_footer(text=footer)
+                #footer = """ayaya"""
+                #embed.set_footer(text=footer)
                 embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
                 embed_field = ""
                 for member in self.list:
-                    embed_field += "{}({} cour(s)) rec'd {} by {}\n".format(member[2], member[1], member[3], member[0])
-                embed.add_field(name='Weebcircle', value=embed_field, inline=False)
+                    #embed_field += "{}({} cour(s)) rec'd {} by {}\n".format(member[2], member[1], member[3], member[0])
+                    embed_field += "{} watches *'{}'* (rec'd by {})\n".format(member[2], member[3], member[0])
+                embed.add_field(name='__**Weebcircle:**__', value=embed_field, inline=False)
                 await ctx.send(embed=embed)
                 
                 # save list to a file to track the old list
