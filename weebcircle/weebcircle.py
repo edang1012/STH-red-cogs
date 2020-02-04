@@ -53,7 +53,7 @@ class weebcircle(commands.Cog):
             description = """The purpose of this circle is to get others in the group to watch anime they haven't seen before.""",
             color = discord.Color.red()
         )
-        footer = """Warning: running this command clears the list, so don't use this command again to view the instructions. Use **.weebhelp**"""
+        footer = """Warning: running this command clears the list, so don't use this command again to view the instructions. Use .weebhelp"""
         embed.set_footer(text=footer)
         embed.add_field(name='**Instructions:**', 
                         value=("To start the circle, please follow the procedure listed below:\n\n"
@@ -69,6 +69,8 @@ class weebcircle(commands.Cog):
                                                     "to see who is your assigned member use the command **\".list\"**.\n\n"
 
                         "4.  **\".watch\"**:         \nUse this command to display the final list of what each member is watching. " 
+                               
+                        "5.  **\".weebhelp\"**:      \nUse this command to view the instructions again in case you forget them. " 
                                                     "\n\n"), 
                         inline=False
         )
@@ -350,6 +352,27 @@ class weebcircle(commands.Cog):
         await ctx.send(msg)
         
         
+    @checks.admin_or_permissions(manage_guild=True)
+    @commands.command()
+    async def list(self, ctx):        
+        weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
+        #check if .start was run by looking at the directory
+        if not path.exists(weebfile):
+            msg = 'Use **.start** to start the circle.'
+            
+        else:
+            # open list from file to ensure most up to date version
+            with open(weebfile, 'rb') as f:
+                self.list = pickle.load(f)
+
+            msg = "Current members: (format is: member, cour count, to whom member recommend, anime member recommend)\n"
+
+            for member in self.list:
+                msg += "{}\n".format(member)
+
+        await ctx.send(msg)
+        
+        
     @commands.guild_only()
     @commands.command()
     async def watch(self, ctx):
@@ -359,7 +382,9 @@ class weebcircle(commands.Cog):
         #check if .start was run by looking at the directory
         if not path.exists(weebfile):
             msg = 'You cant watch without starting the circle. Use **.start** to start the circle.'
-            await ctx.send(msg)
+        
+        elif not self.list:
+            msg = 'You cant watch an empty list, baka...'
             
         else:
             msg = "none"
@@ -389,8 +414,7 @@ class weebcircle(commands.Cog):
                 with open(weebfile_old, 'wb') as f:
                     pickle.dump(self.list,f)
                     
-            else:
-                await ctx.send(msg)
+        await ctx.send(msg)
 
         
         
@@ -398,7 +422,7 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
-    async def oldlist(self, ctx):
+    async def debugoldlist(self, ctx):
         # debug command to check if the oldlist was saved, nothing important
         weebfile_old = self.dir + str(ctx.message.channel) + '/weeb_list_old.data'
         
@@ -422,7 +446,7 @@ class weebcircle(commands.Cog):
     @commands.guild_only()
     @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
-    async def list(self, ctx):
+    async def debuglist(self, ctx):
         # debug command to ensure list is properly populated
         
         weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
