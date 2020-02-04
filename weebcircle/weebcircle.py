@@ -427,3 +427,26 @@ class weebcircle(commands.Cog):
 
             msg = "The list has been cleared"
         await ctx.send(msg)
+
+    @commands.guild_only()
+    @checks.admin_or_permissions(manage_guild=True)
+    @commands.command()
+    async def clearold(self, ctx):
+        weebfile_old = self.dir + str(ctx.message.channel) + '/weeb_list_old.data'
+        #check if .start was run by looking at the directory
+        if not path.exists(weebfile_old):
+            msg = 'Use **.start** to start the circle.'
+            
+        else:
+            # debug command, to clear the list
+
+            # set list to empty list
+            self.old = []
+
+            # write empty list to file
+            #with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
+            with open(weebfile, 'wb') as f:
+                pickle.dump(self.old,f)
+
+            msg = "The old list has been cleared"
+        await ctx.send(msg)
