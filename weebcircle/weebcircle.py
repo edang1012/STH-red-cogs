@@ -68,7 +68,7 @@ class weebcircle(commands.Cog):
                         "3.  **\".rec <anime>\"**:   \nUse this command to recommend an anime to your assigned member. \nIf you want "
                                                     "to see who is your assigned member use the command **\".list\"**.\n\n"
 
-                        "4.  **\".watch\"**:         \nUse this command to display the final list of what each member is watching. " 
+                        "4.  **\".watch\"**:         \nUse this command to display the final list of what each member is watching.\n\n" 
                                
                         "5.  **\".weebhelp\"**:      \nUse this command to view the instructions again in case you forget them. " 
                                                     "\n\n"), 
@@ -352,7 +352,7 @@ class weebcircle(commands.Cog):
         await ctx.send(msg)
         
         
-    @checks.admin_or_permissions(manage_guild=True)
+    @commands.guild_only()    
     @commands.command()
     async def list(self, ctx):        
         weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
@@ -361,14 +361,23 @@ class weebcircle(commands.Cog):
             msg = 'Use **.start** to start the circle.'
             
         else:
+            msg = ""
+            
             # open list from file to ensure most up to date version
             with open(weebfile, 'rb') as f:
                 self.list = pickle.load(f)
 
-            msg = "Current members: (format is: member, cour count, to whom member recommend, anime member recommend)\n"
-
-            for member in self.list:
-                msg += "{}\n".format(member)
+            embed = discord.Embed(
+                        title = 'Weebcircle List',
+                        description = """Below is the list of all members who opted in and who they are recommending.""",
+                        color = discord.Color.red()
+                    )
+                embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
+                embed_field = ""
+                for member in self.list:
+                    embed_field += "{} recommend {} an anime that is at most {} cour(s)\n".format(member[0], member[2], member[1])
+                embed.add_field(name='__**Weebcircle:**__', value=embed_field, inline=False)
+                await ctx.send(embed=embed)
 
         await ctx.send(msg)
         
@@ -394,15 +403,13 @@ class weebcircle(commands.Cog):
                     msg = "{} needs to recommend something.".format(member[0])
 
             if msg == "none":
-                msg = "everyone rec'd something"
+                msg = ""
                 
                 embed = discord.Embed(
-                        title = 'Weebcircle List',
+                        title = 'Weebcircle Watch',
                         description = """Below is the list of all members who opted in and what anime they were recommended.""",
                         color = discord.Color.red()
                     )
-                #footer = """ayaya"""
-                #embed.set_footer(text=footer)
                 embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
                 embed_field = ""
                 for member in self.list:
