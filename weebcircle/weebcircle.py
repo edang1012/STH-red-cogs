@@ -318,9 +318,12 @@ class weebcircle(commands.Cog):
     @commands.command()
     async def watch(self, ctx):
         weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
+        weebfile_old = self.dir + str(ctx.message.channel) + '/weeb_list_old.data'
+        
         #check if .start was run by looking at the directory
-        if not path.exists(weebfile):
+        if (not path.exists(weebfile)) or (self.list = []):
             msg = 'You cant watch without starting the circle. Use **.start** to start the circle.'
+            await ctx.send(msg)
             
         else:
             msg = "none"
@@ -331,9 +334,28 @@ class weebcircle(commands.Cog):
 
             if msg == "none":
                 msg = "everyone rec'd something"
-                self.old = self.list
+                
+                embed = discord.Embed(
+                        title = 'Weebcircle List',
+                        description = """Below is the list of all members who opted in and what anime they were recommended.""",
+                        color = discord.Color.red()
+                    )
+                footer = """ayaya"""
+                embed.set_footer(text=footer)
+                embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
+                embed_field = ""
+                for member in self.list:
+                    embed_field += "{}({} cour(s)) rec'd {} by {}\n".format(member[2], member[1], member[3], member[0])
+                embed.add_field(name='Weebcircle', value=embed_field, inline=False)
+                await ctx.send(embed=embed)
+                
+                # save list to a file to track the old list
+                with open(weebfile_old, 'wb') as f:
+                    pickle.dump(self.list,f)
+                    
+            else:
+                await ctx.send(msg)
 
-        await ctx.send(msg)
         
         
     # DEBUG COMMANDS BELOW:    
