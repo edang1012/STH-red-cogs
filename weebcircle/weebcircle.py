@@ -53,7 +53,39 @@ class weebcircle(commands.Cog):
             description = """The purpose of this circle is to get others in the group to watch anime they haven't seen before.""",
             color = discord.Color.red()
         )
-        footer = """Why are you looking down here baka..."""
+        footer = """Warning: running this command clears the list, so don't use this command again to view the instructions. Use **.weebhelp**"""
+        embed.set_footer(text=footer)
+        embed.add_field(name='**Instructions:**', 
+                        value=("To start the circle, please follow the procedure listed below:\n\n"
+
+                        "1.  **\".optin <count>\"**:\nUse this command to opt into the circle. " 
+                                                    "Specify the number of cours you want to watch with a number or keywords such as: *easy, med, hard*. " 
+                                                    "\nIf you want to opt out after opting in, simply use the command **\".optout\"**.\n\n"
+
+                        "2.  **\".randomize\"**:     \nUse this command to create a randomized list for the members to recommend "
+                                                    "anime.\n\n"
+
+                        "3.  **\".rec <anime>\"**:   \nUse this command to recommend an anime to your assigned member. \nIf you want "
+                                                    "to see who is your assigned member use the command **\".list\"**.\n\n"
+
+                        "4.  **\".watch\"**:         \nUse this command to display the final list of what each member is watching. " 
+                                                    "\n\n"), 
+                        inline=False
+        )
+        embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
+        await ctx.send(embed=embed)
+        
+    @commands.guild_only()
+    @commands.command()
+    async def weebhelp(self, ctx):
+        
+        # create embed welcome message, no real code here, just formatting
+        embed = discord.Embed(
+            title = 'Weebcircle Help Menu',
+            description = """View the instructions again in case you forgot them. """,
+            color = discord.Color.red()
+        )
+        footer = """Why are you looking down here, baka..."""
         embed.set_footer(text=footer)
         embed.add_field(name='**Instructions:**', 
                         value=("To start the circle, please follow the procedure listed below:\n\n"
