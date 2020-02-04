@@ -445,7 +445,7 @@ class weebcircle(commands.Cog):
 
             # write empty list to file
             #with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
-            with open(weebfile, 'wb') as f:
+            with open(weebfile_old, 'wb') as f:
                 pickle.dump(self.old,f)
 
             msg = "The old list has been cleared"
