@@ -218,7 +218,7 @@ class weebcircle(commands.Cog):
                 msg = "You can't randomize a list with only 1 member baka..."
 
             # check if the rec command was run based on row count
-            elif len(self.list[0]) > 3:
+            elif len(self.list[0]) > 2:
                 msg = "You can't randomize again cause you already ran **.rec**..."
 
             else:
@@ -374,7 +374,7 @@ class weebcircle(commands.Cog):
             with open(weebfile_old, 'rb') as f:
                 self.old = pickle.load(f)
                 
-            msg = "This is the oldlist: (format is: member, cour count, anime member recommend, to whom member recommend)\n"
+            msg = "This is the oldlist: (format is: member, cour count, to whom member recommend, anime member recommend)\n"
 
             for member in self.old:
                 msg += "{}\n".format(member)
@@ -398,7 +398,7 @@ class weebcircle(commands.Cog):
             with open(weebfile, 'rb') as f:
                 self.list = pickle.load(f)
 
-            msg = "Current members: (format is: member, cour count, anime member recommend, to whom member recommend)\n"
+            msg = "Current members: (format is: member, cour count, to whom member recommend, anime member recommend)\n"
 
             for member in self.list:
                 msg += "{}\n".format(member)
