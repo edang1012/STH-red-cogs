@@ -38,7 +38,7 @@ class jojoattack(BaseCog):
                 embed = self.jojo_embed(msg)
             
                 await ctx.send(embed=embed)
-         else:
+        else:
             await ctx.send("That isn't a number baka...")
     
     @commands.guild_only()
