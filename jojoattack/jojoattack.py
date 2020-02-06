@@ -29,7 +29,7 @@ class jojoattack(BaseCog):
     async def testo(self, ctx, arg):
         """Test a specific JoJo attack!"""
         
-        msg = arg
+        msg = int(arg)
         embed = self.jojo_embed(msg)
         
         await ctx.send(embed=embed)
