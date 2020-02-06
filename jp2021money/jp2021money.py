@@ -36,7 +36,7 @@ class jp2021money(commands.Cog):
     @checks.mod_or_permissions(administrator=True)
     @commands.guild_only()
     @commands.command()
-    async def test(self, ctx):
+    async def savingtest(self, ctx):
         """Japan 2021 Trip Savings Reminder Test Command"""
         creds = None
         # The file token.pickle stores the user's access and refresh tokens, and is
