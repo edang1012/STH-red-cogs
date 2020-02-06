@@ -30,7 +30,7 @@ class jojoattack(BaseCog):
         """Test a specific JoJo attack!"""
         
         msg = arg
-        embed = self.jojo_embed(arg)
+        embed = self.jojo_embed(msg)
         
         await ctx.send(embed=embed)
     
