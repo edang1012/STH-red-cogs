@@ -14,7 +14,7 @@ from redbot.core.utils.chat_formatting import pagify
 
 # google sheets API
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
-SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
+SPREADSHEET_ID = '1SOskKBFHYbVvdGIJ0ExGXCGYmSlajqUJDHHbVOlzGug'
 RANGE_NAME = 'A2:E'
 
 class jp2021money(commands.Cog):
