@@ -29,7 +29,10 @@ class jojoattack(BaseCog):
     async def testo(self, ctx, arg):
         """Test a specific JoJo attack!"""
         
-        msg = int(arg)
+        if arg.isnumeric():
+            msg = int(arg)
+        else:
+            await ctx.send("That isn't a number baka...")
         
         if msg < 0 or msg > 12:
             await ctx.send("That attack # doesn't exist baka...")
