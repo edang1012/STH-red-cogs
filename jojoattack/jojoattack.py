@@ -31,8 +31,8 @@ class jojoattack(BaseCog):
         
         msg = int(arg)
         
-        if msg > 12:
-            print("That attack # doesn't exist baka...")
+        if msg < 0 || msg > 12:
+            await ctx.send("That attack # doesn't exist baka...")
         else:
             embed = self.jojo_embed(msg)
             
