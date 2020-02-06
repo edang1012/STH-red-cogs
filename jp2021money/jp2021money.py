@@ -167,7 +167,7 @@ class jp2021money(commands.Cog):
 
                     break
 
-@checks.mod_or_permissions(administrator=True)
+    @checks.mod_or_permissions(administrator=True)
     @commands.guild_only()
     @commands.command()
     async def savingtest(self, ctx):    
