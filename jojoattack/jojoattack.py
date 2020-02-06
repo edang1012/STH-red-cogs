@@ -31,15 +31,15 @@ class jojoattack(BaseCog):
         
         if arg.isnumeric():
             msg = int(arg)
-        else:
-            await ctx.send("That isn't a number baka...")
-        
-        if msg < 0 or msg > 12:
-            await ctx.send("That attack # doesn't exist baka...")
-        else:
-            embed = self.jojo_embed(msg)
             
-            await ctx.send(embed=embed)
+            if msg < 0 or msg > 12:
+                await ctx.send("That attack # doesn't exist baka...")
+            else:
+                embed = self.jojo_embed(msg)
+            
+                await ctx.send(embed=embed)
+         else:
+            await ctx.send("That isn't a number baka...")
     
     @commands.guild_only()
     @commands.command()
