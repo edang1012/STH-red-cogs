@@ -29,7 +29,7 @@ class jojoattack(BaseCog):
     async def jojo(self, ctx):
         """Use a randomized JoJo attack!"""
         
-        r = random.randint(0, 4)
+        r = random.randint(0, 2)
         
         if r == 0:
             embed = discord.Embed(
@@ -48,22 +48,6 @@ class jojoattack(BaseCog):
             await ctx.send(embed=embed)
         
         if r == 2:
-            embed = discord.Embed(
-                description = 'EMERARUDO SUPURASSHU!!!',
-                color = discord.Color.red()
-            )
-            embed.set_image(url='https://media1.tenor.com/images/0de4104ef4493fd3ec12bc7d9c5ef36a/tenor.gif?itemid=14264200')
-            await ctx.send(embed=embed)
-         
-        if r == 3:
-            embed = discord.Embed(
-                description = 'EMERARUDO SUPURASSHU!!!',
-                color = discord.Color.red()
-            )
-            embed.set_image(url='https://media1.tenor.com/images/0de4104ef4493fd3ec12bc7d9c5ef36a/tenor.gif?itemid=14264200')
-            await ctx.send(embed=embed)
-         
-        if r == 4:
             embed = discord.Embed(
                 description = 'EMERARUDO SUPURASSHU!!!',
                 color = discord.Color.red()
