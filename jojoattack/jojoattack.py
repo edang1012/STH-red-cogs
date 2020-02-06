@@ -30,9 +30,13 @@ class jojoattack(BaseCog):
         """Test a specific JoJo attack!"""
         
         msg = int(arg)
-        embed = self.jojo_embed(msg)
         
-        await ctx.send(embed=embed)
+        if msg > 12:
+            print("That attack # doesn't exist baka...")
+        else:
+            embed = self.jojo_embed(msg)
+            
+            await ctx.send(embed=embed)
     
     @commands.guild_only()
     @commands.command()
