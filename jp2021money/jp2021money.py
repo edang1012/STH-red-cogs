@@ -46,7 +46,7 @@ class jp2021money(commands.Cog):
         # in case I can't find the token.pickle, its located in the rPi home directory
         # couldn't be bothered to change it
         if os.path.exists('token.pickle'):
-            with open('token.pickle', 'rb') as token:
+            with open('/home/pi/Bot_Archive/token.pickle', 'rb') as token:
                 creds = pickle.load(token)
         # If there are no (valid) credentials available, let the user log in.
         if not creds or not creds.valid:
@@ -57,7 +57,7 @@ class jp2021money(commands.Cog):
                     '/home/pi/Bot_Archive/credentials.json', SCOPES)
                 creds = flow.run_local_server(port=0)
             # Save the credentials for the next run
-            with open('token.pickle', 'wb') as token:
+            with open('/home/pi/Bot_Archive/token.pickle', 'wb') as token:
                 pickle.dump(creds, token)
 
         service = build('sheets', 'v4', credentials=creds)
@@ -89,7 +89,7 @@ class jp2021money(commands.Cog):
         # in case I can't find the token.pickle, its located in the rPi home directory
         # couldn't be bothered to change it
         if os.path.exists('token.pickle'):
-            with open('token.pickle', 'rb') as token:
+            with open('/home/pi/Bot_Archive/token.pickle', 'rb') as token:
                 creds = pickle.load(token)
         # If there are no (valid) credentials available, let the user log in.
         if not creds or not creds.valid:
@@ -100,7 +100,7 @@ class jp2021money(commands.Cog):
                     '/home/pi/Bot_Archive/credentials.json', SCOPES)
                 creds = flow.run_local_server(port=0)
             # Save the credentials for the next run
-            with open('token.pickle', 'wb') as token:
+            with open('/home/pi/Bot_Archive/token.pickle', 'wb') as token:
                 pickle.dump(creds, token)
 
         service = build('sheets', 'v4', credentials=creds)
