@@ -26,15 +26,22 @@ class jojoattack(BaseCog):
 
     @commands.guild_only()
     @commands.command()
-    async def jojo(self, ctx):
+    async def testo(self, ctx, arg):
         """Test a specific JoJo attack!"""
+        
+        await ctx.send(embed=self.jojo_embed(arg))
+    
+    @commands.guild_only()
+    @commands.command()
+    async def jojo(self, ctx):
+        """Use a random JoJo attack!"""
         
         rand = random.randint(0, 12)
         
-        self.jojo_attack(rand)
+        await ctx.send(embed=self.jojo_embed(rand))
     
-    async def jojo_attack(self, rand):
-        """Use a randomized JoJo attack!"""
+    async def jojo_embed(self, rand):
+        """Make a JoJo attack embed!"""
         
         if rand == 0:
             embed = discord.Embed(
@@ -42,7 +49,8 @@ class jojoattack(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://media2.giphy.com/media/SGGmDq71JY8uc/source.gif')
-            await ctx.send(embed=embed)
+            
+            return embed
         
         if rand == 1:
             embed = discord.Embed(
@@ -50,7 +58,8 @@ class jojoattack(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://media.giphy.com/media/Id6pn9N6DEgphsE1kF/giphy.gif')
-            await ctx.send(embed=embed)
+            
+            return embed
         
         if rand == 2:
             embed = discord.Embed(
@@ -58,7 +67,8 @@ class jojoattack(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://thumbs.gfycat.com/WelltodoSpicyCoral-size_restricted.gif')
-            await ctx.send(embed=embed)
+            
+            return embed
         
         if rand == 3:
             embed = discord.Embed(
@@ -66,7 +76,8 @@ class jojoattack(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://media.giphy.com/media/731iFlLiqaRk4/giphy.gif')
-            await ctx.send(embed=embed)
+            
+            return embed
         
         if rand == 4:
             embed = discord.Embed(
@@ -74,7 +85,8 @@ class jojoattack(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://thumbs.gfycat.com/HardTightArcticfox-size_restricted.gif')
-            await ctx.send(embed=embed)
+            
+            return embed
         
         if rand == 5:
             embed = discord.Embed(
@@ -82,7 +94,8 @@ class jojoattack(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://media1.tenor.com/images/4795d34aa49ada5299453dfa9960ee40/tenor.gif?itemid=5505650')
-            await ctx.send(embed=embed)
+            
+            return embed
         
         if rand == 6:
             embed = discord.Embed(
@@ -90,7 +103,8 @@ class jojoattack(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://i.kym-cdn.com/photos/images/original/000/954/233/0e7.gif')
-            await ctx.send(embed=embed)
+            
+            return embed
         
         if rand == 7:
             embed = discord.Embed(
@@ -98,7 +112,8 @@ class jojoattack(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://media1.tenor.com/images/777a6281d408665ff4d9e63488271d38/tenor.gif?itemid=14122005')
-            await ctx.send(embed=embed)
+            
+            return embed
         
         if rand == 8:
             embed = discord.Embed(
@@ -106,7 +121,8 @@ class jojoattack(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://media1.tenor.com/images/0de4104ef4493fd3ec12bc7d9c5ef36a/tenor.gif?itemid=14264200')
-            await ctx.send(embed=embed)
+            
+            return embed
         
         if rand == 9:
             embed = discord.Embed(
@@ -114,7 +130,8 @@ class jojoattack(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://pa1.narvii.com/6618/e37d28d7810ce7e0038db64cc64cc2137f0399b8_hq.gif')
-            await ctx.send(embed=embed)
+            
+            return embed
         
         if rand == 10:
             embed = discord.Embed(
@@ -122,7 +139,8 @@ class jojoattack(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://i.kym-cdn.com/photos/images/original/000/946/759/efd.gif')
-            await ctx.send(embed=embed)
+            
+            return embed
         
         if rand == 11:
             embed = discord.Embed(
@@ -130,7 +148,8 @@ class jojoattack(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://media.giphy.com/media/nyNS6Cfrnkdj2/giphy.gif')
-            await ctx.send(embed=embed)
+            
+            return embed
         
         if rand == 12:
             embed = discord.Embed(
@@ -138,4 +157,5 @@ class jojoattack(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://media1.tenor.com/images/b73575c3289f3d221fcb8089777b0549/tenor.gif?itemid=12851143')
-            await ctx.send(embed=embed)
+            
+            return embed
