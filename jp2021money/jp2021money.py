@@ -45,7 +45,7 @@ class jp2021money(commands.Cog):
         
         # in case I can't find the token.pickle, its located in the rPi home directory
         # couldn't be bothered to change it
-        if os.path.exists('token.pickle'):
+        if os.path.exists('/home/pi/Bot_Archive/token.pickle'):
             with open('/home/pi/Bot_Archive/token.pickle', 'rb') as token:
                 creds = pickle.load(token)
         # If there are no (valid) credentials available, let the user log in.
@@ -88,7 +88,7 @@ class jp2021money(commands.Cog):
         
         # in case I can't find the token.pickle, its located in the rPi home directory
         # couldn't be bothered to change it
-        if os.path.exists('token.pickle'):
+        if os.path.exists('/home/pi/Bot_Archive/token.pickle'):
             with open('/home/pi/Bot_Archive/token.pickle', 'rb') as token:
                 creds = pickle.load(token)
         # If there are no (valid) credentials available, let the user log in.
