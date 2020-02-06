@@ -31,7 +31,7 @@ class jojoattack(BaseCog):
         
         r = random.randint(0, 1)
         
-        if r == 0
+        if r == 0:
             embed = discord.Embed(
                 description = 'ORA ORA ORA ORA!!!',
                 color = discord.Color.red()
@@ -39,7 +39,7 @@ class jojoattack(BaseCog):
             embed.set_image(url='https://www.google.com/url?sa=i&url=https%3A%2F%2Ftenor.com%2Fsearch%2Fora-ora-ora-gifs&psig=AOvVaw3KISyXyEUb4EzCJjROAkgr&ust=1581084141702000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPCYi8eLvecCFQAAAAAdAAAAABAD')
             await ctx.send(embed=embed)
          
-        if r == 1
+        if r == 1:
             embed = discord.Embed(
                 description = 'MUDA MUDA MUDA MUDA!!!',
                 color = discord.Color.red()
