@@ -36,7 +36,7 @@ class jojoattack(BaseCog):
                 description = 'ORA ORA ORA ORA!!!',
                 color = discord.Color.red()
             )
-            embed.set_image(url='https://www.google.com/url?sa=i&url=https%3A%2F%2Ftenor.com%2Fsearch%2Fora-ora-ora-gifs&psig=AOvVaw3KISyXyEUb4EzCJjROAkgr&ust=1581084141702000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPCYi8eLvecCFQAAAAAdAAAAABAD')
+            embed.set_image(url='https://media1.tenor.com/images/4795d34aa49ada5299453dfa9960ee40/tenor.gif?itemid=5505650')
             await ctx.send(embed=embed)
          
         if r == 1:
@@ -44,5 +44,5 @@ class jojoattack(BaseCog):
                 description = 'MUDA MUDA MUDA MUDA!!!',
                 color = discord.Color.red()
             )
-            embed.set_image(url='https://www.google.com/url?sa=i&url=https%3A%2F%2Ftenor.com%2Fview%2Fmuda-the-world-punch-jo-jos-bizarre-adventure-gif-12851143&psig=AOvVaw3NDGv85B6GMymokmyGn1xg&ust=1581084259673000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCID3rv-LvecCFQAAAAAdAAAAABAD')
+            embed.set_image(url='https://media1.tenor.com/images/b73575c3289f3d221fcb8089777b0549/tenor.gif?itemid=12851143')
             await ctx.send(embed=embed)
