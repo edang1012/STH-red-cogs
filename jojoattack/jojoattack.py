@@ -44,6 +44,7 @@ class jojoattack(BaseCog):
         await ctx.send(embed=embed)
     
     async def jojo_embed(self, rand):
+        """Make a JoJo attack embed!"""
         
         if rand == 0:
             embed = discord.Embed(
