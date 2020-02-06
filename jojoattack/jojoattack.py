@@ -30,10 +30,11 @@ class jojoattack(BaseCog):
         """Use a randomized JoJo attack!"""
         
         r = random.randint(0, 10)
-
-        embed = discord.Embed(
-            description = 'ITS TIME MOTHERFUCKER!!!',
-            color = discord.Color.red()
-        )
-        embed.set_image(url='https://media1.tenor.com/images/316802abc29c277b08bae799b1fbe52c/tenor.gif')
-        await ctx.send(embed=embed)
+        
+        if r == 0
+            embed = discord.Embed(
+                description = 'ORA ORA ORA ORA!!!',
+                color = discord.Color.red()
+            )
+            embed.set_image(url='')
+            await ctx.send(embed=embed)
