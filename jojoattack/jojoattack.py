@@ -26,7 +26,7 @@ class jojoattack(BaseCog):
 
     @commands.guild_only()
     @commands.command()
-    async def jojoattack(self, ctx):
+    async def jojo(self, ctx):
         """Use a randomized JoJo attack!"""
         
         r = random.randint(0, 1)
