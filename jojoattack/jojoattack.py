@@ -32,44 +32,44 @@ class jojoattack(BaseCog):
         r = random.randint(0, 12)
         
         if r == 0:
-        embed = discord.Embed(
-            description = 'SANRAITO IERO OBADORAIBU!!!',
-            color = discord.Color.red()
-        )
-        embed.set_image(url='https://media2.giphy.com/media/SGGmDq71JY8uc/source.gif')
-        await ctx.send(embed=embed)
+            embed = discord.Embed(
+                description = 'SANRAITO IERO OBADORAIBU!!!',
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://media2.giphy.com/media/SGGmDq71JY8uc/source.gif')
+            await ctx.send(embed=embed)
         
         if r == 1:
-        embed = discord.Embed(
-            description = 'SANDA KUROSU SUPURITTO ATAKKU!!!',
-            color = discord.Color.red()
-        )
-        embed.set_image(url='https://media.giphy.com/media/Id6pn9N6DEgphsE1kF/giphy.gif')
-        await ctx.send(embed=embed)
+            embed = discord.Embed(
+                description = 'SANDA KUROSU SUPURITTO ATAKKU!!!',
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://media.giphy.com/media/Id6pn9N6DEgphsE1kF/giphy.gif')
+            await ctx.send(embed=embed)
         
         if r == 2:
-        embed = discord.Embed(
-            description = 'KURAKKA VOREI!!!',
-            color = discord.Color.red()
-        )
-        embed.set_image(url='https://thumbs.gfycat.com/WelltodoSpicyCoral-size_restricted.gif')
-        await ctx.send(embed=embed)
+            embed = discord.Embed(
+                description = 'KURAKKA VOREI!!!',
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://thumbs.gfycat.com/WelltodoSpicyCoral-size_restricted.gif')
+            await ctx.send(embed=embed)
         
         if r == 3:
-        embed = discord.Embed(
-            description = 'NIGERUNDAYO!!!',
-            color = discord.Color.red()
-        )
-        embed.set_image(url='https://media.giphy.com/media/731iFlLiqaRk4/giphy.gif')
-        await ctx.send(embed=embed)
+            embed = discord.Embed(
+                description = 'NIGERUNDAYO!!!',
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://media.giphy.com/media/731iFlLiqaRk4/giphy.gif')
+            await ctx.send(embed=embed)
         
         if r == 4:
-        embed = discord.Embed(
-            description = 'SHABON RANCHA!!!',
-            color = discord.Color.red()
-        )
-        embed.set_image(url='https://vignette.wikia.nocookie.net/powerlisting/images/f/f5/Caesar_Zeppeli%27s_Bubbles_%28JoJo%29.gif/revision/latest?cb=20190822152544')
-        await ctx.send(embed=embed)
+            embed = discord.Embed(
+                description = 'SHABON RANCHA!!!',
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://vignette.wikia.nocookie.net/powerlisting/images/f/f5/Caesar_Zeppeli%27s_Bubbles_%28JoJo%29.gif/revision/latest?cb=20190822152544')
+            await ctx.send(embed=embed)
         
         if r == 5:
             embed = discord.Embed(
@@ -80,12 +80,12 @@ class jojoattack(BaseCog):
             await ctx.send(embed=embed)
         
         if r == 6:
-        embed = discord.Embed(
-            description = 'HAMITTO PAPURU!!!',
-            color = discord.Color.red()
-        )
-        embed.set_image(url='https://i.kym-cdn.com/photos/images/original/000/954/233/0e7.gif')
-        await ctx.send(embed=embed)
+            embed = discord.Embed(
+                description = 'HAMITTO PAPURU!!!',
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://i.kym-cdn.com/photos/images/original/000/954/233/0e7.gif')
+            await ctx.send(embed=embed)
         
         if r == 7:
             embed = discord.Embed(
@@ -104,28 +104,28 @@ class jojoattack(BaseCog):
             await ctx.send(embed=embed)
         
         if r == 9:
-        embed = discord.Embed(
-            description = 'SHIRUBA CHARIOTTSU!!!',
-            color = discord.Color.red()
-        )
-        embed.set_image(url='https://pa1.narvii.com/6618/e37d28d7810ce7e0038db64cc64cc2137f0399b8_hq.gif')
-        await ctx.send(embed=embed)
+            embed = discord.Embed(
+                description = 'SHIRUBA CHARIOTTSU!!!',
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://pa1.narvii.com/6618/e37d28d7810ce7e0038db64cc64cc2137f0399b8_hq.gif')
+            await ctx.send(embed=embed)
         
         if r == 10:
-        embed = discord.Embed(
-            description = 'ZA FURU!!!',
-            color = discord.Color.red()
-        )
-        embed.set_image(url='https://i.kym-cdn.com/photos/images/original/000/946/759/efd.gif')
-        await ctx.send(embed=embed)
+            embed = discord.Embed(
+                description = 'ZA FURU!!!',
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://i.kym-cdn.com/photos/images/original/000/946/759/efd.gif')
+            await ctx.send(embed=embed)
         
         if r == 11:
-        embed = discord.Embed(
-            description = 'ZA WARUDO!!!',
-            color = discord.Color.red()
-        )
-        embed.set_image(url='https://media.giphy.com/media/nyNS6Cfrnkdj2/giphy.gif')
-        await ctx.send(embed=embed)
+            embed = discord.Embed(
+                description = 'ZA WARUDO!!!',
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://media.giphy.com/media/nyNS6Cfrnkdj2/giphy.gif')
+            await ctx.send(embed=embed)
         
         if r == 12:
             embed = discord.Embed(
