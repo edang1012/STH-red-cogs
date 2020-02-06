@@ -29,7 +29,9 @@ class jojoattack(BaseCog):
     async def testo(self, ctx, arg):
         """Test a specific JoJo attack!"""
         
-        await ctx.send(embed=self.jojo_embed(arg))
+        embed = self.jojo_embed(arg)
+        
+        await ctx.send(embed=embed)
     
     @commands.guild_only()
     @commands.command()
@@ -37,8 +39,9 @@ class jojoattack(BaseCog):
         """Use a random JoJo attack!"""
         
         rand = random.randint(0, 12)
+        embed = self.jojo_embed(rand)
         
-        await ctx.send(embed=self.jojo_embed(rand))
+        await ctx.send(embed=embed)
     
     async def jojo_embed(self, rand):
         """Make a JoJo attack embed!"""
