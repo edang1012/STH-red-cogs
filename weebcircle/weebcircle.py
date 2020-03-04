@@ -325,7 +325,11 @@ class weebcircle(commands.Cog):
             with open(weebfile, 'rb') as f:
                 self.list = pickle.load(f) 
 
-            if len(self.list[0]) < 3:
+            if not self.list:
+                msg = "The list is empty..."
+                await ctx.send(msg)
+                
+            elif len(self.list[0]) < 3:
                 msg = "You need to run **.randomize** before you can see a list..."
                 await ctx.send(msg) 
             else:
