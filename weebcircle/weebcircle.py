@@ -302,7 +302,7 @@ class weebcircle(commands.Cog):
                 embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
                 embed_field = ""
                 for member in self.list:
-                    embed_field += "{}, recommend {} an anime that is at most {} cour(s)\n".format(member[0], member[2], member[1])
+                    embed_field += "{}, recommend {} an anime that is at most {} cour(s)\n".format(member[2], member[0], member[1])
                 embed.add_field(name='__**Weebcircle:**__', value=embed_field, inline=False)
                 await ctx.send(embed=embed)
                 
@@ -333,7 +333,7 @@ class weebcircle(commands.Cog):
             embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
             embed_field = ""
             for member in self.list:
-                embed_field += "{}, recommend {} an anime that is at most {} cour(s)\n".format(member[0], member[2], member[1])
+                embed_field += "{}, recommend {} an anime that is at most {} cour(s)\n".format(member[2], member[0], member[1])
             embed.add_field(name='__**Weebcircle:**__', value=embed_field, inline=False)
             await ctx.send(embed=embed)    
             
