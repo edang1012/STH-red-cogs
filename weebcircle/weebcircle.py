@@ -323,11 +323,11 @@ class weebcircle(commands.Cog):
         else:            
             # open list from file to ensure most up to date version
             with open(weebfile, 'rb') as f:
-                self.list = pickle.load(f)
-                await ctx.send(msg)  
+                self.list = pickle.load(f) 
 
-            if len(self.list[0]) > 3:
-                msg = "You can't randomize again cause you already ran **.rec**..."
+            if len(self.list[0]) < 3:
+                msg = "You need to run **.randomize** before you can see a list..."
+                await ctx.send(msg) 
             else:
                 embed = discord.Embed(
                             title = 'Weebcircle List',
