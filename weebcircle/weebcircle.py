@@ -380,7 +380,7 @@ class weebcircle(commands.Cog):
 
                 # look for author in list
                 for member in self.list:
-                    if member[0] == ctx.author.mention:
+                    if member[2] == ctx.author.mention:
 
                         # check if author has already recommended
                         # could break cause hard coding index, but will add length checks
