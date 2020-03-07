@@ -433,7 +433,7 @@ class weebcircle(commands.Cog):
                 embed.set_thumbnail(url='https://pbs.twimg.com/profile_images/1148502291692965889/rdZ5NNWh_400x400.png')
                 embed_field = ""
                 for member in self.list:
-                    embed_field += "{} watches *'{}'* (rec'd by {})\n".format(member[2], member[3], member[0])
+                    embed_field += "{} watches *'{}'* (rec'd by {})\n".format(member[0], member[3], member[2])
                 embed.add_field(name='__**Weebcircle:**__', value=embed_field, inline=False)
                 await ctx.send(embed=embed)
                 
@@ -459,7 +459,7 @@ class weebcircle(commands.Cog):
             with open(weebfile_old, 'rb') as f:
                 self.old = pickle.load(f)
                 
-            msg = "This is the oldlist: (format is: member, cour count, to whom member recommend, anime member recommend)\n"
+            msg = "This is the oldlist: (format is: member, cour count, who recs this member, anime to watch)\n"
 
             for member in self.old:
                 msg += "{}\n".format(member)
@@ -483,7 +483,7 @@ class weebcircle(commands.Cog):
             with open(weebfile, 'rb') as f:
                 self.list = pickle.load(f)
 
-            msg = "Current members: (format is: member, cour count, to whom member recommend, anime member recommend)\n"
+            msg = "Current members: (format is: member, cour count, who recs this member, anime to watch)\n"
 
             for member in self.list:
                 msg += "{}\n".format(member)
