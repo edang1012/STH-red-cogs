@@ -396,7 +396,7 @@ class weebcircle(commands.Cog):
                         with open(weebfile, 'wb') as f:
                             pickle.dump(self.list,f)
 
-                        msg = "{} recommended {} to {}".format(ctx.author.mention, arg, member[2])
+                        msg = "{} recommended {} to {}".format(ctx.author.mention, arg, member[0])
                 
         await ctx.send(msg)
 
