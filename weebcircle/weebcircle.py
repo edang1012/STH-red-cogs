@@ -421,7 +421,7 @@ class weebcircle(commands.Cog):
 
             for member in self.list:
                 if len(member) < 4:
-                    msg = "{} needs to recommend something using **.rec**...".format(member[0])
+                    msg = "{} needs to recommend something using **.rec**...".format(member[2])
                     await ctx.send(msg)
 
             if msg == "none":                
