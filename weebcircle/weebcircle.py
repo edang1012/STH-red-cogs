@@ -544,6 +544,6 @@ class weebcircle(commands.Cog):
         
         self.test.append([arg1, arg2, arg3, arg4])
         msg = "TEST COMMAND Current members: (format is: member, cour count, who recs this member, anime to watch)\n"
-            for member in self.test:
-                msg += "{}\n".format(member)
+        for member in self.test:
+            msg += "{}\n".format(member)
         await ctx.send(msg)
