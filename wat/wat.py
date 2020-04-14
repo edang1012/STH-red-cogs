@@ -78,7 +78,7 @@ class Wat(BaseCog):
             return
 
         
-        pattern = re.match(r"wh?[aou]t", content[0])
+        pattern = re.match(r"wh?[aou]t$", content[0])
         if pattern:
             async for check in message.channel.history(limit=5, before=message):
                 author = check.author
