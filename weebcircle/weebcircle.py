@@ -552,6 +552,11 @@ class weebcircle(commands.Cog):
     @checks.admin_or_permissions(manage_guild=True)
     @commands.command()
     async def debugload(self, ctx):
+        weebfile = self.dir + str(ctx.message.channel) + '/weeb_list.data'
+        #check if .start was run by looking at the directory
+        if not path.exists(weebfile):
+            msg = 'Use **.start** to start the circle.'
+            
         self.list = self.test
 
         #with open('/home/pi/Bot_Archive/weeb_list.data', 'wb') as f:
