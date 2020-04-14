@@ -28,6 +28,7 @@ class weebcircle(commands.Cog):
             )
         self.list = []
         self.old =  []
+        self.test = [0, 0, 0, 0]
         self.dir = '/home/pi/Bot_Archive/weebcircle/'
 
         
@@ -534,4 +535,15 @@ class weebcircle(commands.Cog):
                 pickle.dump(self.old,f)
 
             msg = "The old list has been cleared"
+        await ctx.send(msg)
+        
+    @commands.guild_only()
+    @checks.admin_or_permissions(manage_guild=True)
+    @commands.command()
+    async def debugadd(self, ctx, arg1, arg2, arg3, arg4):
+        
+        self.test.append([arg1, arg2, arg3, arg4])
+        msg = "TEST COMMAND Current members: (format is: member, cour count, who recs this member, anime to watch)\n"
+            for member in self.test:
+                msg += "{}\n".format(member)
         await ctx.send(msg)
