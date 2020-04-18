@@ -154,12 +154,12 @@ class sthreact(BaseCog):
             embed = discord.Embed(
                 color = discord.Color.red()
             )
-            embed.set_image(url='https://78.media.tumblr.com/b059362cc334fbcdd2e12c621dcf215e/tumblr_p4dr32dUnO1qbkiaho1_1280.gif')
+            embed.set_image(url='https://i.imgur.com/pikZ3a1.gif')
             await message.channel.send(embed=embed)
             
         if re.search(pattern8, content):
             embed = discord.Embed(
                 color = discord.Color.red()
             )
-            embed.set_image(url='https://i.kym-cdn.com/photos/images/original/001/405/404/e31.gif')
+            embed.set_image(url='https://i.imgur.com/HrbaFyJ.gif')
             await message.channel.send(embed=embed)
