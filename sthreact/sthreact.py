@@ -1,6 +1,7 @@
 import discord
 import os
 import re
+import random
 
 from redbot.core import checks, Config, commands
 
@@ -79,7 +80,7 @@ class sthreact(BaseCog):
             return
 
         
-        pattern0 = re.compile(r'(test)+( phrase)*', re.IGNORECASE)
+        pattern0 = re.compile(r'(test embed)', re.IGNORECASE)
         pattern1 = re.compile(r'(sigh)+[.]*', re.IGNORECASE)
         pattern2 = re.compile(r'(oh my)', re.IGNORECASE)
         pattern3 = re.compile(r'(keikaku)', re.IGNORECASE)
@@ -88,6 +89,8 @@ class sthreact(BaseCog):
         pattern5_1 = re.compile(r'(sorrynotsorry)', re.IGNORECASE)
         pattern5_2 = re.compile(r'(gomenasike)', re.IGNORECASE)
         pattern6 = re.compile(r'(nice)', re.IGNORECASE)
+        pattern7 = re.compile(r'(good bot[.!]*)', re.IGNORECASE)
+        pattern8 = re.compile(r'(bad bot[.!]*)', re.IGNORECASE)
         
         if re.search(pattern0, content):
             content_split = content.split()
@@ -145,4 +148,18 @@ class sthreact(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://media1.tenor.com/images/392da4650dfa83b3055069e39ad74b45/tenor.gif?itemid=7319727')
+            await message.channel.send(embed=embed)
+            
+        if re.search(pattern7, content):
+            embed = discord.Embed(
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://image.myanimelist.net/ui/DplKD8yaVNrGsWbmOrMAK6rwTZ8zGXfzss0QtRaLtQc')
+            await message.channel.send(embed=embed)
+            
+        if re.search(pattern8, content):
+            embed = discord.Embed(
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://i.kym-cdn.com/photos/images/original/001/405/404/e31.gif')
             await message.channel.send(embed=embed)
