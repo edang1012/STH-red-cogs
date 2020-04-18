@@ -154,7 +154,7 @@ class sthreact(BaseCog):
             embed = discord.Embed(
                 color = discord.Color.red()
             )
-            embed.set_image(url='https://image.myanimelist.net/ui/DplKD8yaVNrGsWbmOrMAK6rwTZ8zGXfzss0QtRaLtQc')
+            embed.set_image(url='https://78.media.tumblr.com/b059362cc334fbcdd2e12c621dcf215e/tumblr_p4dr32dUnO1qbkiaho1_1280.gif')
             await message.channel.send(embed=embed)
             
         if re.search(pattern8, content):
