@@ -91,6 +91,7 @@ class sthreact(BaseCog):
         pattern6 = re.compile(r'(nice)', re.IGNORECASE)
         pattern7 = re.compile(r'(good bot[.!]*)', re.IGNORECASE)
         pattern8 = re.compile(r'(bad bot[.!]*)', re.IGNORECASE)
+        pattern9 = re.compile(r'(umu)', re.IGNORECASE)
         
         if re.search(pattern0, content):
             content_split = content.split()
@@ -162,4 +163,11 @@ class sthreact(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://i.imgur.com/HrbaFyJ.gif')
+            await message.channel.send(embed=embed)
+            
+        if re.search(pattern9, content):
+            embed = discord.Embed(
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://i.imgur.com/PRa4ukr.jpg')
             await message.channel.send(embed=embed)
