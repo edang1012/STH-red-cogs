@@ -11,6 +11,7 @@ Working Cogs:
     - ~~add listseq command~~
     - add support for phrases
     - make it react to emotes
+- scheduler: self-host, for personal use only
 - sthreact (V3 only): contains all the fun react commands in one file
   - saido: added to sthreact, old files in Archive
   - ohmy: added to sthreact, old files in Archive
