@@ -85,6 +85,7 @@ class sthreact(BaseCog):
         pattern2 = re.compile(r'(oh my)', re.IGNORECASE)
         pattern3 = re.compile(r'(keikaku)', re.IGNORECASE)
         pattern4 = re.compile(r'\A(\.\.\.)+[.]*', re.IGNORECASE)
+        # \A ensures the following string must start the message
         pattern5 = re.compile(r'(sorry not sorry)', re.IGNORECASE)
         pattern5_1 = re.compile(r'(sorrynotsorry)', re.IGNORECASE)
         pattern5_2 = re.compile(r'(gomenasike)', re.IGNORECASE)
@@ -92,6 +93,8 @@ class sthreact(BaseCog):
         pattern7 = re.compile(r'(good bot[.!]*)', re.IGNORECASE)
         pattern8 = re.compile(r'(bad bot[.!]*)', re.IGNORECASE)
         pattern9 = re.compile(r'(umu)', re.IGNORECASE)
+        pattern10 = re.compile(r'(next youll say)', re.IGNORECASE)
+        pattern11 = re.compile(r'(next you''ll say)', re.IGNORECASE)
         
         if re.search(pattern0, content):
             content_split = content.split()
@@ -170,4 +173,11 @@ class sthreact(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://i.imgur.com/PRa4ukr.jpg')
+            await message.channel.send(embed=embed)
+            
+        if re.search(pattern10, content) || re.search(pattern11, content):
+            embed = discord.Embed(
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://i.imgflip.com/3hwwle.png')
             await message.channel.send(embed=embed)
