@@ -94,8 +94,8 @@ class sthreact(BaseCog):
         pattern8 = re.compile(r'(bad bot[.!]*)', re.IGNORECASE)
         pattern9 = re.compile(r'(umu)', re.IGNORECASE)
         pattern10 = re.compile(r'(next (you\'?ll|you\'?re gonna) say|your next (line is|line\'?ll be))', re.IGNORECASE)
-        pattern11 = re.compile(r'(your next (line is|line\'?ll be))', re.IGNORECASE)
-        pattern12 = re.compile(r'(meeting)', re.IGNORECASE)
+        pattern11 = re.compile(r'(meeting)', re.IGNORECASE)
+        pattern12 = re.compile(r'(impostor)', re.IGNORECASE)
         
         if re.search(pattern0, content):
             content_split = content.split()
@@ -183,9 +183,16 @@ class sthreact(BaseCog):
             embed.set_image(url='https://i.imgflip.com/3hwwle.png')
             await message.channel.send(embed=embed)
             
-        if re.search(pattern12, content):
+        if re.search(pattern11, content):
             embed = discord.Embed(
                 color = discord.Color.red()
             )
             embed.set_image(url='https://media1.tenor.com/images/a496903c9724d2b4fdbf228d74f6dd25/tenor.gif')
+            await message.channel.send(embed=embed)
+        
+        if re.search(pattern12, content):
+            embed = discord.Embed(
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://media1.tenor.com/images/a0d13ec25f9774f155b6cd5ebf12a6c8/tenor.gif')
             await message.channel.send(embed=embed)
