@@ -97,6 +97,7 @@ class sthreact(BaseCog):
         pattern11 = re.compile(r'(next you\'?re gonna say)', re.IGNORECASE)
         pattern12 = re.compile(r'(your next line is)', re.IGNORECASE)
         pattern13 = re.compile(r'(your next line\'?ll be)', re.IGNORECASE)
+        pattern14 = re.compile(r'(meeting)', re.IGNORECASE)
         
         if re.search(pattern0, content):
             content_split = content.split()
@@ -182,4 +183,11 @@ class sthreact(BaseCog):
                 color = discord.Color.red()
             )
             embed.set_image(url='https://i.imgflip.com/3hwwle.png')
+            await message.channel.send(embed=embed)
+            
+        if re.search(pattern14, content):
+            embed = discord.Embed(
+                color = discord.Color.red()
+            )
+            embed.set_image(url='https://media1.tenor.com/images/a496903c9724d2b4fdbf228d74f6dd25/tenor.gif?itemid=18383222')
             await message.channel.send(embed=embed)
