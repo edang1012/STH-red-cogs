@@ -95,6 +95,8 @@ class sthreact(BaseCog):
         pattern9 = re.compile(r'(umu)', re.IGNORECASE)
         pattern10 = re.compile(r'(next you\'?ll say)', re.IGNORECASE)
         pattern11 = re.compile(r'(next you\'?re gonna say)', re.IGNORECASE)
+        pattern12 = re.compile(r'(your next line is)', re.IGNORECASE)
+        pattern13 = re.compile(r'(your next line\'?ll be)', re.IGNORECASE)
         
         if re.search(pattern0, content):
             content_split = content.split()
@@ -175,7 +177,7 @@ class sthreact(BaseCog):
             embed.set_image(url='https://i.imgur.com/PRa4ukr.jpg')
             await message.channel.send(embed=embed)
             
-        if re.search(pattern10, content) or re.search(pattern11, content):
+        if re.search(pattern10, content) or re.search(pattern11, content) or re.search(pattern12, content) or re.search(pattern13, content):
             embed = discord.Embed(
                 color = discord.Color.red()
             )
