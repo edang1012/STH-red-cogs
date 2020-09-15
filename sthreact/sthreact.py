@@ -191,8 +191,15 @@ class sthreact(BaseCog):
             await message.channel.send(embed=embed)
         
         if re.search(pattern12, content):
+            rand = random.randint(0, 2)
+            
             embed = discord.Embed(
                 color = discord.Color.red()
             )
-            embed.set_image(url='https://media1.tenor.com/images/a0d13ec25f9774f155b6cd5ebf12a6c8/tenor.gif')
+            if rand == 0:
+                embed.set_image(url='https://media1.tenor.com/images/a0d13ec25f9774f155b6cd5ebf12a6c8/tenor.gif')
+            if rand == 1:
+                embed.set_image(url='https://media1.tenor.com/images/ef4993b593954811a0c0a1c98af698a3/tenor.gif')
+            if rand == 2:
+                embed.set_image(url='https://attachments.f95zone.to/2020/08/798465_AS_Impostor.gif')
             await message.channel.send(embed=embed)
