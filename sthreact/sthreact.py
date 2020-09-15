@@ -94,7 +94,8 @@ class sthreact(BaseCog):
         pattern8 = re.compile(r'(bad bot[.!]*)', re.IGNORECASE)
         pattern9 = re.compile(r'(umu)', re.IGNORECASE)
         pattern10 = re.compile(r'(next youll say)', re.IGNORECASE)
-        pattern11 = re.compile(r'(next youre gonna say)', re.IGNORECASE)
+        pattern11 = re.compile(r'(next you\'ll say)', re.IGNORECASE)
+        pattern12 = re.compile(r'(next youre gonna say)', re.IGNORECASE)
         
         if re.search(pattern0, content):
             content_split = content.split()
@@ -175,7 +176,7 @@ class sthreact(BaseCog):
             embed.set_image(url='https://i.imgur.com/PRa4ukr.jpg')
             await message.channel.send(embed=embed)
             
-        if re.search(pattern10, content) or re.search(pattern11, content):
+        if re.search(pattern10, content) or re.search(pattern11, content) or re.search(pattern12, content):
             embed = discord.Embed(
                 color = discord.Color.red()
             )
