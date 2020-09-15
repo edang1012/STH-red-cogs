@@ -93,7 +93,7 @@ class sthreact(BaseCog):
         pattern7 = re.compile(r'(good bot[.!]*)', re.IGNORECASE)
         pattern8 = re.compile(r'(bad bot[.!]*)', re.IGNORECASE)
         pattern9 = re.compile(r'(umu)', re.IGNORECASE)
-        pattern10 = re.compile(r'(next ((you\'?ll) | (you\'?re gonna)) say)', re.IGNORECASE)
+        pattern10 = re.compile(r'(next (you\'?ll) | (you\'?re gonna) say)', re.IGNORECASE)
         
         if re.search(pattern0, content):
             content_split = content.split()
