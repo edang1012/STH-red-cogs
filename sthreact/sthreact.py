@@ -189,5 +189,5 @@ class sthreact(BaseCog):
             embed = discord.Embed(
                 color = discord.Color.red()
             )
-            embed.set_image(url='https://media1.tenor.com/images/a496903c9724d2b4fdbf228d74f6dd25/tenor.gif?itemid=18383222')
+            embed.set_image(url='https://media1.tenor.com/images/a496903c9724d2b4fdbf228d74f6dd25/tenor.gif')
             await message.channel.send(embed=embed)
