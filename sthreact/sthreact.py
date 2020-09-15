@@ -175,7 +175,7 @@ class sthreact(BaseCog):
             embed.set_image(url='https://i.imgur.com/PRa4ukr.jpg')
             await message.channel.send(embed=embed)
             
-        if re.search(pattern10, content) || re.search(pattern11, content):
+        if re.search(pattern10, content) or re.search(pattern11, content):
             embed = discord.Embed(
                 color = discord.Color.red()
             )
