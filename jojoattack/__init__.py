@@ -1,5 +1,5 @@
 from .jojoattack import jojoattack
 
 
-def setup(bot):
-    bot.add_cog(jojoattack(bot))
+async def setup(bot):
+    await bot.add_cog(jojoattack(bot))
